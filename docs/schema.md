@@ -14,17 +14,17 @@ column name     | data type | details
 ----------------|-----------|-----------------------
 id              | integer   | not null, primary key
 title           | string    | not null, unique
+description     | string    | not null
 cover_img       | string    | not null
 user_id         | integer   | not null, foreign key (references users), indexed
 
-##descriptions
+##instructions
 column name     | data type | details
 ----------------|-----------|-----------------------
 id              | integer   | not null, primary key
 project_id      | id        | not null, indexed, foreign key (references project)
 step_title      | string    | not null
-step_url        | string    | not null
-step_description| text      | not null
+step_detail     | text      | not null
 image_video_url | string    |
 
 ## comments
