@@ -21,7 +21,7 @@
       - ComentIndexItem
 
 **ProjectsFormContainer**
-  -ProjectsForm
+  - ProjectsForm
 
 **SearchBar**
 
