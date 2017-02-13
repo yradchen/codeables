@@ -18,7 +18,7 @@
   - ProjectDetail
   - CommentIndexContainer
     + CommentIndex
-    ++ ComentIndexItem
+      - ComentIndexItem
 
 **ProjectsFormContainer**
   -ProjectsForm
