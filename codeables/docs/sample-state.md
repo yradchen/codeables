@@ -21,11 +21,17 @@
         { url: "www.randomvideoorimage", step_title: 'Step 1', step_detail: 'First you type a description' },
         { url: www.anotherimage.com, step_title: 'Step 2', step_detail: 'Upload a picture!' }
         ],
-      comments:
-        [
-          { username: 'Oscar', content: 'I like it.' },
-          { username: 'Jeff', content: 'Me too!' }
-        ]
+      // comments:
+      //   [
+      //     { username: 'Oscar', content: 'I like it.' },
+      //     { username: 'Jeff', content: 'Me too!' }
+      //   ]
     }
   },
 }
+// comments as an object since we modify individual ones.
+// project view container
+// projects index container
+// new project form container
+// comments container
+// if it dispatches an action - if container above has a lot of actions might just thread one down.

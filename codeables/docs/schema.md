@@ -25,7 +25,7 @@ id              | integer   | not null, primary key
 project_id      | id        | not null, indexed, foreign key (references project)
 step_title      | string    | not null
 step_detail     | text      | not null
-image_video_url | string    |
+image OR video_url | string    |
 
 ## comments
 column name | data type | details
