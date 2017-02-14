@@ -1,0 +1,1 @@
+Don't allow users with same username but diff capitalization to create accounts.
