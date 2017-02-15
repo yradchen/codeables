@@ -1,9 +1,3 @@
-
-// login(user) (thunk action creator)
-// logout() (thunk action creator)
-// signup(user) (thunk action creator)
-// receiveCurrentUser(currentUser) (regular action creator)
-// receiveErrors(errors) (regular action creator)
 import * as SessionAPIUtil from '../util/Session_api_util';
 
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
