@@ -7,8 +7,10 @@ const mapStateToProps = (state) => ({
   currentUser: state.session.currentUser
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  logout: () => dispatch(logout)
-});
+const mapDispatchToProps = (dispatch) => {
+  return {
+    logout: () => dispatch(logout())
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserForm);
