@@ -19,7 +19,6 @@ const loggedin = (currentUser, logout) => {
 }
 
 const UserForm = ({ currentUser, logout }) => {
-  debugger
   return currentUser ? loggedin(currentUser, logout) : sessionLinks()
 };
 
