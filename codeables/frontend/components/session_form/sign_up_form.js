@@ -18,7 +18,6 @@ class SignUpForm extends React.Component {
     }
   }
 
-
   update(field) {
     return e => this.setState({
         [field]: e.currentTarget.value
@@ -44,33 +43,40 @@ class SignUpForm extends React.Component {
 
   render() {
     return (
-      <div className="login-form-container">
-          <form onSubmit={this.handleSubmit} className='login-form-box'>
-            <h1 className="session-header">Sign up</h1>
-            <div className="login-form">
-              { this.renderErrors() }
+      <div className="session-outer-container">
+        <div className="session-inner-container">
+          <h1 className="session-header">Sign up</h1>
+          <div className="session-background-container">
+            <form onSubmit={this.handleSubmit} className='session-form-box'>
+              <div className="session-input-container">
+                { this.renderErrors() }
                 <input type='email'
                        value={this.state.email}
                        placeholder="Email"
                        onChange={this.update("email")}
                        className="login-input" />
-                <br/>
+                       <br/>
                 <input type="text"
       								 value={this.state.username}
                        placeholder="Username"
       								 onChange={this.update("username")}
       								 className="login-input" />
-                <br/>
-							<input type="password"
-    								 value={this.state.password}
-                     placeholder="Password"
-    								 onChange={this.update("password")}
-    								 className="login-input" />
-            </div>
-            <input type="submit"
-                   value="Create Account"
-                   className="submit-session-button" />
-          </form>
+                       <br/>
+							  <input type="password"
+    								   value={this.state.password}
+                       placeholder="Password"
+    								   onChange={this.update("password")}
+    								   className="login-input" />
+                <input type="submit"
+                       value="Create Account"
+                       className="submit-session-button" />
+                <section className="change-session-container">
+                  <p>Already a member? <Link to="/account/login">Login >></Link></p>
+                </section>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
   );
   }
