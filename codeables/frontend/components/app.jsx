@@ -1,6 +1,5 @@
 import React from 'react';
 // import UserFormContainer from './user/user_form_container';
-import SessionFormContainer from './session_form/session_form_container'
 import NavBar from './nav_bar/nav_bar'
 import Footer from './footer/footer'
 

@@ -16,14 +16,14 @@ const receiveCurrentUser = (currentUser) => ({
 export const login = (user) => dispatch => (
   SessionAPIUtil.login(user)
     .then(currentUser => dispatch(receiveCurrentUser(currentUser)),
-      error => dispatch(receiveErrors(errors.responseJSON))
+      errors => dispatch(receiveErrors(errors.responseJSON))
     )
 );
 
 export const signup = (user) => dispatch => (
   SessionAPIUtil.signup(user)
     .then(currentUser => dispatch(receiveCurrentUser(currentUser)),
-      error => dispatch(receiveErrors(errors.responseJSON))
+      errors => dispatch(receiveErrors(errors.responseJSON))
     )
 );
 

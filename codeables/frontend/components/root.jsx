@@ -2,7 +2,8 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import App from './app'
-import SessionFormContainer from './session_form/session_form_container'
+import SignUpFormContainer from './session_form/sign_up_form_container';
+import LoginFormContainer from './session_form/login_form_container';
 
 const Root = ({ store }) => {
   const _ensureLoggedIn = (nextState, replace) => {
@@ -24,8 +25,8 @@ const Root = ({ store }) => {
       <Router history={ hashHistory }>
         <Route path="/" component={ App } >
           <Route onEnter={_redirectIfLoggedIn } >
-            <Route path="/account/login" component={ SessionFormContainer } />
-            <Route path="/account/register" component={ SessionFormContainer } />
+            <Route path="/account/login" component={ LoginFormContainer } />
+            <Route path="/account/register" component={ SignUpFormContainer } />
           </Route>
         <Route path="/:notcreated" onEnter={_redirectIfLoggedIn} />
       </Route>
