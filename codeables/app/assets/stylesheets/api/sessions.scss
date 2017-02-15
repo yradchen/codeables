@@ -4,11 +4,16 @@
 
 
 .login-form-container {
-
+  text-align: center;
 }
 // reset styles something like .login-form-container .children and reset everything?
 
-
+.login-form-box {
+  padding-top: 1.5em;
+  width: 1016px;
+  min-width: 1016px;
+  margin: auto;
+}
 .submit-session-button {
   background-color: #e86c00;
   border-color: #cf6000;
@@ -18,4 +23,8 @@
   font-family: 'Caveat Brush';
   font-size: 36px;
   // font-weight: -1900;
+}
+
+.login-form-box {
+  border: 10px solid black;
 }

@@ -43,27 +43,34 @@ class LoginForm extends React.Component {
 
   render() {
     return (
-      <div className="login-form-container">
-          <form onSubmit={this.handleSubmit} className='login-form-box'>
-            <h1 className="session-header">login</h1>
-            <div className="login-form">
+      <div className="session-outer-container">
+        <div className="session-inner-container">
+          <h1 className="session-header">login</h1>
+          <div className="session-background-container">
+            <form onSubmit={this.handleSubmit} className='session-form-box'>
+              <div className="session-input-container">
                 { this.renderErrors() }
                 <input type="text"
-								value={this.state.username}
-                placeholder="Username"
-								onChange={this.update("username")}
-								className="login-input" />
-                <br/>
-							<input type="password"
-								value={this.state.password}
-                placeholder="Password"
-								onChange={this.update("password")}
-								className="login-input" />
-            </div>
-            <input type="submit"
-                   value="Sign Up"
-                   className="submit-session-button"  />
-          </form>
+							         value={this.state.username}
+                       placeholder="Username"
+							         onChange={this.update("username")}
+				               className="login-input" />
+                       <br/>
+						    <input type="password"
+							         value={this.state.password}
+                       placeholder="Password"
+								       onChange={this.update("password")}
+		                   className="login-input" />
+                <input type="submit"
+                       value="Sign Up"
+                       className="submit-session-button"  />
+                <section className="change-session-container">
+                  <Link to="/account/signup">Sign Up</Link>
+                </section>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
   );
   }
