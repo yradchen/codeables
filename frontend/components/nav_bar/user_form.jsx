@@ -6,8 +6,13 @@ const sessionLinks = (login) => {
   return (
     <nav className='login-signup'>
       <Link to="/account/login">Login</Link>
+      <p> | </p>
       <Link to="/account/register">Sign up</Link>
-      <button onClick={() => login(guest)}>Guest</button>
+      <p> | </p>
+      <button className="nav-guest"
+        onClick={() => login(guest)}>
+        Guest
+        </button>
     </nav>
 )};
 
