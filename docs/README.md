@@ -45,8 +45,8 @@ adequate seed data and sufficient CSS styling:
 - [x] Static page controller
 - [x] Redux cycle for front-end authentication.
 - [x] User signup/sign in page
-- [ ] Blank landing page
-- [ ] Style sign in and sign up components
+- [x] Blank landing page
+- [x] Style sign in and sign up components
 
 ### Phase 2: Projects model, API and components (2 day) - W8D4-W8D5
 

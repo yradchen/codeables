@@ -4,9 +4,15 @@ import UserFormContainer from './user_form_container';
 
 const NavBar = () => {
   return (
-    <header>
-    <p>other nav bar stuff</p>
-    <UserFormContainer />
+    <header className="navheader">
+      <div className="navTop">
+        <p>Let's code
+        <input type="text"
+          placeholder="future search bar"
+          className="search"/>
+        </p>
+        <UserFormContainer />
+      </div>
   </header>
   );
 };

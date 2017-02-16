@@ -6,6 +6,7 @@ class LoginForm extends React.Component {
     super(props);
     this.state = { username: "", password: ""};
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.signInGuest = this.signInGuest.bind(this);
   }
 
   componentDidUpdate() {
@@ -25,6 +26,7 @@ class LoginForm extends React.Component {
   }
 
   handleSubmit(e) {
+
     e.preventDefault();
     this.props.login(this.state);
   }
@@ -39,6 +41,13 @@ class LoginForm extends React.Component {
         </ul>
       );
     });
+  }
+
+  signInGuest(e) {
+    let guest = { username: "Guest", password: "wizardhat1"};
+    e.preventDefault();
+    this.props.login(guest);
+    this.redirectIfLoggedIn();
   }
 
   render() {
@@ -57,8 +66,7 @@ class LoginForm extends React.Component {
                        placeholder="Username"
 							         onChange={this.update("username")}
 				               className="login-input"
-                       data-rule-required="true"
-                       data-msg-required="Please enter your username." />
+                       />
 						    <input type="password"
 							         value={this.state.password}
                        placeholder="Password"
@@ -67,7 +75,7 @@ class LoginForm extends React.Component {
                 <input type="submit"
                        value="Login"
                        id="submit-session-button"  />
-                <button onClick={() => this.props.login(guest)}
+                <button onClick={this.signInGuest}
                        id="submit-session-button">
                        Guest Login</button>
               </div>
@@ -86,3 +94,8 @@ class LoginForm extends React.Component {
 }
 
 export default LoginForm;
+
+//
+// <button onClick={() => this.props.login(guest)}
+//        id="submit-session-button">
+//        Guest Login</button>

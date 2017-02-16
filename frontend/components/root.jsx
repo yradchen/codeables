@@ -4,7 +4,7 @@ import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import App from './app'
 import SignUpFormContainer from './session_form/sign_up_form_container';
 import LoginFormContainer from './session_form/login_form_container';
-
+import Homepage from './homepage/homepage';
 const Root = ({ store }) => {
   const _ensureLoggedIn = (nextState, replace) => {
     const currentUser = store.getState().session.currentUser;
@@ -23,7 +23,8 @@ const Root = ({ store }) => {
   return (
     <Provider store={store}>
       <Router history={ hashHistory }>
-        <Route path="/" component={ App } >
+        <Route component={ App } >
+        <Route path="/" component={ Homepage } />
           <Route onEnter={_redirectIfLoggedIn } >
             <Route path="/account/login" component={ LoginFormContainer } />
             <Route path="/account/register" component={ SignUpFormContainer } />
