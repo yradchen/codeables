@@ -40,11 +40,11 @@ adequate seed data and sufficient CSS styling:
 
 **Objective:** Functioning rails project with front-end Authentication.
 
-- [ ] User model/migration
-- [ ] Back end authentication (session/password)
-- [ ] Static page controller
-- [ ] Redux cycle for front-end authentication.
-- [ ] User signup/sign in page
+- [x] User model/migration
+- [x] Back end authentication (session/password)
+- [x] Static page controller
+- [x] Redux cycle for front-end authentication.
+- [x] User signup/sign in page
 - [ ] Blank landing page
 - [ ] Style sign in and sign up components
 
