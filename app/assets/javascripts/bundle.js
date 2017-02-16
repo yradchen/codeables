@@ -14403,6 +14403,7 @@ var LoginForm = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
+      var guest = { username: "Guest", password: "wizardhat1" };
       return _react2.default.createElement(
         'div',
         { className: 'session-outer-container' },
@@ -14437,7 +14438,15 @@ var LoginForm = function (_React$Component) {
                   className: 'login-input' }),
                 _react2.default.createElement('input', { type: 'submit',
                   value: 'Login',
-                  className: 'submit-session-button' })
+                  id: 'submit-session-button' }),
+                _react2.default.createElement(
+                  'button',
+                  { onClick: function onClick() {
+                      return login(guest);
+                    },
+                    id: 'submit-session-button' },
+                  'Guest Login'
+                )
               ),
               _react2.default.createElement(
                 'section',
@@ -14630,12 +14639,13 @@ var SignUpForm = function (_React$Component) {
                   className: 'login-input' }),
                 _react2.default.createElement('input', { type: 'submit',
                   value: 'Create Account',
-                  className: 'submit-session-button' }),
+                  id: 'submit-session-button' }),
                 _react2.default.createElement(
                   'button',
                   { onClick: function onClick() {
                       return login(guest);
-                    } },
+                    },
+                    id: 'submit-session-button' },
                   'Guest Login'
                 )
               ),
@@ -14648,7 +14658,7 @@ var SignUpForm = function (_React$Component) {
                   'Already a member?',
                   _react2.default.createElement(
                     _reactRouter.Link,
-                    { to: '/account/login', className: 'change-link' },
+                    { to: '/account/register', className: 'change-link' },
                     'Login \xBB '
                   )
                 )
@@ -14697,7 +14707,20 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
   return {
     signup: function signup(user) {
       return dispatch((0, _session_actions.signup)(user));
-    }
+    },
+    login: function (_login) {
+      function login(_x) {
+        return _login.apply(this, arguments);
+      }
+
+      login.toString = function () {
+        return _login.toString();
+      };
+
+      return login;
+    }(function (user) {
+      return dispatch(login(user));
+    })
   };
 };
 

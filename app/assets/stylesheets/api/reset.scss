@@ -4,7 +4,7 @@
 header, body, footer, section,
 div,
 h1, h2, h3, h4, p,
-label, form,
+label, form, 
 ul, li {
   margin: 0;
   border: 0;
@@ -16,7 +16,7 @@ ul, li {
   color: inherit;
   background: inherit;
 }
-input {
+input, button {
   border: 1px solid black;
   border-radius: 6px;
 }

@@ -69,12 +69,14 @@ class SignUpForm extends React.Component {
     								   className="login-input" />
                 <input type="submit"
                        value="Create Account"
-                       className="submit-session-button" />
-                <button onClick={() => login(guest)}>Guest Login</button>
+                       id="submit-session-button" />
+                <button onClick={() => login(guest)}
+                        id="submit-session-button">
+                        Guest Login</button>
               </div>
               <section className="change-session-container">
                 <p className="change-padding">Already a member?
-                <Link to="/account/login" className="change-link">Login » </Link>
+                <Link to="/account/register" className="change-link">Login » </Link>
                  </p>
 
               </section>

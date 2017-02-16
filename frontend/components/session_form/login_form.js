@@ -42,6 +42,7 @@ class LoginForm extends React.Component {
   }
 
   render() {
+    let guest = { username: "Guest", password: "wizardhat1"};
     return (
       <div className="session-outer-container">
         <div className="session-inner-container">
@@ -63,7 +64,10 @@ class LoginForm extends React.Component {
 		                   className="login-input" />
                 <input type="submit"
                        value="Login"
-                       className="submit-session-button"  />
+                       id="submit-session-button"  />
+                <button onClick={() => login(guest)}
+                       id="submit-session-button">
+                       Guest Login</button>
               </div>
                 <section className="change-session-container">
                   <Link to="/account/signup"
