@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router';
-debugger
 class SignUpForm extends React.Component {
   constructor(props) {
     super(props);
@@ -41,7 +40,9 @@ class SignUpForm extends React.Component {
     });
   }
 
+
   render() {
+    let guest = { username: "Guest", password: "wizardhat1"};
     return (
       <div className="session-outer-container">
         <div className="session-inner-container">
@@ -69,9 +70,13 @@ class SignUpForm extends React.Component {
                 <input type="submit"
                        value="Create Account"
                        className="submit-session-button" />
+                <button onClick={() => login(guest)}>Guest Login</button>
               </div>
               <section className="change-session-container">
-                <p>Already a member? <Link to="/account/login">Login >></Link></p>
+                <p className="change-padding">Already a member?
+                <Link to="/account/login" className="change-link">Login » </Link>
+                 </p>
+
               </section>
             </form>
 
