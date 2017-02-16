@@ -48,6 +48,7 @@ class LoginForm extends React.Component {
           <h1 className="session-header">login</h1>
           <div className="session-background-container">
             <form onSubmit={this.handleSubmit} className='session-form-box'>
+              <img src={images.flex_box} alt="flex_box" className="flex_box"/>
               <div className="session-input-container">
                 { this.renderErrors() }
                 <input type="text"
@@ -55,19 +56,18 @@ class LoginForm extends React.Component {
                        placeholder="Username"
 							         onChange={this.update("username")}
 				               className="login-input" />
-                       <br/>
 						    <input type="password"
 							         value={this.state.password}
                        placeholder="Password"
 								       onChange={this.update("password")}
 		                   className="login-input" />
                 <input type="submit"
-                       value="Sign Up"
+                       value="Login"
                        className="submit-session-button"  />
+              </div>
                 <section className="change-session-container">
                   <Link to="/account/signup">Sign Up</Link>
                 </section>
-              </div>
             </form>
           </div>
         </div>

@@ -3,28 +3,142 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-.login-form-container {
-  text-align: center;
-}
+
 // reset styles something like .login-form-container .children and reset everything?
 
-.login-form-box {
+// .login-form-box {
+//   padding-top: 1.5em;
+//   width: 1016px;
+//   min-width: 1016px;
+//   margin: auto;
+// }
+
+
+
+
+.session-outer-container {
+  display: flex;
+  justify-content: center;
   padding-top: 1.5em;
-  width: 1016px;
-  min-width: 1016px;
-  margin: auto;
+  background-color: #d4e1e7;
+  padding-bottom: 1.5em;
 }
-.submit-session-button {
-  background-color: #e86c00;
-  border-color: #cf6000;
+
+.session-inner-container {
+  // display: flex;
+  width: 1016px;
+  height: 808px;
+  min-width: 1016px;
+  border: 1px solid rgba(119,130,135,.4);
+  border-radius: 9px;
+  background-image: image_url("love_coding.jpg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 }
 
 .session-header {
   font-family: 'Caveat Brush';
   font-size: 36px;
-  // font-weight: -1900;
+  border-bottom: 1px solid rgba(119,130,135,.4);
+  border-top-right-radius: 9px;
+  border-top-left-radius: 9px;
+  background: #f6f6f6;
+  padding: 5px 10px 15px 15px
+}
+.session-background-container {
+  // height: 808px;
+  padding: 70px;
+
 }
 
-.login-form-box {
-  border: 10px solid black;
+.session-form-box {
+  display: flex;
+  border: 1px solid rgba(119,130,135,.4);
+  border-radius: 9px;
+  width: 320px;
+  height: 548px;
+  background: #fff;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+
 }
+
+.session-input-container {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  // justify-content: center;
+  // align-items: center;
+  // padding-left: 10px;
+}
+
+.login-input {
+  // width: 100%;
+}
+
+.change-session-container {
+  display: flex;
+  border: 1px solid rgba(119,130,135,.4);
+}
+
+.submit-session-button {
+  background-color: #e86c00;
+  border-color: #cf6000;
+  color: white;
+}
+
+.session-input-container > input {
+  padding: 5px;
+  margin: 4px;
+  margin-top: 10px;
+}
+
+.flex_box {
+  width: 100%;
+  height: 40%;
+}
+
+
+//
+// justify-content (horizontal setting)
+// flex-start: Items align to the left side of the container.
+// flex-end: Items align to the right side of the container.
+// center: Items align at the center of the container.
+// space-between: Items display with equal spacing between them.
+// space-around: Items display with equal spacing around them.
+
+// align-items - aligns items vertically and accepts the following values:
+//
+// flex-start: Items align to the top of the container.
+// flex-end: Items align to the bottom of the container.
+// center: Items align at the vertical center of the container.
+// baseline: Items display at the baseline of the container.
+// stretch: Items are stretched to fit the container.
+
+
+// flex-direction -direction items are placed in the container, and accepts the following values:
+//
+// row: Items are placed the same as the text direction.
+// row-reverse: Items are placed opposite to the text direction.
+// column: Items are placed top to bottom.
+// column-reverse: Items are placed bottom to top.
+
+// align-self accepts same value as align-items
+
+//
+// Oh no! The frogs are all squeezed onto a single row of lilypads. Spread them out using the flex-wrap property, which accepts the following values:
+//
+// nowrap: Every item is fit to a single line.
+// wrap: Items wrap around to additional lines.
+// wrap-reverse: Items wrap around to additional lines in reverse.
+
+//
+// The frogs are spread all over the pond, but the lilypads are bunched at the top. You can use align-content to set how multiple lines are spaced apart from each other. This property takes the following values:
+//
+// flex-start: Lines are packed at the top of the container.
+// flex-end: Lines are packed at the bottom of the container.
+// center: Lines are packed at the vertical center of the container.
+// space-between: Lines display with equal spacing between them.
+// space-around: Lines display with equal spacing around them.
+// stretch: Lines are stretched to fit the container.

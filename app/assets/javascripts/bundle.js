@@ -14420,6 +14420,7 @@ var LoginForm = function (_React$Component) {
             _react2.default.createElement(
               'form',
               { onSubmit: this.handleSubmit, className: 'session-form-box' },
+              _react2.default.createElement('img', { src: images.flex_box, alt: 'flex_box', className: 'flex_box' }),
               _react2.default.createElement(
                 'div',
                 { className: 'session-input-container' },
@@ -14429,23 +14430,22 @@ var LoginForm = function (_React$Component) {
                   placeholder: 'Username',
                   onChange: this.update("username"),
                   className: 'login-input' }),
-                _react2.default.createElement('br', null),
                 _react2.default.createElement('input', { type: 'password',
                   value: this.state.password,
                   placeholder: 'Password',
                   onChange: this.update("password"),
                   className: 'login-input' }),
                 _react2.default.createElement('input', { type: 'submit',
-                  value: 'Sign Up',
-                  className: 'submit-session-button' }),
+                  value: 'Login',
+                  className: 'submit-session-button' })
+              ),
+              _react2.default.createElement(
+                'section',
+                { className: 'change-session-container' },
                 _react2.default.createElement(
-                  'section',
-                  { className: 'change-session-container' },
-                  _react2.default.createElement(
-                    _reactRouter.Link,
-                    { to: '/account/signup' },
-                    'Sign Up'
-                  )
+                  _reactRouter.Link,
+                  { to: '/account/signup' },
+                  'Sign Up'
                 )
               )
             )
@@ -14498,49 +14498,6 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_login_form2.default);
 
-//
-// justify-content (horizontal setting)
-// flex-start: Items align to the left side of the container.
-// flex-end: Items align to the right side of the container.
-// center: Items align at the center of the container.
-// space-between: Items display with equal spacing between them.
-// space-around: Items display with equal spacing around them.
-
-// align-items - aligns items vertically and accepts the following values:
-//
-// flex-start: Items align to the top of the container.
-// flex-end: Items align to the bottom of the container.
-// center: Items align at the vertical center of the container.
-// baseline: Items display at the baseline of the container.
-// stretch: Items are stretched to fit the container.
-
-
-// flex-direction -direction items are placed in the container, and accepts the following values:
-//
-// row: Items are placed the same as the text direction.
-// row-reverse: Items are placed opposite to the text direction.
-// column: Items are placed top to bottom.
-// column-reverse: Items are placed bottom to top.
-
-// align-self accepts same value as align-items
-
-//
-// Oh no! The frogs are all squeezed onto a single row of lilypads. Spread them out using the flex-wrap property, which accepts the following values:
-//
-// nowrap: Every item is fit to a single line.
-// wrap: Items wrap around to additional lines.
-// wrap-reverse: Items wrap around to additional lines in reverse.
-
-// 
-// The frogs are spread all over the pond, but the lilypads are bunched at the top. You can use align-content to set how multiple lines are spaced apart from each other. This property takes the following values:
-//
-// flex-start: Lines are packed at the top of the container.
-// flex-end: Lines are packed at the bottom of the container.
-// center: Lines are packed at the vertical center of the container.
-// space-between: Lines display with equal spacing between them.
-// space-around: Lines display with equal spacing around them.
-// stretch: Lines are stretched to fit the container.
-
 /***/ }),
 /* 165 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -14569,6 +14526,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+debugger;
 
 var SignUpForm = function (_React$Component) {
   _inherits(SignUpForm, _React$Component);
@@ -14649,6 +14608,7 @@ var SignUpForm = function (_React$Component) {
             _react2.default.createElement(
               'form',
               { onSubmit: this.handleSubmit, className: 'session-form-box' },
+              _react2.default.createElement('img', { src: images.flex_box, alt: 'flex_box', className: 'flex_box' }),
               _react2.default.createElement(
                 'div',
                 { className: 'session-input-container' },
@@ -14658,13 +14618,11 @@ var SignUpForm = function (_React$Component) {
                   placeholder: 'Email',
                   onChange: this.update("email"),
                   className: 'login-input' }),
-                _react2.default.createElement('br', null),
                 _react2.default.createElement('input', { type: 'text',
                   value: this.state.username,
                   placeholder: 'Username',
                   onChange: this.update("username"),
                   className: 'login-input' }),
-                _react2.default.createElement('br', null),
                 _react2.default.createElement('input', { type: 'password',
                   value: this.state.password,
                   placeholder: 'Password',
@@ -14672,19 +14630,19 @@ var SignUpForm = function (_React$Component) {
                   className: 'login-input' }),
                 _react2.default.createElement('input', { type: 'submit',
                   value: 'Create Account',
-                  className: 'submit-session-button' }),
+                  className: 'submit-session-button' })
+              ),
+              _react2.default.createElement(
+                'section',
+                { className: 'change-session-container' },
                 _react2.default.createElement(
-                  'section',
-                  { className: 'change-session-container' },
+                  'p',
+                  null,
+                  'Already a member? ',
                   _react2.default.createElement(
-                    'p',
-                    null,
-                    'Already a member? ',
-                    _react2.default.createElement(
-                      _reactRouter.Link,
-                      { to: '/account/login' },
-                      'Login >>'
-                    )
+                    _reactRouter.Link,
+                    { to: '/account/login' },
+                    'Login >>'
                   )
                 )
               )

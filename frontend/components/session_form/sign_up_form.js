@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router';
-
+debugger
 class SignUpForm extends React.Component {
   constructor(props) {
     super(props);
@@ -48,6 +48,7 @@ class SignUpForm extends React.Component {
           <h1 className="session-header">Sign up</h1>
           <div className="session-background-container">
             <form onSubmit={this.handleSubmit} className='session-form-box'>
+              <img src={images.flex_box} alt="flex_box" className="flex_box"/>
               <div className="session-input-container">
                 { this.renderErrors() }
                 <input type='email'
@@ -55,13 +56,11 @@ class SignUpForm extends React.Component {
                        placeholder="Email"
                        onChange={this.update("email")}
                        className="login-input" />
-                       <br/>
                 <input type="text"
       								 value={this.state.username}
                        placeholder="Username"
       								 onChange={this.update("username")}
       								 className="login-input" />
-                       <br/>
 							  <input type="password"
     								   value={this.state.password}
                        placeholder="Password"
@@ -70,11 +69,12 @@ class SignUpForm extends React.Component {
                 <input type="submit"
                        value="Create Account"
                        className="submit-session-button" />
-                <section className="change-session-container">
-                  <p>Already a member? <Link to="/account/login">Login >></Link></p>
-                </section>
               </div>
+              <section className="change-session-container">
+                <p>Already a member? <Link to="/account/login">Login >></Link></p>
+              </section>
             </form>
+
           </div>
         </div>
       </div>
