@@ -86,13 +86,9 @@
   // padding: 14px 20px;
 }
 
-.submit-session-button {
-  background-color: #e86c00;
-  border-color: #cf6000;
-  color: white;
-}
 
-.session-input-container > input {
+
+.session-input-container > input, .session-input-container > button  {
   height: 25px;
   width: 100%;
   margin-bottom: 20px;
@@ -100,6 +96,15 @@
   font-size: 90%;
   border: 1px solid #ccc;
 
+}
+
+#submit-session-button {
+  background-color: #e86c00;
+  border-color: #cf6000;
+  color: white;
+  padding: 15px;
+  line-height: 0px;
+  vertical-align: text-top;
 }
 
 .flex_box {

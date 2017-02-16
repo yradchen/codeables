@@ -12,7 +12,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    signup: user => dispatch(signup(user))
+    signup: user => dispatch(signup(user)),
+    login: user => dispatch(login(user))
   };
 };
 
