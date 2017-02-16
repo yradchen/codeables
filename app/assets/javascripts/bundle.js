@@ -14444,8 +14444,9 @@ var LoginForm = function (_React$Component) {
                 { className: 'change-session-container' },
                 _react2.default.createElement(
                   _reactRouter.Link,
-                  { to: '/account/signup' },
-                  'Sign Up'
+                  { to: '/account/signup',
+                    className: 'change-padding' },
+                  'Sign Up \xBB'
                 )
               )
             )
@@ -14527,8 +14528,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-debugger;
-
 var SignUpForm = function (_React$Component) {
   _inherits(SignUpForm, _React$Component);
 
@@ -14591,6 +14590,7 @@ var SignUpForm = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
+      var guest = { username: "Guest", password: "wizardhat1" };
       return _react2.default.createElement(
         'div',
         { className: 'session-outer-container' },
@@ -14630,19 +14630,26 @@ var SignUpForm = function (_React$Component) {
                   className: 'login-input' }),
                 _react2.default.createElement('input', { type: 'submit',
                   value: 'Create Account',
-                  className: 'submit-session-button' })
+                  className: 'submit-session-button' }),
+                _react2.default.createElement(
+                  'button',
+                  { onClick: function onClick() {
+                      return login(guest);
+                    } },
+                  'Guest Login'
+                )
               ),
               _react2.default.createElement(
                 'section',
                 { className: 'change-session-container' },
                 _react2.default.createElement(
                   'p',
-                  null,
-                  'Already a member? ',
+                  { className: 'change-padding' },
+                  'Already a member?',
                   _react2.default.createElement(
                     _reactRouter.Link,
-                    { to: '/account/login' },
-                    'Login >>'
+                    { to: '/account/login', className: 'change-link' },
+                    'Login \xBB '
                   )
                 )
               )

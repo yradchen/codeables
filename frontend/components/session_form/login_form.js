@@ -66,7 +66,9 @@ class LoginForm extends React.Component {
                        className="submit-session-button"  />
               </div>
                 <section className="change-session-container">
-                  <Link to="/account/signup">Sign Up</Link>
+                  <Link to="/account/signup"
+                  className="change-padding">
+                  Sign Up »</Link>
                 </section>
             </form>
           </div>
