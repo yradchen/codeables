@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { logout, signup } from '../../actions/session_actions';
+import { logout, signup, login } from '../../actions/session_actions';
 import SignUpForm from './sign_up_form';
 
 

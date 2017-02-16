@@ -14403,6 +14403,8 @@ var LoginForm = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
+      var _this3 = this;
+
       var guest = { username: "Guest", password: "wizardhat1" };
       return _react2.default.createElement(
         'div',
@@ -14430,7 +14432,9 @@ var LoginForm = function (_React$Component) {
                   value: this.state.username,
                   placeholder: 'Username',
                   onChange: this.update("username"),
-                  className: 'login-input' }),
+                  className: 'login-input',
+                  'data-rule-required': 'true',
+                  'data-msg-required': 'Please enter your username.' }),
                 _react2.default.createElement('input', { type: 'password',
                   value: this.state.password,
                   placeholder: 'Password',
@@ -14442,7 +14446,7 @@ var LoginForm = function (_React$Component) {
                 _react2.default.createElement(
                   'button',
                   { onClick: function onClick() {
-                      return login(guest);
+                      return _this3.props.login(guest);
                     },
                     id: 'submit-session-button' },
                   'Guest Login'
@@ -14453,7 +14457,7 @@ var LoginForm = function (_React$Component) {
                 { className: 'change-session-container' },
                 _react2.default.createElement(
                   _reactRouter.Link,
-                  { to: '/account/signup',
+                  { to: '/account/register',
                     className: 'change-padding' },
                   'Sign Up \xBB'
                 )
@@ -14547,6 +14551,7 @@ var SignUpForm = function (_React$Component) {
 
     _this.state = { email: "", username: "", password: "" };
     _this.handleSubmit = _this.handleSubmit.bind(_this);
+    _this.signInGuest = _this.signInGuest.bind(_this);
     return _this;
   }
 
@@ -14597,9 +14602,17 @@ var SignUpForm = function (_React$Component) {
       });
     }
   }, {
+    key: 'signInGuest',
+    value: function signInGuest(e) {
+      var guest = { username: "Guest", password: "wizardhat1" };
+      e.preventDefault();
+      this.props.login(guest);
+      this.redirectIfLoggedIn();
+    }
+  }, {
     key: 'render',
     value: function render() {
-      var guest = { username: "Guest", password: "wizardhat1" };
+
       return _react2.default.createElement(
         'div',
         { className: 'session-outer-container' },
@@ -14642,9 +14655,7 @@ var SignUpForm = function (_React$Component) {
                   id: 'submit-session-button' }),
                 _react2.default.createElement(
                   'button',
-                  { onClick: function onClick() {
-                      return login(guest);
-                    },
+                  { onClick: this.signInGuest,
                     id: 'submit-session-button' },
                   'Guest Login'
                 )
@@ -14658,7 +14669,7 @@ var SignUpForm = function (_React$Component) {
                   'Already a member?',
                   _react2.default.createElement(
                     _reactRouter.Link,
-                    { to: '/account/register', className: 'change-link' },
+                    { to: '/account/login', className: 'change-link' },
                     'Login \xBB '
                   )
                 )
@@ -14708,19 +14719,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
     signup: function signup(user) {
       return dispatch((0, _session_actions.signup)(user));
     },
-    login: function (_login) {
-      function login(_x) {
-        return _login.apply(this, arguments);
-      }
-
-      login.toString = function () {
-        return _login.toString();
-      };
-
-      return login;
-    }(function (user) {
-      return dispatch(login(user));
-    })
+    login: function login(user) {
+      return dispatch((0, _session_actions.login)(user));
+    }
   };
 };
 
