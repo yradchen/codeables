@@ -21,13 +21,16 @@
         { url: "www.randomvideoorimage", step_title: 'Step 1', step_detail: 'First you type a description' },
         { url: www.anotherimage.com, step_title: 'Step 2', step_detail: 'Upload a picture!' }
         ],
-      // comments:
-      //   [
-      //     { username: 'Oscar', content: 'I like it.' },
-      //     { username: 'Jeff', content: 'Me too!' }
-      //   ]
     }
   },
+  comments: {
+    1: {
+      username: 'Oscar', content: 'I like it.' }
+    }
+    2: {
+      username: 'Jeff', content: 'Me too!' }
+    }
+  }
 }
 // comments as an object since we modify individual ones.
 // project view container
