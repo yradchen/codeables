@@ -5,6 +5,7 @@ class SignUpForm extends React.Component {
     super(props);
     this.state = { email: "", username: "", password: ""};
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.signInGuest = this.signInGuest.bind(this);
   }
 
   componentDidUpdate() {
@@ -40,9 +41,16 @@ class SignUpForm extends React.Component {
     });
   }
 
+  signInGuest(e) {
+    let guest = { username: "Guest", password: "wizardhat1"};
+    e.preventDefault();
+    this.props.login(guest);
+    this.redirectIfLoggedIn();
+  }
+
 
   render() {
-    let guest = { username: "Guest", password: "wizardhat1"};
+
     return (
       <div className="session-outer-container">
         <div className="session-inner-container">
@@ -70,13 +78,13 @@ class SignUpForm extends React.Component {
                 <input type="submit"
                        value="Create Account"
                        id="submit-session-button" />
-                <button onClick={() => login(guest)}
-                        id="submit-session-button">
-                        Guest Login</button>
+                <button onClick={this.signInGuest}
+                       id="submit-session-button">
+                       Guest Login</button>
               </div>
               <section className="change-session-container">
                 <p className="change-padding">Already a member?
-                <Link to="/account/register" className="change-link">Login » </Link>
+                <Link to="/account/login" className="change-link">Login » </Link>
                  </p>
 
               </section>

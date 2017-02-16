@@ -6,12 +6,6 @@
 
 // reset styles something like .login-form-container .children and reset everything?
 
-// .login-form-box {
-//   padding-top: 1.5em;
-//   width: 1016px;
-//   min-width: 1016px;
-//   margin: auto;
-// }
 
 
 
@@ -25,11 +19,11 @@
 }
 
 .session-inner-container {
-  // display: flex;
   width: 1016px;
   height: 808px;
   min-width: 1016px;
   border: 1px solid rgba(119,130,135,.4);
+  box-shadow: 0 1px 3px rgba(0,0,0,.35);
   border-radius: 9px;
   background-image: image_url("love_coding.jpg");
   background-size: 100% 100%;
@@ -46,9 +40,7 @@
   padding: 5px 10px 15px 15px
 }
 .session-background-container {
-  // height: 808px;
   padding: 70px;
-
 }
 
 .session-form-box {
@@ -56,26 +48,20 @@
   border: 1px solid rgba(119,130,135,.4);
   border-radius: 9px;
   width: 320px;
-  height: 548px;
+  // height: 590px;
   background: #fff;
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
-
 }
 
 .session-input-container {
   display: flex;
   flex-direction: column;
   width: 80%;
-  // justify-content: center;
-  // align-items: center;
-
 }
 
-.login-input {
-  // width: 100%;
-}
+
 
 .change-session-container {
   display: flex;
@@ -83,28 +69,29 @@
   width: 100%;
   background-color: #f5f5f5;
   align-items: center;
-  // padding: 14px 20px;
+  border-radius: 9px;
 }
 
 
 
 .session-input-container > input, .session-input-container > button  {
   height: 25px;
-  width: 100%;
   margin-bottom: 20px;
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   font-size: 90%;
   border: 1px solid #ccc;
+}
 
+.session-input-container > button {
+  width: 100%;
 }
 
 #submit-session-button {
   background-color: #e86c00;
   border-color: #cf6000;
   color: white;
-  padding: 15px;
+  padding: 20px;
   line-height: 0px;
-  vertical-align: text-top;
 }
 
 .flex_box {

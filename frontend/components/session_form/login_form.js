@@ -56,7 +56,9 @@ class LoginForm extends React.Component {
 							         value={this.state.username}
                        placeholder="Username"
 							         onChange={this.update("username")}
-				               className="login-input" />
+				               className="login-input"
+                       data-rule-required="true"
+                       data-msg-required="Please enter your username." />
 						    <input type="password"
 							         value={this.state.password}
                        placeholder="Password"
@@ -65,12 +67,12 @@ class LoginForm extends React.Component {
                 <input type="submit"
                        value="Login"
                        id="submit-session-button"  />
-                <button onClick={() => login(guest)}
+                <button onClick={() => this.props.login(guest)}
                        id="submit-session-button">
                        Guest Login</button>
               </div>
                 <section className="change-session-container">
-                  <Link to="/account/signup"
+                  <Link to="/account/register"
                   className="change-padding">
                   Sign Up »</Link>
                 </section>
