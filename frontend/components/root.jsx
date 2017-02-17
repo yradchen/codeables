@@ -24,10 +24,10 @@ const Root = ({ store }) => {
     <Provider store={store}>
       <Router history={ hashHistory }>
         <Route component={ App } >
-        <Route path="/" component={ Homepage } />
-          <Route onEnter={_redirectIfLoggedIn } >
-            <Route path="/account/login" component={ LoginFormContainer } />
-            <Route path="/account/register" component={ SignUpFormContainer } />
+          <Route path="/" component={ Homepage } />
+            <Route onEnter={_redirectIfLoggedIn } >
+              <Route path="/account/login" component={ LoginFormContainer } />
+              <Route path="/account/register" component={ SignUpFormContainer } />
           </Route>
         <Route path="/:notcreated" onEnter={_redirectIfLoggedIn} />
       </Route>
