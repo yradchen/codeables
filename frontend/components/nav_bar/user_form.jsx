@@ -5,6 +5,14 @@ class UserForm extends React.Component {
   constructor (props) {
     super(props);
     this.state = { listVisible: false };
+    this.toggleClass = this.toggleClass.bind(this);
+    this.logOutUser = this.logOutUser.bind(this);
+  }
+
+  logOutUser(e) {
+    e.preventDefault();
+    this.props.logout();
+    this.setState({ listVisible : !this.state.listVisible});
   }
 
   sessionLinks () {
@@ -24,10 +32,9 @@ class UserForm extends React.Component {
   }
 
   loggedin () {
-
     return (
       <nav className="nav-drop-down-button">
-        <button onClick={() => this.toggleClass()}
+        <button onClick={this.toggleClass}
           className="you">You
           <i className="material-icons arrow-down">arrow_drop_down</i>
         </button>
@@ -37,6 +44,8 @@ class UserForm extends React.Component {
     );
   }
 
+
+
   dropDown() {
   if (this.state.listVisible) {
     return (
@@ -44,7 +53,7 @@ class UserForm extends React.Component {
         <div className="top-drop">
           <futurecontent><p></p></futurecontent>
           <li><button className="logout"
-            onClick={() => this.props.logout()}>Log Out</button>
+            onClick={this.logOutUser}>Log Out</button>
           </li>
         </div>
       </ul>
@@ -54,7 +63,8 @@ class UserForm extends React.Component {
     }
   }
 
-  toggleClass() {
+  toggleClass(e) {
+    e.preventDefault();
     this.setState({ listVisible : !this.state.listVisible});
   }
 
