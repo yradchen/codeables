@@ -1,0 +1,52 @@
+.error-btn {
+  position: relative;
+}
+
+.error-outer {
+  list-style: none;
+  position: absolute;
+  color: white;
+  bottom: 45px;
+  right: 20px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+.error-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 29px;
+  background-color: #b94a48;
+  border-radius: 4px;
+  width: 155px;
+  font-size: 11px;
+}
+
+.error-arrow {
+  height: 0px;
+  width: 0px;
+  border-right: 7px solid transparent;
+  border-left: 7px solid transparent;
+  border-top: 7px solid #b94a48;
+}
+
+.box-error {
+  list-style: none;
+  background-color: #b94a48;
+  font-size: 12px;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  border: 1px #b94a48;
+  border-radius: 3px;
+  margin-bottom: 20px;
+  padding: 2px 4px;
+}
+
+.box-error-message {
+  color: #fff;
+}
+.hidden {
+  display: none;
+}

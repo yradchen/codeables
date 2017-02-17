@@ -61,7 +61,7 @@
 .session-input-container {
   display: flex;
   flex-direction: column;
-  width: 80%;
+  width: 87%;
 }
 
 
@@ -77,24 +77,28 @@
 }
 
 
-
-.session-input-container > input, .session-input-container > button  {
-  height: 25px;
+.login-input, .session-input-container > button, #submit-session-button  {
+  position: relative;
+  height: 28px;
   margin-bottom: 20px;
+  width: 100%;
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   font-size: 90%;
   border: 1px solid #ccc;
+  box-sizing: border-box;
 }
 
-.session-input-container > button {
-  width: 100%;
+.login-input {
+  padding: 4px 6px;
 }
+
+
 
 #submit-session-button {
   background-color: #e86c00;
   border-color: #cf6000;
   color: white;
-  padding: 20px;
+  padding: 20px 0px 20px 0px;
   line-height: 0px;
 }
 

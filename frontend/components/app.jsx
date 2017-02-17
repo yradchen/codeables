@@ -4,9 +4,13 @@ import NavBar from './nav_bar/nav_bar'
 import Footer from './footer/footer'
 
 const App = ({ children }) => {
+  let navBarflex = "nav-top"
+  if (children.props.location.pathname.includes("account")) {
+    navBarflex += " center"
+  };
   return (
   <div>
-    <NavBar />
+    <NavBar flex={navBarflex}/>
     { children }
     <Footer />
   </div>
