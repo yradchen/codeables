@@ -1,5 +1,6 @@
 import React from 'react';
 import UserFormContainer from './user_form_container';
+import { Link } from 'react-router';
 // import SessionFormContainer from '../session_form/session_form_container';
 
 const NavBar = () => {
@@ -7,15 +8,17 @@ const NavBar = () => {
     <header className="nav-header">
       <div className="nav-top">
         <section className="nav-links">
-          <img src={images.logo} alt="logo" className="nav-logo"/>
-          <label className="lets-code">let's code
+          <Link to="/" className="logo-link">
+            <img src={images.logo} alt="logo" className="nav-logo"/>
+          </Link>
           <div className="search-container">
-          <input type="text"
-            placeholder="future search bar"
-            className="searchbar"/>
-            <p className="material-icons">search</p>
-          </div>
+            <label className="lets-code">let's code
+              <input type="text"
+                placeholder="future search bar"
+                className="searchbar"/>
+              <p className="material-icons">search</p>
           </label>
+          </div>
         </section>
         <section className="nav-sessions">
           <UserFormContainer />

@@ -1,36 +1,70 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-const sessionLinks = (login) => {
-  let guest = { username: "Guest", password: "wizardhat1"}
-  return (
-    <nav className='login-signup'>
-      <Link to="/account/login">Login</Link>
-      <p> | </p>
-      <Link to="/account/register">Sign up</Link>
-      <p> | </p>
-      <button className="nav-guest"
-        onClick={() => login(guest)}>
-        Guest
-        </button>
-    </nav>
-)};
+class UserForm extends React.Component {
+  constructor (props) {
+    super(props);
+    this.state = { listVisible: false };
+  }
 
-const loggedin = (currentUser, logout) => {
-  return (
-    <nav>
-      <p>{currentUser.username}</p>
-      <button onClick={() => logout()}>Log Out</button>
-    </nav>
-  )
+  sessionLinks () {
+    let guest = { username: "Guest", password: "wizardhat1"};
+    return (
+      <nav className='login-signup'>
+        <Link to="/account/login">Login</Link>
+        <p> | </p>
+        <Link to="/account/register">Sign up</Link>
+        <p> | </p>
+        <button className="nav-guest"
+          onClick={() => this.props.login(guest)}>
+          Guest
+          </button>
+      </nav>
+    );
+  }
+
+  loggedin () {
+
+    return (
+      <nav className="nav-drop-down-button">
+        <button onClick={() => this.toggleClass()}>You</button>
+        {this.dropDown()}
+      </nav>
+    );
+  }
+
+  dropDown() {
+  if (this.state.listVisible) {
+    return (
+      <ul className="nav-drop-down">
+        <li><button className="nav-guest"
+          onClick={() => this.props.logout()}>Log Out</button>
+        </li>
+      </ul>
+    );
+    } else {
+      return <p></p>;
+    }
+  }
+
+  toggleClass() {
+    this.setState({ listVisible : !this.state.listVisible});
+  }
+
+  render() {
+    let visual;
+    if (this.props.currentUser) {
+      visual = this.loggedin();
+    } else {
+      visual = this.sessionLinks();
+    }
+    return (
+      <div>{visual}</div>
+    );
+  }
+
 }
 
-
-const UserForm = ({ currentUser, logout, login }) => {
-  return (
-    currentUser ? loggedin(currentUser, logout) : sessionLinks(login)
-  )
-};
 
 export default UserForm;
 

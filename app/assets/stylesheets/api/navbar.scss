@@ -8,6 +8,7 @@
 .nav-header {
   display: flex;
   flex-direction: column;
+  min-width: 800px;
   // height: 205px;
 }
 .nav-top {
@@ -16,7 +17,13 @@
   height: 61px;
   background-color: #eee;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
+}
+
+
+.nav-bottom {
+  height: 36px;
+  background-color: #fff;
 }
 
 .nav-links {
@@ -24,53 +31,57 @@
   flex-direction: row;
   vertical-align: center;
   align-items: center;
-  // margin: 16px
+  margin-left: 4%;
 }
 
-.nav-bottom {
-  height: 36px;
-  background-color: #fff;
+.nav-sessions {
+  margin-right: 5%;
 }
-.lets-code {
-  font-family: 'Caveat Brush';
-  font-size: 16px
-}
-
-.searchbar {
-  border-radius: 6px 0 0 6px;
-  margin-left: 10px;
-  width: 150px;
-  max-height: 31px;
-  height: 31px;
-  border: 1px solid #ccc;
-  background-color: #fff;
-  box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-  vertical-align: middle;
-  // cursor: auto;
+.logo-link {
+  z-index: 1;
 }
 
 .nav-logo {
-  // position: absolute;
   cursor: pointer;
   left: 30px;
   height: 84px;
   width: 224px;
   margin-right: 36px;
-  z-index: 1;
   margin-top: 30px;
 }
 
 .search-container {
-  display: inline-block;
+  display: flex;
+  flex-direction: row;
+}
+
+.lets-code {
+  font-family: 'Caveat Brush';
+  font-size: 16px;
+  display: flex;
+  flex-direction: row;
+
+}
+.material-icons, .searchbar {
+  max-height: 31px;
+  height: 31px;
+  padding: 5px;
+  vertical-align: middle;
 }
 
 
+.searchbar {
+  border-radius: 6px 0 0 6px;
+  margin-left: 10px;
+  width: 150px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
 
 .material-icons {
-  max-height: 33px;
-  vertical-align: middle;
-  padding: 5px;
+  border: 1px solid #c8c8c8;
   border-radius: 0 4px 4px 0;
   cursor: pointer;
   color: #f6f6f6;
@@ -79,9 +90,8 @@
 
 .login-signup {
   display: flex;
-  flex-direction: row;
-  text-decoration: none;
 }
+
 
 .login-signup > a, .login-signup > p, .nav-guest {
   text-decoration: none;
@@ -91,6 +101,13 @@
   font-size: 12px;
   font-family: Helvetica, Arial, sans-serif;
 }
+
+// const toggleDropdown = () => {
+// 	$('#gear-dropdown').toggleClass('hidden');
+// };
+//
+// // Add click listener to gear icon which invokes toggle function
+// $(() => $('#gear-dropdown-btn').on('click', toggleDropdown));
 
 
 

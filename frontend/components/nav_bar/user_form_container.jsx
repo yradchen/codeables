@@ -4,7 +4,8 @@ import UserForm from './user_form';
 
 // GreetingContainer passes as props to the presentational component currentUser from the state and the logout action creator. Set up mapStateToProps and mapDispatchToProps accordingly.
 const mapStateToProps = (state) => ({
-  currentUser: state.session.currentUser
+  currentUser: state.session.currentUser,
+  
 });
 
 const mapDispatchToProps = (dispatch) => {
