@@ -87,9 +87,13 @@
 .login-signup {
   display: flex;
 }
+.nav-guest {
+  padding: 0;
+  border: 0;
+  background: inherit;
+}
 
-
-.login-signup > a, .login-signup > p {
+.login-signup > a, .login-signup > p, .login-signup > .nav-guest {
   text-decoration: none;
   margin: 5px;
   color: #777;
