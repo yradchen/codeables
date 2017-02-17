@@ -5,6 +5,7 @@ import App from './app'
 import SignUpFormContainer from './session_form/sign_up_form_container';
 import LoginFormContainer from './session_form/login_form_container';
 import Homepage from './homepage/homepage';
+
 const Root = ({ store }) => {
   const _ensureLoggedIn = (nextState, replace) => {
     const currentUser = store.getState().session.currentUser;
@@ -20,6 +21,10 @@ const Root = ({ store }) => {
     }
   }
 
+  const _redirectIfBadLink = (nextState, replace) => {
+    replace('/')
+  }
+
   return (
     <Provider store={store}>
       <Router history={ hashHistory }>
@@ -29,7 +34,7 @@ const Root = ({ store }) => {
               <Route path="/account/login" component={ LoginFormContainer } />
               <Route path="/account/register" component={ SignUpFormContainer } />
           </Route>
-        <Route path="/:notcreated" onEnter={_redirectIfLoggedIn} />
+        <Route path="/:notcreated" onEnter={_redirectIfBadLink} />
       </Route>
       </Router>
     </Provider>

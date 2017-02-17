@@ -3,10 +3,10 @@ import UserFormContainer from './user_form_container';
 import { Link } from 'react-router';
 // import SessionFormContainer from '../session_form/session_form_container';
 
-const NavBar = () => {
+const NavBar = ({ flex }) => {
   return (
     <header className="nav-header">
-      <div className="nav-top">
+      <div className={flex} >
         <section className="nav-links">
           <Link to="/" className="logo-link">
             <img src={images.logo} alt="logo" className="nav-logo"/>
