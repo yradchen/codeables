@@ -1,3 +1,72 @@
 // Place all the styles related to the api/users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+//
+// <p className="material-icons">search</p>
+// <i class="material-icons">arrow_drop_down</i>
+.you {
+  color: #777;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 0 5;
+  background: inherit;
+  border: none;
+  font-size: 12px;
+  position: relative;
+  font-family: Helvetica, Arial, sans-serif;
+  line-height: 22px;
+  outline-style: none;
+}
+.you > .arrow-down {
+  padding: 0;
+  font-size: 20px;
+  background: none;
+  display: inline-block;
+  vertical-align: top;
+  height: inherit;
+  width: 2px;
+  margin-left: -1;
+  color: black;
+  border: none;
+}
+.nav-drop-down-button {
+  position: relative;
+}
+
+.logout {
+  margin: 2px;
+  background-color: #f6f6f6;
+  border-color: #dedede;
+  color: #333;
+  cursor: pointer;
+  padding: 6px 12px;
+  font-size: 14px;
+  text-align: center;
+  vertical-align: center;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+.top-drop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-drop-down {
+  box-shadow: 0 5px 10px rgba(0,0,0,.2);
+  background-color: #fff;
+  position: absolute;
+  list-style: none;
+  border: 1px solid #ccc;
+  min-width: 160px;
+  width: 328px;
+  padding-top: 10px;
+  box-sizing: content-box;
+  z-index: 100;
+  border-radius: 6px;
+  font-size: 12px;
+  font-family: Helvetica, Arial, sans-serif;
+  right: 0;
+
+  // left: auto;
+}

@@ -27,7 +27,11 @@ class UserForm extends React.Component {
 
     return (
       <nav className="nav-drop-down-button">
-        <button onClick={() => this.toggleClass()}>You</button>
+        <button onClick={() => this.toggleClass()}
+          className="you">You
+          <i className="material-icons arrow-down">arrow_drop_down</i>
+        </button>
+
         {this.dropDown()}
       </nav>
     );
@@ -37,9 +41,12 @@ class UserForm extends React.Component {
   if (this.state.listVisible) {
     return (
       <ul className="nav-drop-down">
-        <li><button className="nav-guest"
-          onClick={() => this.props.logout()}>Log Out</button>
-        </li>
+        <div className="top-drop">
+          <futurecontent><p></p></futurecontent>
+          <li><button className="logout"
+            onClick={() => this.props.logout()}>Log Out</button>
+          </li>
+        </div>
       </ul>
     );
     } else {

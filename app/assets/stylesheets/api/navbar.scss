@@ -1,9 +1,4 @@
-.nav-guest {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  background: none;
-}
+
 
 .nav-header {
   display: flex;
@@ -63,8 +58,8 @@
 
 }
 .material-icons, .searchbar {
-  max-height: 31px;
-  height: 31px;
+  max-height: 22px;
+  height: 22px;
   padding: 5px;
   vertical-align: middle;
 }
@@ -73,6 +68,7 @@
 .searchbar {
   border-radius: 6px 0 0 6px;
   margin-left: 10px;
+  // max-height: 22px;
   width: 150px;
   border: 1px solid #ccc;
   background-color: #fff;
@@ -93,7 +89,7 @@
 }
 
 
-.login-signup > a, .login-signup > p, .nav-guest {
+.login-signup > a, .login-signup > p {
   text-decoration: none;
   margin: 5px;
   color: #777;
