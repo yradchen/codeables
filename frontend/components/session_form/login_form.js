@@ -7,7 +7,7 @@ class LoginForm extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { username: "", password: "" };
+    this.state = { username: "", password: "", errorOuter: "error-outer hidden"};
     this.handleSubmit = this.handleSubmit.bind(this);
     this.signInGuest = this.signInGuest.bind(this);
     this.errorMessages = this.errorMessages.bind(this);
@@ -17,7 +17,6 @@ class LoginForm extends React.Component {
   componentDidUpdate() {
     this.redirectIfLoggedIn();
   }
-
 
   redirectIfLoggedIn() {
     if (this.props.loggedIn) {
@@ -33,19 +32,22 @@ class LoginForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    this.setState( {errorOuter: "error-outer"});
     this.props.login(this.state);
   }
 
   renderErrors() {
-    return this.props.errors.map( (error, i) => {
+    let errormessage;
+    if (this.props.errors.includes("Sorry, we can't find that account, or your password didn't match. Please try again!")) {
       return (
-        <ul className="box-error" key={`error-${i}`}>
+        <ul className="box-error">
           <li>
-            <h3 className="box-error-message">{error}</h3>
+            <h3 className="box-error-message">{this.props.errors[0]}</h3>
           </li>
         </ul>
       );
-    });
+    }
+    return <p></p>;
   }
 
   errorMessages(errorType) {
@@ -56,6 +58,7 @@ class LoginForm extends React.Component {
       }
     });
     if (message.length > 0) {
+
       return (
         <ul className="error-outer">
           <li className="error-inner">
@@ -68,7 +71,6 @@ class LoginForm extends React.Component {
     }
     return <p></p>;
   }
-
 
   signInGuest(e) {
     let guest = { username: "Guest", password: "wizardhat1"};

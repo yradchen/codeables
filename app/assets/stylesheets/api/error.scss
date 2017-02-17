@@ -42,9 +42,15 @@
   border-radius: 3px;
   margin-bottom: 20px;
   padding: 2px 4px;
+  display: flex;
+}
+
+.error-message {
+  margin: 19px;
 }
 
 .box-error-message {
+  text-align: center;
   color: #fff;
 }
 .hidden {
