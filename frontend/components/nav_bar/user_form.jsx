@@ -12,7 +12,7 @@ class UserForm extends React.Component {
   logOutUser(e) {
     e.preventDefault();
     this.props.logout();
-    this.toggleClass
+    this.toggleClass();
   }
 
   sessionLinks () {
@@ -64,7 +64,9 @@ class UserForm extends React.Component {
   }
 
   toggleClass(e) {
-    e.preventDefault();
+    if (e !== undefined) {
+      e.preventDefault();
+    };
     this.setState({ listVisible : !this.state.listVisible});
   }
 

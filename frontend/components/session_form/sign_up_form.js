@@ -3,7 +3,8 @@ import { Link, withRouter } from 'react-router';
 class SignUpForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { email: "", username: "", password: "", errorOuter: "error-outer"};
+    this.state = { email: "", username: "", password: ""};
+    // this.errorOuter = "error-outer hidden";
     this.handleSubmit = this.handleSubmit.bind(this);
     this.signInGuest = this.signInGuest.bind(this);
     this.errorMessages = this.errorMessages.bind(this);
@@ -11,7 +12,9 @@ class SignUpForm extends React.Component {
 
   componentDidUpdate() {
     this.redirectIfLoggedIn();
+    this.errorOuter = "error-outer hidden";
   }
+
 
   redirectIfLoggedIn() {
     if (this.props.loggedIn) {
@@ -27,11 +30,7 @@ class SignUpForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.setState( { errorOuter: "error-outer"});
-    setInterval( () => {
-      this.setState( { errorOuter: "error-outer hidden"});
-    }, 4000);
-
+    this.errorOuter = "error-outer";
     this.props.signup(this.state);
   }
 
@@ -44,7 +43,6 @@ class SignUpForm extends React.Component {
 
   errorMessages(errorType) {
     let message = "";
-
     this.props.errors.map(error => {
       if (error.includes(errorType)) {
         message += error;
@@ -52,9 +50,9 @@ class SignUpForm extends React.Component {
     });
     if (message.length > 0) {
       return (
-        <ul className={this.state.errorOuter}>
+        <ul className={this.errorOuter}>
           <li className="error-inner">
-            <p>{message}</p>
+            <p className="error-message">{message}</p>
           </li>
           <p className="error-arrow"> </p>
         </ul>
@@ -68,7 +66,7 @@ class SignUpForm extends React.Component {
       <div className="session-input-container">
         <div className="error-btn">
           {this.errorMessages("Email")}
-          <input type='email'
+          <input type='text'
                  value={this.state.email}
                  placeholder="Email"
                  onChange={this.update("email")}
