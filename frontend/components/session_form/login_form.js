@@ -7,10 +7,11 @@ class LoginForm extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { username: "", password: "", errorOuter: "error-outer hidden"};
+    this.state = { username: "", password: "" };
+    this.errorOuter = "error-outer hidden";
+    this.blankFieldError = this.blankFieldError.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.signInGuest = this.signInGuest.bind(this);
-    this.errorMessages = this.errorMessages.bind(this);
     this.inputs = this.inputs.bind(this);
   }
 
@@ -32,7 +33,7 @@ class LoginForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.setState( {errorOuter: "error-outer"});
+    this.errorOuter = "error-outer";
     this.props.login(this.state);
   }
 
@@ -50,27 +51,42 @@ class LoginForm extends React.Component {
     return <p></p>;
   }
 
-  errorMessages(errorType) {
-    let message = "";
-    this.props.errors.map(error => {
-      if (error.includes(errorType)) {
-        message += error;
-      }
-    });
-    if (message.length > 0) {
-
+  blankFieldError(field) {
+    let message = `Please enter your ${field}.`;
+    if (this.state[`${field}`] === "") {
       return (
-        <ul className="error-outer">
+        <ul className={this.errorOuter}>
           <li className="error-inner">
-            <p>{message}</p>
+            <p className="error-message">{message}</p>
           </li>
-          <li className="error-arrow">
-          </li>
+          <p className="error-arrow"> </p>
         </ul>
       );
     }
     return <p></p>;
   }
+
+  // errorMessages(errorType) {
+  //   let message = "";
+  //   this.props.errors.map(error => {
+  //     if (error.includes(errorType)) {
+  //       message += error;
+  //     }
+  //   });
+  //   if (message.length > 0) {
+  //
+  //     return (
+  //       <ul className="error-outer">
+  //         <li className="error-inner">
+  //           <p>{message}</p>
+  //         </li>
+  //         <li className="error-arrow">
+  //         </li>
+  //       </ul>
+  //     );
+  //   }
+  //   return <p></p>;
+  // }
 
   signInGuest(e) {
     let guest = { username: "Guest", password: "wizardhat1"};
@@ -83,7 +99,7 @@ class LoginForm extends React.Component {
     return (
     <div className="session-input-container">
       <div className="error-btn">
-
+        {this.blankFieldError("username")}
         <input type="text"
                value={this.state.username}
                placeholder="Username"
@@ -91,6 +107,7 @@ class LoginForm extends React.Component {
                className="login-input" />
       </div>
       <div className="error-btn">
+        {this.blankFieldError("password")}
         <input type="password"
                value={this.state.password}
                placeholder="Password"

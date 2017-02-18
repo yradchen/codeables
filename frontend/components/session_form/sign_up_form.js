@@ -4,15 +4,15 @@ class SignUpForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = { email: "", username: "", password: ""};
-    // this.errorOuter = "error-outer hidden";
+    this.errorOuter = "error-outer hidden";
+    this.blankFieldError = this.blankFieldError.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.signInGuest = this.signInGuest.bind(this);
-    this.errorMessages = this.errorMessages.bind(this);
+    // this.errorMessages = this.errorMessages.bind(this);
   }
 
   componentDidUpdate() {
     this.redirectIfLoggedIn();
-    this.errorOuter = "error-outer hidden";
   }
 
 
@@ -20,6 +20,21 @@ class SignUpForm extends React.Component {
     if (this.props.loggedIn) {
       this.props.router.push("/");
     }
+  }
+
+  blankFieldError(field) {
+    let message = `Please enter your ${field}.`;
+    if (this.state[`${field}`] === "") {
+      return (
+        <ul className={this.errorOuter}>
+          <li className="error-inner">
+            <p className="error-message">{message}</p>
+          </li>
+          <p className="error-arrow"> </p>
+        </ul>
+      );
+    }
+    return <p></p>;
   }
 
   update(field) {
@@ -41,31 +56,46 @@ class SignUpForm extends React.Component {
     this.redirectIfLoggedIn();
   }
 
-  errorMessages(errorType) {
-    let message = "";
-    this.props.errors.map(error => {
-      if (error.includes(errorType)) {
-        message += error;
-      }
-    });
-    if (message.length > 0) {
+  renderErrors() {
+    let errormessage;
+    debugger
+    if (this.props.errors.length > 0 & !this.props.errors.includes("Sorry, we can't find that account, or your password didn't match. Please try again!")) {
       return (
-        <ul className={this.errorOuter}>
-          <li className="error-inner">
-            <p className="error-message">{message}</p>
+        <ul className="box-error">
+          <li>
+            <h3 className="box-error-message">{this.props.errors[0]}</h3>
           </li>
-          <p className="error-arrow"> </p>
         </ul>
       );
     }
     return <p></p>;
   }
 
+  // errorMessages(errorType) {
+  //   let message = "";
+  //   this.props.errors.map(error => {
+  //     if (error.includes(errorType)) {
+  //       message += error;
+  //     }
+  //   });
+  //   if (message.length > 0) {
+  //     return (
+  //       <ul className={this.errorOuter}>
+  //         <li className="error-inner">
+  //           <p className="error-message">{message}</p>
+  //         </li>
+  //         <p className="error-arrow"> </p>
+  //       </ul>
+  //     );
+  //   }
+  //   return <p></p>;
+  // }
+
   signup() {
     return (
       <div className="session-input-container">
         <div className="error-btn">
-          {this.errorMessages("Email")}
+          {this.blankFieldError("email")}
           <input type='text'
                  value={this.state.email}
                  placeholder="Email"
@@ -73,22 +103,22 @@ class SignUpForm extends React.Component {
                  className="login-input" />
         </div>
         <div className="error-btn">
-          {this.errorMessages("Username")}
+          {this.blankFieldError("username")}
           <input type="text"
                  value={this.state.username}
                  placeholder="Username"
                  onChange={this.update("username")}
                  className="login-input" />
         </div>
-
         <div className="error-btn">
-          {this.errorMessages("Password")}
+          {this.blankFieldError("password")}
           <input type="password"
                  value={this.state.password}
                  placeholder="Password"
                  onChange={this.update("password")}
                  className="login-input" />
         </div>
+        { this.renderErrors() }
         <input type="submit"
                value="Create Account"
                id="submit-session-button" />
