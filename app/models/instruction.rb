@@ -11,10 +11,10 @@
 #  updated_at  :datetime         not null
 #
 
-require 'test_helper'
+class Instruction < ApplicationRecord
+  validates :step_title, :step_detail, :project, presence: true
 
-class InstructionTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  belongs_to :project
+
+
 end

@@ -19,7 +19,10 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   after_initialize :ensure_session_token!
 
+  has_many :projects
+
   attr_reader :password
+
 
   def password=(password)
     @password = password
