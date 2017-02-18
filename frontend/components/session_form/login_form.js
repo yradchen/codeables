@@ -9,6 +9,7 @@ class LoginForm extends React.Component {
 
     this.state = { username: "", password: "" };
     this.errorOuter = "error-outer hidden";
+    this.boxError = 'box-error';
     this.blankFieldError = this.blankFieldError.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.signInGuest = this.signInGuest.bind(this);
@@ -17,6 +18,10 @@ class LoginForm extends React.Component {
 
   componentDidUpdate() {
     this.redirectIfLoggedIn();
+  }
+
+  componentDidMount() {
+    this.boxError = 'box-error hidden';
   }
 
   redirectIfLoggedIn() {
@@ -33,15 +38,16 @@ class LoginForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    this.boxError = 'box-error';
     this.errorOuter = "error-outer";
     this.props.login(this.state);
   }
 
-  renderErrors() {
+  boxErrors() {
     let errormessage;
     if (this.props.errors.includes("Sorry, we can't find that account, or your password didn't match. Please try again!")) {
       return (
-        <ul className="box-error">
+        <ul className={this.boxError}>
           <li>
             <h3 className="box-error-message">{this.props.errors[0]}</h3>
           </li>
@@ -65,28 +71,6 @@ class LoginForm extends React.Component {
     }
     return <p></p>;
   }
-
-  // errorMessages(errorType) {
-  //   let message = "";
-  //   this.props.errors.map(error => {
-  //     if (error.includes(errorType)) {
-  //       message += error;
-  //     }
-  //   });
-  //   if (message.length > 0) {
-  //
-  //     return (
-  //       <ul className="error-outer">
-  //         <li className="error-inner">
-  //           <p>{message}</p>
-  //         </li>
-  //         <li className="error-arrow">
-  //         </li>
-  //       </ul>
-  //     );
-  //   }
-  //   return <p></p>;
-  // }
 
   signInGuest(e) {
     let guest = { username: "Guest", password: "wizardhat1"};
@@ -114,7 +98,7 @@ class LoginForm extends React.Component {
                onChange={this.update("password")}
                className="login-input" />
       </div>
-      { this.renderErrors() }
+      { this.boxErrors() }
       <div className="error-btn">
         <input type="submit"
                value="Login"
