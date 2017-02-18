@@ -5,14 +5,18 @@ class SignUpForm extends React.Component {
     super(props);
     this.state = { email: "", username: "", password: ""};
     this.errorOuter = "error-outer hidden";
+    this.boxError = 'box-error';
     this.blankFieldError = this.blankFieldError.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.signInGuest = this.signInGuest.bind(this);
-    // this.errorMessages = this.errorMessages.bind(this);
   }
 
   componentDidUpdate() {
     this.redirectIfLoggedIn();
+  }
+
+  componentDidMount() {
+    this.boxError = 'box-error hidden';
   }
 
 
@@ -45,6 +49,7 @@ class SignUpForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    this.boxError = 'box-error';
     this.errorOuter = "error-outer";
     this.props.signup(this.state);
   }
@@ -56,12 +61,11 @@ class SignUpForm extends React.Component {
     this.redirectIfLoggedIn();
   }
 
-  renderErrors() {
+  boxErrors() {
     let errormessage;
-    debugger
     if (this.props.errors.length > 0 & !this.props.errors.includes("Sorry, we can't find that account, or your password didn't match. Please try again!")) {
       return (
-        <ul className="box-error">
+        <ul className={this.boxError}>
           <li>
             <h3 className="box-error-message">{this.props.errors[0]}</h3>
           </li>
@@ -70,26 +74,6 @@ class SignUpForm extends React.Component {
     }
     return <p></p>;
   }
-
-  // errorMessages(errorType) {
-  //   let message = "";
-  //   this.props.errors.map(error => {
-  //     if (error.includes(errorType)) {
-  //       message += error;
-  //     }
-  //   });
-  //   if (message.length > 0) {
-  //     return (
-  //       <ul className={this.errorOuter}>
-  //         <li className="error-inner">
-  //           <p className="error-message">{message}</p>
-  //         </li>
-  //         <p className="error-arrow"> </p>
-  //       </ul>
-  //     );
-  //   }
-  //   return <p></p>;
-  // }
 
   signup() {
     return (
@@ -118,7 +102,7 @@ class SignUpForm extends React.Component {
                  onChange={this.update("password")}
                  className="login-input" />
         </div>
-        { this.renderErrors() }
+        { this.boxErrors() }
         <input type="submit"
                value="Create Account"
                id="submit-session-button" />
