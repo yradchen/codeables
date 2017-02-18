@@ -13,7 +13,7 @@ session_token   | string    | not null, indexed, unique
 column name     | data type | details
 ----------------|-----------|-----------------------
 id              | integer   | not null, primary key
-title           | string    | not null, unique
+title           | string    | not null
 description     | string    | not null
 cover_img       | string    | not null
 user_id         | integer   | not null, foreign key (references users), indexed
@@ -22,11 +22,10 @@ user_id         | integer   | not null, foreign key (references users), indexed
 column name     | data type | details
 ----------------|-----------|-----------------------
 id              | integer   | not null, primary key
-project_id      | id        | not null, indexed, foreign key (references project)
 step_title      | string    | not null
 step_detail     | text      | not null
-<!-- image OR video_url | string    | -->
 media_url       | text      | not null
+project_id      | id        | not null, indexed, foreign key (references project)
 
 ## comments
 column name | data type | details
