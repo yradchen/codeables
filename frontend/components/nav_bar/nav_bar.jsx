@@ -1,7 +1,7 @@
 import React from 'react';
 import UserFormContainer from './user_form_container';
 import { Link } from 'react-router';
-// import SessionFormContainer from '../session_form/session_form_container';
+
 
 const NavBar = ({ flex }) => {
   return (

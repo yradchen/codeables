@@ -5,7 +5,7 @@ import App from './app'
 import SignUpFormContainer from './session_form/sign_up_form_container';
 import LoginFormContainer from './session_form/login_form_container';
 import Homepage from './homepage/homepage';
-
+import ProjectIndexContainer from './projects/project_index_container';
 const Root = ({ store }) => {
   const _ensureLoggedIn = (nextState, replace) => {
     const currentUser = store.getState().session.currentUser;
@@ -29,6 +29,7 @@ const Root = ({ store }) => {
     <Provider store={store}>
       <Router history={ hashHistory }>
         <Route component={ App } >
+          <Route path="/projects" component={ ProjectIndexContainer }/>
           <Route path="/" component={ Homepage } />
             <Route onEnter={_redirectIfLoggedIn } >
               <Route path="/account/login" component={ LoginFormContainer } />
