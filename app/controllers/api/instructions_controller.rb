@@ -37,4 +37,3 @@ class Api::InstructionsController < ApplicationController
   end
 
 end
-end
