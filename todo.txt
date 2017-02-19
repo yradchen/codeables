@@ -1,2 +1,5 @@
 Don't allow users with same username but diff capitalization to create accounts.
 Push onto header 'We're sorry, we couldn't find that one!' when trying to go to a page that doesn't exist/shouldn't be accessed
+
+
+Fix project deletion so that instructions are deleted as well.

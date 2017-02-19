@@ -15,7 +15,7 @@
     1: {
       title: "First Project",
       description: "This project shows you how to make a project"
-      owner: 1,
+      owner: Guest,
       cover_image_url: "https://avatars1.githubusercontent.com/u/15313592?v=3&s=460",
       instructions: [
         { url: "www.randomvideoorimage", step_title: 'Step 1', step_detail: 'First you type a description' },

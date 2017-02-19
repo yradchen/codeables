@@ -4,7 +4,7 @@ class Api::ProjectsController < ApplicationController
     @project = Project.new(project_params)
     @project.user_id = current_user.id
     if @project.save
-      render '/show'
+      render "api/projects/show"
     else
       render json: @project.errors.full_messages, status: 422
     end
@@ -24,7 +24,7 @@ class Api::ProjectsController < ApplicationController
       render json: ["You can't edit a project you didn't create"]
     else
       if @project.update(project_params)
-        render :show
+        render 'api/projects/show'
       else
         render json: @project.errors.full_messages, status: 422
       end
