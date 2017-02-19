@@ -67,6 +67,34 @@
   font-size: 12px;
   font-family: Helvetica, Arial, sans-serif;
   right: 0;
+}
 
-  // left: auto;
+.bottom-drop {
+  display: flex;
+  justify-content: center;
+
+}
+
+.new-project {
+  text-decoration: none;
+  box-sizing: border-box;
+  color: #fff;
+  background-color: #e86c00;
+  border-color: #cf6000;
+  font-size: 17.5px;
+  border-radius: 6px;
+  box-shadow: 0 5px 10px rgba(0,0,0,.2);
+  border: 1px #cf6000;
+  width: 88%;
+  text-align: center;
+  padding: 15px 19px;
+  margin-bottom: 22px
+}
+
+.drop-divider {
+  height: 1px;
+  margin-top: 9px;
+  margin-bottom: 29px;
+  border-bottom: 1px solid #ddd;
+  background-color: #e5e5e5;
 }

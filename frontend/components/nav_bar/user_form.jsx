@@ -50,12 +50,18 @@ class UserForm extends React.Component {
   if (this.state.listVisible) {
     return (
       <ul className="nav-drop-down">
-        <div className="top-drop">
-          <futurecontent><p></p></futurecontent>
-          <li><button className="logout"
-            onClick={this.logOutUser}>Log Out</button>
-          </li>
-        </div>
+        <li className="top-drop">
+            <futurecontent><p></p></futurecontent>
+            <button className="logout"
+                    onClick={this.logOutUser}>Log Out</button>
+        </li>
+        <li className='drop-divider'>
+        </li>
+        <li className="bottom-drop">
+            <Link to="/new" className='new-project'>
+            New Codeable »
+            </Link>
+        </li>
       </ul>
     );
     } else {
