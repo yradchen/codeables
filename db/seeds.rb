@@ -12,10 +12,10 @@ guest = User.create!(username: 'Guest', password: 'wizardhat1', email: 'guest@gu
 
 guest2 = User.create!(username: 'Guest2', password: 'wizardhat1', email: 'guest@guestlogin.fake2')
 
-project1 = Project.create!(title: "first project", description: "this is the first one I made", cover_img: "test.com", user_id: guest.id)
-project2 = Project.create!(title: "second project", description: "this is the second one I made", cover_img: "test.com", user_id: guest.id)
+project1 = Project.create!(title: "first project", description: "this is the first one I made", user_id: guest.id)
+project2 = Project.create!(title: "second project", description: "this is the second one I made", user_id: guest.id)
 
-project3 = Project.create!(title: "third project", description: "this is the second one I made", cover_img: "test.com", user_id: guest2.id)
+project3 = Project.create!(title: "third project", description: "this is the second one I made", user_id: guest2.id)
 
 Instruction.create(step_title: "Step one:", step_detail: "write a detail", project_id: project1.id)
 Instruction.create(step_title: "Step two:", step_detail: "hit create", project_id: project1.id)
