@@ -24,9 +24,7 @@ class InstructionForm extends React.Component {
   updateField(field) {
     return (e) => {
       e.preventDefault();
-      this.setState({ [field]: e.target.value }, () => {
-        this.props.updateStepObject(this.props.stepNumber, this.state);
-      });
+      this.setState({ [field]: e.target.value });
     };
   }
 
@@ -49,10 +47,10 @@ class InstructionForm extends React.Component {
           <input type="file" onChange={this.updateFile()}/>
         </span>
         <label>Step {this.props.stepNumber}:
-          <input type="text" onChange={this.updateField('step_title')} />
+          <input type="text" onChange={this.updateField('title')} />
         </label>
         <label>Instruction:
-          <textarea name="name" onChange={this.updateField('step_detail')}></textarea>
+          <textarea name="name" onChange={this.updateField('description')}></textarea>
         </label>
 
           <img src={this.state.mediaUrl}/>
