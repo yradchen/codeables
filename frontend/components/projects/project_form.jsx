@@ -51,8 +51,8 @@ class ProjectForm extends React.Component {
 
   addInstruction(e) {
     e.preventDefault();
-    let newInstructions = this.state.instructions + 1;
-    this.setState({ instructions: newInstructions });
+    let incInstruction = this.state.instructions + 1;
+    this.setState({ instructions: incInstruction });
   }
 
 
@@ -65,21 +65,27 @@ class ProjectForm extends React.Component {
           key={`instruction-${i}`}
         />);
     }
+
     return (
       <div>
-      <form onSubmit={this.handleSubmit}>
-        <label>Intro:
-          <input type="text" onChange={this.updateField('title')} />
-        </label>
-        <label>Description:
-          <textarea name="name"onChange={this.updateField('description')}></textarea>
-        </label>
-        <label>Add Image
-          <input type="file" onChange={this.updateFile()}/>
-        </label>
-          <img src={this.state.imageUrl}/>
-          <input type="Submit" defaultValue="Create Codeable"/>
-      </form>
+        <form onSubmit={this.handleSubmit} className="form-outer">
+          <section className="form-top">
+            <input type="Submit" defaultValue="Publish"/>
+          </section>
+          <div className="form-bottom">
+            <label>Add Image
+              <input type="file" onChange={this.updateFile()}/>
+            </label>
+            <label>Intro:
+              <input type="text" onChange={this.updateField('title')} />
+            </label>
+            <label>Description:
+              <textarea name="name"onChange={this.updateField('description')}></textarea>
+            </label>
+
+              <img src={this.state.imageUrl}/>
+          </div>
+        </form>
         <button onClick={this.addInstruction}>Add Step</button>
         {instructions}
       </div>
