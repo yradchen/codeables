@@ -46,7 +46,7 @@ class InstructionForm extends React.Component {
           <input type="text" onChange={this.updateField('title')} />
         </label>
         <label>Instruction:
-          <textarea name="name"onChange={this.updateField('description')}></textarea>
+          <textarea name="name" onChange={this.updateField('description')}></textarea>
         </label>
         <label>Add Media
           <input type="file" onChange={this.updateFile()}/>

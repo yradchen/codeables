@@ -54,7 +54,7 @@ adequate seed data and sufficient CSS styling:
 
 - [ ] Project model/migration
 - [ ] CRUD API for projects
-- [ ] APIUtil to interact with projects
+- [x] APIUtil to interact with projects
 - [ ] Projects components
 - [ ] Add steps/description/title to project
 

@@ -19,6 +19,7 @@ class Project < ApplicationRecord
 
   has_attached_file :cover_img, default_url: "code_projects.jpg"
   validates_attachment_content_type :cover_img, content_type: /\Aimage\/.*\z/
+  validates_attachment_presence :cover_img
 
   belongs_to :user
   has_many :instructions
