@@ -1,11 +1,12 @@
 class Api::ProjectsController < ApplicationController
 
+# make ajax include project and instructions
   def create
-    debugger
+
     @project = Project.new(project_params)
     @project.user_id = current_user.id
-    debugger
-
+    # transcation make sure projeect and instruction save, if any fail, rollback.
+    # if it fails keep them on the page with a rendered error
     if @project.save
       render "api/projects/show"
     else

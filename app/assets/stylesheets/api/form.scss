@@ -1,4 +1,15 @@
-.form-out {
+.form-container {
+  width: 1016px;
+  margin: auto;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  background-color: #f6f6f6;
+}
+
+.project-form {
+  height: 182px;
+}
+
+.form-outer {
+  background-color: #d4e1e7;
 }

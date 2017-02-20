@@ -5,16 +5,14 @@ import InstructionFormContainer from '../instructions/instruction_form_container
 class ProjectForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { title: "", description: "", cover_img: null, imageUrl: null, instructions: 0};
+    this.state = { title: "", description: "", cover_img: null, imageUrl: null, instructions: 0,
+    allInstructions: [] };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateFile = this.updateFile.bind(this);
     this.updateField = this.updateField.bind(this);
     this.addInstruction = this.addInstruction.bind(this);
   }
-  // #  cover_img_file_name    :string
-  // #  cover_img_content_type :string
-  // #  cover_img_file_size    :integer
-  // #  cover_img_updated_at   :datetime
+
   updateFile (e) {
     return (e) => {
       let file = e.currentTarget.files[0];
@@ -43,7 +41,6 @@ class ProjectForm extends React.Component {
     formData.append("project[cover_img]", this.state.cover_img);
     formData.append("project[title]", this.state.title);
     formData.append("project[description]", this.state.description);
-
     this.props.createProject(formData).then(
 
     );
@@ -67,27 +64,34 @@ class ProjectForm extends React.Component {
     }
 
     return (
-      <div>
-        <form onSubmit={this.handleSubmit} className="form-outer">
-          <section className="form-top">
-            <input type="Submit" defaultValue="Publish"/>
-          </section>
-          <div className="form-bottom">
-            <label>Add Image
-              <input type="file" onChange={this.updateFile()}/>
-            </label>
-            <label>Intro:
-              <input type="text" onChange={this.updateField('title')} />
-            </label>
-            <label>Description:
-              <textarea name="name"onChange={this.updateField('description')}></textarea>
-            </label>
+      <div className="form-outer">
 
-              <img src={this.state.imageUrl}/>
-          </div>
-        </form>
-        <button onClick={this.addInstruction}>Add Step</button>
-        {instructions}
+        <div className='form-container'>
+          <form onSubmit={this.handleSubmit} >
+            <div className="project-form">
+              <div>
+                <label>Add Image
+                  <input type="file" className="add-file" onChange={this.updateFile()}/>
+                </label>
+                <label>Intro:
+                  <input type="text" onChange={this.updateField('title')} />
+                </label>
+                <label>Description:
+                  <textarea name="name"onChange={this.updateField('description')}></textarea>
+                </label>
+                  <img src={this.state.imageUrl}/>
+              </div>
+              <section>
+                <input type="Submit" defaultValue="Publish"/>
+              </section>
+            </div>
+
+            <div className="instruction-container">
+              <button onClick={this.addInstruction}>Add Step</button>
+              {instructions}
+            </div>
+          </form>
+        </div>
       </div>
     );
   }
