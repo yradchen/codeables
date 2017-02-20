@@ -5,15 +5,16 @@ import InstructionFormContainer from '../instructions/instruction_form_container
 class ProjectForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { title: "", description: "", cover_img: null, imageUrl: null, instructions: 0 };
-    this.instructionObjects = [];
+    this.state = { title: "", description: "", cover_img: null, imageUrl: null,
+    allInstructions: [] };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateFile = this.updateFile.bind(this);
     this.updateField = this.updateField.bind(this);
-    this.addInstruction = this.addInstruction.bind(this);
+    // this.addInstruction = this.addInstruction.bind(this);
+    this.addInstruction2 = this.addInstruction2.bind(this);
   }
 
-  updateFile(e) {
+  updateFile (e) {
     return (e) => {
       let file = e.currentTarget.files[0];
       let reader = new FileReader();
@@ -26,10 +27,6 @@ class ProjectForm extends React.Component {
         this.setState({ imageUrl: "", cover_img: null});
       }
     };
-  }
-
-  updateStepObject(number, stepObject) {
-    this.instructionObjects[number - 1] = stepObject;
   }
 
   updateField(field) {
@@ -45,38 +42,37 @@ class ProjectForm extends React.Component {
     formData.append("project[cover_img]", this.state.cover_img);
     formData.append("project[title]", this.state.title);
     formData.append("project[description]", this.state.description);
-    formData = this.appendInstructionObjects(formData);
-    this.props.createProject(formData);
-  }
+    this.props.createProject(formData).then(
 
-  appendInstructionObjects(formData) {
-    this.instructionObjects.forEach((instruction, index) => {
-      debugger
-      formData.append(`instructions[${index}][media]`, instruction.media);
-      formData.append(`instructions[${index}][step_title]`, instruction.step_title);
-      formData.append(`instructions[${index}][step_detail]`, instruction.step_detail);
-    });
-    return formData;
+    );
   }
-
 
   addInstruction(e) {
     e.preventDefault();
-    let incInstruction = this.state.instructions + 1;
-    this.setState({ instructions: incInstruction });
+    let previousInstructions = this.state.allInstructions;
+    let newInstruction = <InstructionFormContainer
+                          stepNumber={previousInstructions.length + 1}
+                          key={`instruction-${previousInstructions.length}`}/>;
+    this.setState({ allInstructions: previousInstructions.concat(newInstruction) });
+  }
+
+  addInstruction2(e) {
+    let previousInstructions = this.state.allInstructions;
+    let newInstruction = { step_title: `Step ${previousInstructions.length + 1}`, step_detail: "", media: null, mediaUrl: null };
+    this.setState({ allInstructions: previousInstructions.concat(newInstruction) });
   }
 
 
   render () {
-    let instructions = [];
-    for (var i = 0; i < this.state.instructions; i++) {
-      instructions.push(
-        <InstructionFormContainer
-          stepNumber={i + 1}
-          key={`instruction-${i}`}
-          updateStepObject={this.updateStepObject.bind(this)}
-        />);
-    }
+
+    // let instructions = [];
+    // for (var i = 0; i < this.state.instructions; i++) {
+    //   instructions.push(
+    //     <InstructionFormContainer
+    //       stepNumber={i + 1}
+    //       key={`instruction-${i}`}
+    //     />);
+    // }
 
     return (
       <div className="form-outer">
@@ -102,8 +98,8 @@ class ProjectForm extends React.Component {
             </div>
 
             <div className="instruction-container">
-              <button onClick={this.addInstruction}>Add Step</button>
-              {instructions}
+              <button onClick={this.addInstruction2}>Add Step</button>
+              {this.state.allInstructions}
             </div>
           </form>
         </div>
