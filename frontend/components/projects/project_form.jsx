@@ -5,7 +5,7 @@ import InstructionFormContainer from '../instructions/instruction_form_container
 class ProjectForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { title: "", description: "", cover_img: null, imageUrl: null, instructions: 0 };
+    this.state = { title: "", description: "", cover_img: "", imageUrl: null, instructions: 0 };
     this.instructionObjects = [];
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateFile = this.updateFile.bind(this);
@@ -51,7 +51,6 @@ class ProjectForm extends React.Component {
 
   appendInstructionObjects(formData) {
     this.instructionObjects.forEach((instruction, index) => {
-      debugger
       formData.append(`instructions[${index}][media]`, instruction.media);
       formData.append(`instructions[${index}][step_title]`, instruction.step_title);
       formData.append(`instructions[${index}][step_detail]`, instruction.step_detail);
