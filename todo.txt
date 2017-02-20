@@ -3,3 +3,7 @@ Push onto header 'We're sorry, we couldn't find that one!' when trying to go to 
 
 
 Fix project deletion so that instructions are deleted as well.
+
+
+redux state - in the store
+dispatch an action to the store to toggle visibility of you.

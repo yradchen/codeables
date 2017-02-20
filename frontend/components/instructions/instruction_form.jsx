@@ -41,19 +41,20 @@ class InstructionForm extends React.Component {
   render () {
 
     return (
-      <form onSubmit={this.handleSubmit}>
+      <section>
+        <span>
+          Add Media
+          <input type="file" onChange={this.updateFile()}/>
+        </span>
         <label>Step {this.props.stepNumber}:
           <input type="text" onChange={this.updateField('title')} />
         </label>
         <label>Instruction:
           <textarea name="name" onChange={this.updateField('description')}></textarea>
         </label>
-        <label>Add Media
-          <input type="file" onChange={this.updateFile()}/>
-        </label>
+
           <img src={this.state.mediaUrl}/>
-          <input type="Submit" defaultValue="Create Instruction"/>
-      </form>
+      </section>
 
     );
   }
