@@ -1,12 +1,15 @@
 import React from 'react';
+import InstructionFormContainer from '../instructions/instruction_form_container';
+
 
 class ProjectForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { title: "", description: "", cover_img: null, imageUrl: null };
+    this.state = { title: "", description: "", cover_img: null, imageUrl: null, instructions: 0};
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateFile = this.updateFile.bind(this);
     this.updateField = this.updateField.bind(this);
+    this.addInstruction = this.addInstruction.bind(this);
   }
   // #  cover_img_file_name    :string
   // #  cover_img_content_type :string
@@ -36,11 +39,34 @@ class ProjectForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.createProject(this.state);
+    let formData = new FormData();
+    formData.append("project[cover_img]", this.state.cover_img);
+    formData.append("project[title]", this.state.title);
+    formData.append("project[description]", this.state.description);
+
+    this.props.createProject(formData).then(
+
+    );
   }
 
+  addInstruction(e) {
+    e.preventDefault();
+    let newInstructions = this.state.instructions + 1;
+    this.setState({ instructions: newInstructions });
+  }
+
+
   render () {
+    let instructions = [];
+    for (var i = 0; i < this.state.instructions; i++) {
+      instructions.push(
+        <InstructionFormContainer
+          stepNumber={i + 1}
+          key={`instruction-${i}`}
+        />);
+    }
     return (
+      <div>
       <form onSubmit={this.handleSubmit}>
         <label>Intro:
           <input type="text" onChange={this.updateField('title')} />
@@ -54,6 +80,9 @@ class ProjectForm extends React.Component {
           <img src={this.state.imageUrl}/>
           <input type="Submit" defaultValue="Create Codeable"/>
       </form>
+        <button onClick={this.addInstruction}>Add Step</button>
+        {instructions}
+      </div>
     );
   }
 }

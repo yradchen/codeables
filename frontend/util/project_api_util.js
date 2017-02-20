@@ -25,7 +25,8 @@ export const createProject = (project) => {
     url: `api/projects/`,
     contentType: false,
     processData: false,
-    data: { project }
+    dataType: 'json',
+    data: project
   });
 };
 
