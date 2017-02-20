@@ -1,10 +1,12 @@
 import React from 'react';
-
+import ProjectIndexContainer from '../projects/project_index_container';
 
 const Homepage = (children) => {
   return (
-    <img src={images.splash} alt="splash" className="splash"/>
-
+    <main>
+      <img src={images.splash} alt="splash" className="splash"/>
+      <ProjectIndexContainer/>
+    </main>
   );
 
 };
