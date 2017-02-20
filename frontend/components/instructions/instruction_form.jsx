@@ -3,20 +3,22 @@ import React from 'react';
 class InstructionForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { step_title: "", step_detail: "", media: null, mediaUrl: null };
+    this.state = { step_title: "", step_detail: "", media: "", mediaUrl: null };
   }
 
   updateFile (e) {
     return (e) => {
       let file = e.currentTarget.files[0];
       let reader = new FileReader();
-      reader.onloadend = function() {
-        this.setState( {mediaUrl: reader.result, media: file} );
-      }.bind(this);
+      reader.onloadend = () => {
+        this.setState( {mediaUrl: reader.result, media: file}, () => {
+          this.props.updateStepObject(this.props.stepNumber, this.state);
+        });
+      };
       if (file) {
         reader.readAsDataURL(file);
       } else {
-        this.setState({ mediaUrl: "", media: null});
+        this.setState({ mediaUrl: "", media: ""});
       }
     };
   }
@@ -30,18 +32,17 @@ class InstructionForm extends React.Component {
     };
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
-    let formData = new FormData();
-    formData.append("instruction[media]", this.state.media);
-    formData.append("instruction[step_title]", this.state.step_title);
-    formData.append("instruction[step_detail]", this.state.step_detail);
-    // this.props.createProject(formData);
-  }
+  // handleSubmit(e) {
+  //   e.preventDefault();
+  //   let formData = new FormData();
+  //   formData.append("instruction[media]", this.state.media);
+  //   formData.append("instruction[step_title]", this.state.step_title);
+  //   formData.append("instruction[step_detail]", this.state.step_detail);
+  //   // this.props.createProject(formData);
+  // }
 
 
   render () {
-
     return (
       <section>
         <span>

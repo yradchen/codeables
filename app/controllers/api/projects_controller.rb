@@ -2,11 +2,33 @@ class Api::ProjectsController < ApplicationController
 
 # make ajax include project and instructions
   def create
-    debugger
+
+    # params[:instructions]["0"][:media]
     @project = Project.new(project_params)
     @project.user_id = current_user.id
-    # transcation make sure projeect and instruction save, if any fail, rollback.
+    # transcation make sure project and instruction save, if any fail, rollback.
     # if it fails keep them on the page with a rendered error
+    i = 0
+    if params[:instructions]
+      @instructions = [];
+      while params[:instructions]["#{i}"]
+        step_title = params[:instructions]["#{i}"][:step_title]
+        step_detail = params[:instructions]["#{i}"][:step_detail]
+        media = params[:instructions]["#{i}"][:media]
+        instruction = Instruction.new(step_title: step_title, step_detail: step_detail, media: media)
+        @instructions.push(instruction)
+        i += 1
+      end
+    end
+    debugger
+    Project.transaction do
+      if @project.save
+        @instructions.each do |instruction|
+          instruction.project_id = @project.id
+          instruction.save
+        end
+      end
+    end
     if @project.save
       render "api/projects/show"
     else
@@ -43,7 +65,10 @@ class Api::ProjectsController < ApplicationController
 
   private
   def project_params
-    params.require(:project).permit(:title, :description, :cover_img)
+    params.require(:project).permit(:title, :description, :cover_img, instructions: [])
   end
+  # def instruction_params
+  #   params.permit(:media, :step_title, :step_detail)
+  # end
 
 end
