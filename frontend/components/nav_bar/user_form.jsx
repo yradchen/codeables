@@ -58,7 +58,7 @@ class UserForm extends React.Component {
         <li className='drop-divider'>
         </li>
         <li className="bottom-drop">
-            <Link to="/new" className='new-project'>
+            <Link to="/editcodeable/new" className='new-project'>
             New Codeable »
             </Link>
         </li>

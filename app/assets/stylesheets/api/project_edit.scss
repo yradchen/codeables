@@ -6,7 +6,7 @@
 
 .edit-view-inner {
   width: 1016px;
-  height: 590px;
+  min-height: 590px;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -25,17 +25,20 @@
   align-items: center;
   border: 1px solid #ddd;
   border-radius: 8px;
-  margin-top: 35px;
+  margin-bottom: 35px;
   // justify-content: center;
 }
 .edit-view-top {
   height: 45px;
+
   // background: green;
 }
 .edit-view-bottom {
+  padding-top: 35px;
   width: 100%;
   display: flex;
-
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
   background-color: #fff;
   border-bottom-right-radius: 9px;
