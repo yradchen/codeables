@@ -40,7 +40,6 @@ class ProjectForm extends React.Component {
     e.preventDefault();
     let formData = new FormData();
     formData.append("project[title]", this.state.title);
-    console.log(this.state.title)
     this.props.action(formData).then(
       (promise) => {
         let url = `/editcodeable/${promise.project.id}/edit`;
@@ -54,25 +53,38 @@ class ProjectForm extends React.Component {
     this.setState({modalOpen: false});
   }
 
+  renderModal() {
+    return (
+      <Modal
+        isOpen={this.state.modalOpen}
+        contentLabel="Modal"
+        id="Modal"
+        // onSubmit={this.onModalClose}
+        style={ModalStyle}
+        >
+      <NewProject action={this.props.action}
+                  updateField={this.updateField}
+                  handleSubmit={this.handleSubmit}
+                  modalClose={this.onModalClose}/>
+      </Modal>
+    );
+  }
+  renderEdit() {
+    // <div className="edit-outer">
+  }
+
   render () {
 
-    if(!this.state) return null;
+    // if(!this.state) return null;
+    let objToRender;
+    if (this.props.params.projectId) {
 
+    } else {
+      objToRender = this.renderModal();
+    }
     return (
       <div>
-        {(this.props.params.projectId)? null :
-          <Modal
-            isOpen={this.state.modalOpen}
-            contentLabel="Modal"
-            id="Modal"
-            // onSubmit={this.onModalClose}
-            style={ModalStyle}
-            >
-          <NewProject action={this.props.action}
-                      updateField={this.updateField}
-                      handleSubmit={this.handleSubmit}
-                      modalClose={this.onModalClose}/>
-          </Modal>}
+        {objToRender}
       </div>
 
     );

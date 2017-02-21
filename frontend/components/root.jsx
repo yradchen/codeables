@@ -7,7 +7,7 @@ import LoginFormContainer from './session_form/login_form_container';
 import Homepage from './homepage/homepage';
 
 import ProjectDetailContainer from './projects/project_detail_container';
-
+import ProjectEditContainer from './projects2/project_edit_container';
 import ProjectFormContainer from './projects2/project_form_container';
 
 
@@ -37,7 +37,7 @@ const Root = ({ store }) => {
       <Router history={ hashHistory }>
         <Route component={ App } >
           <Route path="/editcodeable/new" component={ ProjectFormContainer} />
-          <Route path="/editcodeable/edit/:codeableId" />
+          <Route path="/editcodeable/:projectId/edit" component={ ProjectEditContainer}/>
 
 
           <Route path="/projects/:id" component= {ProjectDetailContainer} />

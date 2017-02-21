@@ -1,0 +1,112 @@
+.edit-view-outer {
+  background-color: #d4e1e7;
+  padding-top: 40px;
+  padding-bottom: 130px;
+}
+
+.edit-view-inner {
+  width: 1016px;
+  height: 590px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+
+  background-color: #f6f6f6;
+  border-radius: 9px;
+}
+
+.edit-view-ind {
+  position: relative;
+  display: flex;
+  width: 975px;
+  height: 145px;
+  background-color: #f6f6f6;
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-top: 35px;
+  // justify-content: center;
+}
+.edit-view-top {
+  height: 45px;
+  // background: green;
+}
+.edit-view-bottom {
+  width: 100%;
+  display: flex;
+
+  justify-content: center;
+  background-color: #fff;
+  border-bottom-right-radius: 9px;
+  border-bottom-left-radius: 9px;
+  height: 96%;
+}
+
+.edit-view-clicker {
+  color: #AAA;
+  background-color: #fff;
+  height: 119px;
+  width: 400px;
+  margin-left: 155px;
+  border-radius: 6px;
+  box-shadow: inset 0 0 3px rgba(0,0,0,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #dedede;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  cursor: pointer;
+
+}
+
+.edit-img {
+  position: absolute;
+  height: 120px;
+  width: 128px;
+  left: 17px;
+  top: 12px;
+  border: 1px solid white;
+  border-radius: 9px;
+}
+.intro-text {
+  margin-left: 20px;
+  color: #333;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+}
+// .form-container {
+//   width: 1016px;
+//   margin: auto;
+//   display: flex;
+//   justify-content: center;
+//   background-color: #f6f6f6;
+// }
+//
+// .project-form {
+//   height: 182px;
+//   width: 970px;
+//   display: flex;
+//   flex-direction: column;
+//   // align-items: flex-end;
+//   justify-content: space-between;
+// }
+//
+// .project-inner {
+//   height: 120px;
+//   position: relative;
+// }
+//
+
+// .add-file {
+//   color: white;
+//
+//   width: 550px;
+//   height: 130px
+// }
+//
+// .form-outer {
+//   background-color: #d4e1e7;
+// }
