@@ -2,7 +2,6 @@ class Api::ProjectsController < ApplicationController
 
 # make ajax include project and instructions
   def create
-
     @project = Project.new(project_params)
     @project.user_id = current_user.id
     if @project.save
