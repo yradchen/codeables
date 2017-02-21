@@ -3,14 +3,15 @@ import InstructionFormContainer from '../instructions/instruction_form_container
 import Modal from 'react-modal';
 import {Link} from 'react-router';
 class ProjectEditPage extends React.Component {
+
   componentDidMount() {
-    let int = parseInt(this.props.params.projectId);
-    this.props.fetchProject(int);
+    const id = parseInt(this.props.params.projectId);
+    this.props.fetchProject(id);
   }
 
   componentWillReceiveProps(nextProps) {
     if (this.props.params.projectId !== nextProps.params.projectId) {
-      this.props.fetchProject(this.props.params.projectId);
+      this.props.fetchProject(parseInt(nextProps.params.projectId));
     }
   }
 
