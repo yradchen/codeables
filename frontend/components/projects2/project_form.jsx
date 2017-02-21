@@ -2,6 +2,7 @@ import React from 'react';
 import NewProject from './project_new';
 import Modal from 'react-modal';
 import ModalStyle from './modal_info';
+import { hashHistory } from 'react-router';
 
 class ProjectForm extends React.Component {
   constructor(props) {
@@ -37,7 +38,10 @@ class ProjectForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.action({title: this.state.title, description: this.state.description}).then(
+    let formData = new FormData();
+    formData.append("project[title]", this.state.title);
+    console.log(this.state.title)
+    this.props.action(formData).then(
       (promise) => {
         let url = `/editcodeable/${promise.project.id}/edit`;
         this.onModalClose();
@@ -51,7 +55,7 @@ class ProjectForm extends React.Component {
   }
 
   render () {
-    
+
     if(!this.state) return null;
 
     return (
@@ -60,6 +64,7 @@ class ProjectForm extends React.Component {
           <Modal
             isOpen={this.state.modalOpen}
             contentLabel="Modal"
+            id="Modal"
             // onSubmit={this.onModalClose}
             style={ModalStyle}
             >

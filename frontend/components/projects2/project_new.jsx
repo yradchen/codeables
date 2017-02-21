@@ -11,14 +11,9 @@ const NewProject = (props) => {
     <div id='project-modal-body'>
       <h2 id='project-modal-title'>I made a codeable called:</h2>
         <input type='text'
-          placeholder='Title'
           id="modal-title-input"
+          onChange={props.updateField('title')}
         />
-        <textarea wrap='hard'
-          placeholder='Description'
-          id='modal-description-input'
-          >
-        </textarea>
       <input type='submit'
         id='modal-submit-input'
         value= 'Start Codeable »'/>
