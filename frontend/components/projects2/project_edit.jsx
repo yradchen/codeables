@@ -4,17 +4,39 @@ import Modal from 'react-modal';
 import {Link} from 'react-router';
 class ProjectEditPage extends React.Component {
   componentDidMount() {
-    this.props.fetchProject(this.props.params.projectId);
+    let int = parseInt(this.props.params.projectId);
+    this.props.fetchProject(int);
   }
 
-  // componentWillReceiveProps() {
-  //   let methree = this.props.fetchProject(this.props.params.projectId);
-  //   debugger
-  // }
+  componentWillReceiveProps(nextProps) {
+    if (this.props.params.projectId !== nextProps.params.projectId) {
+      this.props.fetchProject(this.props.params.projectId);
+    }
+  }
+
+  renderInstructions() {
+    return (
+      <div className="edit-view-ind">
+        <img src={this.props.project.cover_img} className="edit-img"/>
+          <Link className="edit-view-clicker">Click Here to Edit</Link>
+        <p className="intro-text">Intro: {this.props.project.title}</p>
+      </div>
+    );
+  }
 
 
   render() {
     if (this.props.project === undefined) return null;
+
+    let instructions = this.props.project.instructions.map( (instruction, index) => {
+      return (
+        <div className="edit-view-ind" key={`instruction-${index}`}>
+          <img src={instruction.media} className="edit-img"/>
+            <Link className="edit-view-clicker">Click Here to Edit</Link>
+          <p className="intro-text">Intro: {instruction.title}</p>
+        </div>
+      );
+    });
 
     return (
       <div className="edit-view-outer">
@@ -32,6 +54,7 @@ class ProjectEditPage extends React.Component {
                 <Link className="edit-view-clicker">Click Here to Edit</Link>
               <p className="intro-text">Intro: {this.props.project.title}</p>
             </div>
+            {instructions}
           </section>
         </div>
       </div>
