@@ -32,12 +32,12 @@ class ProjectEditPage extends React.Component {
       return (
         <div className="edit-view-ind" key={`instruction-${index}`}>
           <img src={instruction.media} className="edit-img"/>
-            <Link className="edit-view-clicker">Click Here to Edit</Link>
+            <Link to={`${this.props.route.path}/${index + 1}`}
+            className="edit-view-clicker">Click Here to Edit</Link>
           <p className="intro-text">Intro: {instruction.title}</p>
         </div>
       );
     });
-
     return (
       <div className="edit-view-outer">
         <div className="edit-view-inner">
@@ -51,7 +51,8 @@ class ProjectEditPage extends React.Component {
           <section className="edit-view-bottom">
             <div className="edit-view-ind">
               <img src={this.props.project.cover_img} className="edit-img"/>
-                <Link className="edit-view-clicker">Click Here to Edit</Link>
+                <Link to={`/editcodeable/${this.props.project.id}/edit/step/0`}
+                  className="edit-view-clicker">Click Here to Edit</Link>
               <p className="intro-text">Intro: {this.props.project.title}</p>
             </div>
             {instructions}
