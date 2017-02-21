@@ -5,7 +5,7 @@ import InstructionFormContainer from '../instructions/instruction_form_container
 class ProjectForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { title: "", description: "", cover_img: "", imageUrl: null, instructions: 0 };
+    this.state = { title: "", description: "", cover_img: "", imageUrl: "", instructions: 0 };
     this.instructionObjects = [];
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateFile = this.updateFile.bind(this);
@@ -76,26 +76,30 @@ class ProjectForm extends React.Component {
           updateStepObject={this.updateStepObject.bind(this)}
         />);
     }
-
+    let imageDisplay;
+    if (this.state.cover_img === "" || this.state.cover_img === null) {
+      imageDisplay = "cover-img hidden";
+    } else {
+      imageDisplay = "cover-img";
+    }
+    
     return (
       <div className="form-outer">
-
         <div className='form-container'>
           <form onSubmit={this.handleSubmit} >
+
             <div className="project-form">
-              <div>
-                <label>Add Image
+              <div className="project-inner">
                   <input type="file" className="add-file" onChange={this.updateFile()}/>
-                </label>
                 <label>Intro:
                   <input type="text" onChange={this.updateField('title')} />
                 </label>
                 <label>Description:
                   <textarea name="name"onChange={this.updateField('description')}></textarea>
                 </label>
-                  <img src={this.state.imageUrl}/>
+                  <img src={this.state.imageUrl} className={imageDisplay}/>
               </div>
-              <section>
+              <section className="publish">
                 <input type="Submit" defaultValue="Publish"/>
               </section>
             </div>
