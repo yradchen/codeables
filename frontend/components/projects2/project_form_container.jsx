@@ -7,6 +7,7 @@ const mapStateToProps = (state, ownProps) => {
   if (ownProps.params.projectId) {
     project = state.projects[ownProps.params.projectId];
   }
+  debugger
   return { project };
 };
 

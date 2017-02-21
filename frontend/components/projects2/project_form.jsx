@@ -3,7 +3,7 @@ import NewProject from './project_new';
 import Modal from 'react-modal';
 import ModalStyle from './modal_info';
 
-class ProjectFormTwo extends React.Component {
+class ProjectForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = this.props.project;
@@ -37,14 +37,13 @@ class ProjectFormTwo extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.onModalClose();
-    // this.props.action({title: this.state.title, description: this.state.description}).then(
-    //   (promise) => {
-    //     let url = `concepts/${promise.project.id}/edit`;
-    //     this.onModalClose();
-    //     hashHistory.push(url);
-    //   }
-    // );
+    this.props.action({title: this.state.title, description: this.state.description}).then(
+      (promise) => {
+        let url = `/editcodeable/${promise.project.id}/edit`;
+        this.onModalClose();
+        hashHistory.push(url);
+      }
+    );
   }
 
   onModalClose(){
@@ -52,6 +51,7 @@ class ProjectFormTwo extends React.Component {
   }
 
   render () {
+    
     if(!this.state) return null;
 
     return (
@@ -74,4 +74,4 @@ class ProjectFormTwo extends React.Component {
   }
 }
 
-export default ProjectFormTwo;
+export default ProjectForm;

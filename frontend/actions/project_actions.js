@@ -32,8 +32,8 @@ export const fetchProject = (id) => dispatch => (
   )
 );
 
-export const createProject = (project, instructionObjects) => dispatch => (
-  ProjectAPIUtil.createProject(project, instructionObjects).then(
+export const createProject = (project) => dispatch => (
+  ProjectAPIUtil.createProject(project).then(
     project => dispatch(receiveProject(project))
   )
 );
