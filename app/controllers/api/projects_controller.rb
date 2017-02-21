@@ -20,16 +20,18 @@ class Api::ProjectsController < ApplicationController
         i += 1
       end
     end
-    debugger
+
+
     Project.transaction do
-      if @project.save
-        @instructions.each do |instruction|
-          instruction.project_id = @project.id
-          instruction.save
-        end
+      @project.save!
+      debugger
+      @instructions.each do |instruction|
+        instruction.project_id = @project.id
+        instruction.save!
       end
     end
-    if @project.save
+    debugger
+    if @project.persisted?
       render "api/projects/show"
     else
       render json: @project.errors.full_messages, status: 422
