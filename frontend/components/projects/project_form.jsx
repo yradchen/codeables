@@ -1,6 +1,6 @@
 import React from 'react';
 import InstructionFormContainer from '../instructions/instruction_form_container';
-
+import Modal from 'react-modal';
 
 class ProjectForm extends React.Component {
   constructor(props) {
@@ -82,7 +82,7 @@ class ProjectForm extends React.Component {
     } else {
       imageDisplay = "cover-img";
     }
-    
+
     return (
       <div className="form-outer">
         <div className='form-container'>
@@ -91,6 +91,7 @@ class ProjectForm extends React.Component {
             <div className="project-form">
               <div className="project-inner">
                   <input type="file" className="add-file" onChange={this.updateFile()}/>
+                
                 <label>Intro:
                   <input type="text" onChange={this.updateField('title')} />
                 </label>

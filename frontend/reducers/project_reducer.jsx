@@ -13,6 +13,7 @@ const _projects = Object.freeze({
 });
 
 const ProjectReducer = (state = _projects, action) => {
+
   let newState;
   switch (action.type) {
     case RECEIVE_ALL_PROJECTS:
