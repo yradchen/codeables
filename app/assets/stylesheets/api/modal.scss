@@ -1,0 +1,59 @@
+#project-modal-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#project-modal-title {
+  text-align: center;
+  font-size: 18px;
+  font-family: Helvetica, Arial, sans-serif;
+  color: #555;
+}
+
+#modal-title-input {
+  height: 42px;
+  border: 0;
+  border-bottom: solid 1px #c9c9c9;
+  transition: border .3s;
+  font-size: 18px;
+  width: 370px;
+  margin: 20px 0;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  text-align: center;
+}
+
+#modal-description-input {
+  border: 0;
+  height: 100px;
+  border-bottom: solid 1px #c9c9c9;
+  transition: border .3s;
+  font-size: 18px;
+  width: 370px;
+  // margin: 0px 0;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  text-align: center;
+}
+
+#project-modal-image {
+}
+
+#modal-submit-input {
+  background-color: #e86c00;
+  border-color: #cf6000;
+  color: #fff;
+  padding: 12px 23px;
+  margin-top: 20px;
+  font-size: 17.5px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+}
+
+// 190 width
+// 50 height

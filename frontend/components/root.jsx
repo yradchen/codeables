@@ -9,6 +9,9 @@ import Homepage from './homepage/homepage';
 import ProjectDetailContainer from './projects/project_detail_container';
 import ProjectFormContainer from './projects/project_form_container';
 
+import ProjectFormContainer2 from './projects2/project_form2';
+
+
 const Root = ({ store }) => {
   const _ensureLoggedIn = (nextState, replace) => {
     const currentUser = store.getState().session.currentUser;
@@ -33,6 +36,7 @@ const Root = ({ store }) => {
     <Provider store={store}>
       <Router history={ hashHistory }>
         <Route component={ App } >
+          <Route path="/testing" component={ ProjectFormContainer2} />
           <Route path="/new" component={ ProjectFormContainer } onEnter={_ensureLoggedIn}/>
 
           <Route path="/projects/:id" component= {ProjectDetailContainer} />
