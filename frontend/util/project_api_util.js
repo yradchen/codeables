@@ -31,11 +31,13 @@ export const createProject = (project) => {
 };
 
 export const updateProject = (project) => {
+  const id = parseInt(project.get("project[id]"));
   return $.ajax({
     method: 'PATCH',
-    url: `api/projects/${project.id}`,
+    url: `api/projects/${id}`,
     contentType: false,
     processData: false,
-    data: { project }
+    dataType: 'json',
+    data: project
   });
 };

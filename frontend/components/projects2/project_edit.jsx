@@ -15,15 +15,15 @@ class ProjectEditPage extends React.Component {
     }
   }
 
-  renderInstructions() {
-    return (
-      <div className="edit-view-ind">
-        <img src={this.props.project.cover_img} className="edit-img"/>
-          <Link className="edit-view-clicker">Click Here to Edit</Link>
-        <p className="intro-text">Intro: {this.props.project.title}</p>
-      </div>
-    );
-  }
+  // renderInstructions() {
+  //   return (
+  //     <div className="edit-view-ind">
+  //       <img src={this.props.project.cover_img} className="edit-img"/>
+  //         <Link className="edit-view-clicker">Click Here to Edit</Link>
+  //       <p className="intro-text">Intro: {this.props.project.title}</p>
+  //     </div>
+  //   );
+  // }
 
 
   render() {
@@ -33,9 +33,9 @@ class ProjectEditPage extends React.Component {
       return (
         <div className="edit-view-ind" key={`instruction-${index}`}>
           <img src={instruction.media} className="edit-img"/>
-            <Link to={`${this.props.route.path}/${index + 1}`}
+            <Link to={`/editcodeable/${this.props.project.id}/edit/step/${index}`}
             className="edit-view-clicker">Click Here to Edit</Link>
-          <p className="intro-text">Intro: {instruction.title}</p>
+          <p className="intro-text">{instruction.step_title}</p>
         </div>
       );
     });
@@ -52,7 +52,8 @@ class ProjectEditPage extends React.Component {
           <section className="edit-view-bottom">
             <div className="edit-view-ind">
               <img src={this.props.project.cover_img} className="edit-img"/>
-                <Link to={`/editcodeable/${this.props.project.id}/edit/step/0`}
+                <Link to=
+                  {`/editcodeable/${this.props.project.id}/edit/project`}
                   className="edit-view-clicker">Click Here to Edit</Link>
               <p className="intro-text">Intro: {this.props.project.title}</p>
             </div>
@@ -65,6 +66,7 @@ class ProjectEditPage extends React.Component {
 }
 
 export default ProjectEditPage;
+// on click go to another container that I pass props into.
       {/* <div className='form-container'>
         <form onSubmit={this.handleSubmit} >
           <div className="project-form">

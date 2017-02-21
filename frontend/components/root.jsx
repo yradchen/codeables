@@ -10,6 +10,8 @@ import ProjectDetailContainer from './projects/project_detail_container';
 import ProjectEditContainer from './projects2/project_edit_container';
 import ProjectFormContainer from './projects2/project_form_container';
 import StepFormContainer from './steps/step_form_container';
+import StepEditContainer from './steps/step_edit_container';
+
 
 const Root = ({ store }) => {
   const _ensureLoggedIn = (nextState, replace) => {
@@ -38,7 +40,8 @@ const Root = ({ store }) => {
         <Route component={ App } >
           <Route path="/editcodeable/new" component={ ProjectFormContainer} />
           <Route path="/editcodeable/:projectId/edit" component={ ProjectEditContainer}/>
-          <Route path="/editcodeable/:projectId/edit/step/:id" component={ StepFormContainer }/>
+          <Route path="/editcodeable/:projectId/edit/project" component={ StepFormContainer }/>
+          <Route path="/editcodeable/:projectId/edit/step/:id" component={ StepEditContainer } />
 
           <Route path="/projects/:id" component= {ProjectDetailContainer} />
           <Route path="/" component={ Homepage } />

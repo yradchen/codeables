@@ -1,14 +1,10 @@
 import React from 'react';
 import Modal from 'react-modal';
 
-class StepForm extends React.Component {
+class StepEdit extends React.Component {
   constructor(props) {
     super(props);
-    // if (this.props.project) {
-      this.state = this.props.project;
-
-      // { title: this.props.project.title, description: this.props.description, cover_img: this.props.project.cover_img, imageUrl: null };
-    // }
+    this.state = this.props.instruction;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateFile = this.updateFile.bind(this);
     this.updateField = this.updateField.bind(this);
@@ -30,12 +26,12 @@ class StepForm extends React.Component {
       let file = e.currentTarget.files[0];
       let reader = new FileReader();
       reader.onloadend = () => {
-        this.setState( {imageUrl: reader.result, cover_img: file} );
+        this.setState( {imageUrl: reader.result, media: file} );
       };
       if (file) {
         reader.readAsDataURL(file);
       } else {
-        this.setState({ imageUrl: null, cover_img: null});
+        this.setState({ imageUrl: null, media: null});
       }
     };
   }
@@ -50,15 +46,17 @@ class StepForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     let formData = new FormData();
-    formData.append("project[cover_img]", this.state.cover_img);
-    formData.append("project[title]", this.state.title);
-    formData.append("project[description]", this.state.description);
-    formData.append("project[id]", this.props.project.id);
+    formData.append("instruction[media]", this.state.media);
+    formData.append("instruction[step_title]", this.state.step_detail);
+    formData.append("instruction[step_detail]", this.state.step_detail);
+    formData.append("instruction[id]", this.state.instruction.id);
     this.props.updateProject(formData);
   }
 
   render () {
-    if (this.props.project === undefined) return null;
+
+    if (this.props.instruction === undefined) return null;
+    const stepNumber = parseInt(this.props.params.id) + 1;
 
     return (
       <div className="update-outer">
@@ -68,11 +66,11 @@ class StepForm extends React.Component {
               <div className="project-inner">
                   <input type="file" className="add-file" onChange={this.updateFile()}/>
 
-                <label>Intro:
-                  <input type="text" onChange={this.updateField('title')} value={this.state.title} />
+                <label>Step:
+                  <input type="text" onChange={this.updateField('title')} value={this.state.step_title} />
                 </label>
                 <label>Description:
-                  <textarea name="name"onChange={this.updateField('description')} value={this.state.description}></textarea>
+                  <textarea name="name"onChange={this.updateField('description')} value={this.state.step_detail}></textarea>
                 </label>
 
               </div>
@@ -87,18 +85,4 @@ class StepForm extends React.Component {
   }
 }
 
-export default StepForm;
-{/* <input type="text" name="" value=""> */}
-// enter title
-//
-// id                     :integer          not null, primary key
-// #  title                  :string           not null
-// #  description            :text             not null
-// #  user_id                :integer          not null
-// #  created_at             :datetime         not null
-// #  updated_at             :datetime         not null
-// #  cover_img_file_name    :string
-// #  cover_img_content_type :string
-// #  cover_img_file_size    :integer
-// #  cover_img_updated_at   :datetime
-// #
+export default StepEdit;
