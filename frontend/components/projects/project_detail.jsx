@@ -6,6 +6,8 @@ class ProjectDetail extends React.Component {
   componentDidMount() {
     this.props.fetchProject(this.props.params.id);
   }
+  
+
   render () {
     if (this.props.project === undefined) return null;
     let instructions = this.props.project.instructions;
