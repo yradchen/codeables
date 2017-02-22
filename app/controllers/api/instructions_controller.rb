@@ -1,6 +1,8 @@
 class Api::InstructionsController < ApplicationController
   def create
+    debugger
     @instruction = Instruction.new(instruction_params)
+    debugger
     if @instruction.save
       render '/show'
     else

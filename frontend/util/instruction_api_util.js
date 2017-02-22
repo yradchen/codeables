@@ -1,11 +1,12 @@
 export const createInstruction = (instruction) => {
+  debugger
   return $.ajax({
     method: 'POST',
-    url: `api/projects/`,
+    url: `api/instructions/`,
     contentType: false,
     processData: false,
     dataType: 'json',
-    data: project
+    data: instruction
   });
 };
 

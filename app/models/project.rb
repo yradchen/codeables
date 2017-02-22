@@ -18,8 +18,8 @@ class Project < ApplicationRecord
   validates :title, :user, presence: true
   validates :description, presence: true, on: :update
 
-
-  has_attached_file :cover_img
+  has_attached_file :cover_img, default_url: ""
+  # has_attached_file :cover_img
   validates_attachment_content_type :cover_img, content_type: /\Aimage\/.*\z/
   # validates_attachment_presence :cover_img
 

@@ -3,6 +3,11 @@ import InstructionFormContainer from '../instructions/instruction_form_container
 import Modal from 'react-modal';
 import {Link} from 'react-router';
 class ProjectEditPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { amountOfInstructions: 0 };
+    this.addInstruction = this.addInstruction.bind(this);
+  }
 
   componentDidMount() {
     const id = parseInt(this.props.params.projectId);
@@ -12,6 +17,18 @@ class ProjectEditPage extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (this.props.params.projectId !== nextProps.params.projectId) {
       this.props.fetchProject(parseInt(nextProps.params.projectId));
+    }
+  }
+
+
+  addInstruction(e) {
+    e.preventDefault();
+    if (this.state.amountOfInstructions === 0) {
+      const amountOfInstructions = this.props.project.instructions.length + 1;
+      this.setState({ amountOfInstructions: amountOfInstructions });
+    } else {
+      const amountOfInstructions = this.state.amountOfInstructions + 1;
+      this.setState({ amountOfInstructions: amountOfInstructions });
     }
   }
 
@@ -39,6 +56,19 @@ class ProjectEditPage extends React.Component {
         </div>
       );
     });
+
+    let addedSteps = [];
+    for (var i = this.props.project.instructions.length; i < this.state.amountOfInstructions; i++) {
+      addedSteps.push(
+      <div className="edit-view-ind" key={`instruction-${i}`}>
+        <img src="" className="edit-img"/>
+          <Link to={`/editcodeable/${this.props.project.id}/edit/step/N${i}`}
+          className="edit-view-clicker">Click Here to Edit</Link>
+        <p className="intro-text">{`Step ${i + 1}`}</p>
+      </div>
+    );
+    }
+    debugger;
     return (
       <div className="edit-view-outer">
         <div className="edit-view-inner">
@@ -58,7 +88,11 @@ class ProjectEditPage extends React.Component {
               <p className="intro-text">Intro: {this.props.project.title}</p>
             </div>
             {instructions}
+            {addedSteps}
           </section>
+          <div className="instruction-container">
+            <button onClick={this.addInstruction}>Add Step</button>
+          </div>
         </div>
       </div>
     );

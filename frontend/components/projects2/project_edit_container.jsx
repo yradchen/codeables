@@ -3,9 +3,9 @@ import { createProject, updateProject, fetchProject } from '../../actions/projec
 import ProjectEditPage from './project_edit';
 
 const mapStateToProps = (state, ownProps) => {
-  let project = { title:'', description:'' };
+  let project = { title:'', description:'', instructions: [] };
   if (ownProps.params.projectId) {
-    project = state.projects[ownProps.params.projectId];
+    project = state.projects[parseInt(ownProps.params.projectId)];
   }
   return { project };
 };
