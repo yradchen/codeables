@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { createProject, updateProject, fetchProject } from '../../actions/project_actions';
+import { createProject, updateProject, fetchProject, deleteProject } from '../../actions/project_actions';
 import { createInstruction } from '../..//actions/instruction_actions';
 import ProjectEditPage from './project_edit';
 
@@ -19,7 +19,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     action: (project) => dispatch(action(project)),
     fetchProject: (id) => dispatch(fetchProject(id)),
-    createInstruction: (instruction) => dispatch(createInstruction(instruction))
+    createInstruction: (instruction) => dispatch(createInstruction(instruction)),
+    deleteProject: (id) => dispatch(deleteProject(id))
   };
 };
 

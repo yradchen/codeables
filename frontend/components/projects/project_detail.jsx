@@ -4,10 +4,15 @@ import React from 'react';
 class ProjectDetail extends React.Component {
 
   componentDidMount() {
-    this.props.fetchProject(this.props.params.id)
+    this.props.fetchProject(this.props.params.id);
   }
   render () {
-    return <p>hi!</p>;
+    if (this.props.project === undefined) return null;
+    debugger
+    return (
+      <p>hi!</p>
+    );
+
   }
 }
 

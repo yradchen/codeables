@@ -2,10 +2,12 @@ import React from 'react';
 import InstructionFormContainer from '../instructions/instruction_form_container';
 import Modal from 'react-modal';
 import {Link} from 'react-router';
+import { hashHistory } from 'react-router';
 class ProjectEditPage extends React.Component {
   constructor() {
     super();
     this.addInstruction = this.addInstruction.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   componentDidMount() {
@@ -30,7 +32,13 @@ class ProjectEditPage extends React.Component {
     this.props.createInstruction(formData);
   }
 
-
+  handleDelete(e) {
+    e.preventDefault();
+    debugger
+    this.props.deleteProject(this.props.project.id).then( () => {
+      hashHistory.push("/");
+    });
+  }
 
   render() {
     if (this.props.project === undefined) return null;
@@ -69,8 +77,7 @@ class ProjectEditPage extends React.Component {
               <button onClick={this.addInstruction} className="add-step">Add Step</button>
             </div>
           </section>
-
-
+          <button onClick={this.handleDelete}>Delete!</button>
         </div>
       </div>
     );

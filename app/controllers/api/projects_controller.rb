@@ -37,7 +37,7 @@ class Api::ProjectsController < ApplicationController
     # id = params[:id].to+i
     @project = Project.find(params[:id])
     @project.destroy
-    render :show
+    render 'api/projects/show'
   end
 
   private
