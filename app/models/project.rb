@@ -24,5 +24,5 @@ class Project < ApplicationRecord
   # validates_attachment_presence :cover_img
 
   belongs_to :user
-  has_many :instructions
+  has_many :instructions, dependent: :destroy
 end

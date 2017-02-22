@@ -4,26 +4,26 @@ import Modal from 'react-modal';
 class StepForm extends React.Component {
   constructor(props) {
     super(props);
-    // if (this.props.project) {
-      this.state = this.props.project;
-
-      // { title: this.props.project.title, description: this.props.description, cover_img: this.props.project.cover_img, imageUrl: null };
-    // }
+    this.state = this.props.project;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateFile = this.updateFile.bind(this);
     this.updateField = this.updateField.bind(this);
   }
 
-  // componentDidMount() {
-  //   const id = parseInt(this.props.params.projectId);
-  //   // this.props.fetchProject(id);
-  // }
+  componentDidMount() {
+    const id = parseInt(this.props.params.projectId);
+    this.props.fetchProject(id).then( () => {
+      this.setState(this.props.project);
+    });
+  }
 
-  // componentWillReceiveProps(nextProps) {
-  //   if (this.props.params.projectId !== nextProps.params.projectId) {
-  //     this.props.fetchProject(parseInt(nextProps.params.projectId));
-  //   }
-  // }
+  componentWillReceiveProps(nextProps) {
+    if (this.props.params.projectId !== nextProps.params.projectId) {
+      this.props.fetchProject(parseInt(nextProps.params.projectId)).then( () => {
+        this.setState(this.props.project);
+      });
+    }
+  }
 
   updateFile(e) {
     return (e) => {
@@ -58,10 +58,16 @@ class StepForm extends React.Component {
   }
 
   render () {
+    // debugger
     if (this.props.project === undefined) return null;
+    if (this.state === null) return null;
     let imageToUse = this.state.imageUrl;
     if (this.state.imageUrl === undefined) {
       imageToUse = this.state.cover_img;
+    }
+    let description = this.state.description;
+    if (description === null) {
+      description = "";
     }
 
     return (
@@ -73,13 +79,16 @@ class StepForm extends React.Component {
 
           <div className="project-inner">
             <section className='update-file'>
-            <img src={imageToUse} className="edit-img"/>
-              <input type="file" className="add-file" onChange={this.updateFile()}/>
-              <p className="title-inner"> {this.state.title}</p>
-            </section>
+              <img src={imageToUse} className="edit-img"/>
 
+              <div className="file-overlay" >
+              <p className="add-file-overlay">Click to Add File</p>
+              <input type="file" className="add-file" onChange={this.updateFile()}/>
+              </div>
+
+            </section>
             <input className="title" type="text" onChange={this.updateField('title')} value={this.state.title} />
-            <textarea className="description" name="name"onChange={this.updateField('description')} value={this.state.description}></textarea>
+            <textarea className="description" name="name"onChange={this.updateField('description')} value={description}></textarea>
           </div>
         </form>
       </div>

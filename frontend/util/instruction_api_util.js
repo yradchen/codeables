@@ -9,7 +9,6 @@ export const createInstruction = (instruction) => {
   });
 };
 
-
 export const updateInstruction = (instruction) => {
   const id = parseInt(instruction.get("instruction[id]"));
   return $.ajax({
@@ -25,6 +24,13 @@ export const updateInstruction = (instruction) => {
 export const fetchInstruction = (id) => {
   return $.ajax({
     method: 'GET',
-    url: `api/projects/${id}`,
+    url: `api/instructions/${id}`,
+  });
+};
+
+export const deleteInstruction = (id) => {
+  return $.ajax({
+    method: "DELETE",
+    url: `api/instructions/${id}`
   });
 };

@@ -28,9 +28,9 @@ class Api::InstructionsController < ApplicationController
   end
 
   def destroy
-    # @instruction = Instruction.find(params[:id])
-    # @instruction.destroy
-    # render :show
+    @instruction = Instruction.find(params[:id])
+    @instruction.destroy
+    render 'api/instructions/show'
   end
 
   private

@@ -1,5 +1,6 @@
 import React from 'react';
 import Modal from 'react-modal';
+import { hashHistory } from 'react-router';
 
 class StepEdit extends React.Component {
   constructor(props) {
@@ -8,10 +9,10 @@ class StepEdit extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateFile = this.updateFile.bind(this);
     this.updateField = this.updateField.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   componentDidMount() {
-
     const projectId = parseInt(this.props.params.projectId);
     if (!this.props.project) {
       this.props.fetchProject(projectId).then( () => {
@@ -66,6 +67,14 @@ class StepEdit extends React.Component {
     this.props.updateInstruction(formData);
   }
 
+  handleDelete(e) {
+    e.preventDefault();
+    let url = `/editcodeable/${this.state.project_id}/edit`;
+    this.props.deleteInstruction(this.state.id).then( () => {
+      hashHistory.push(url);
+    });
+  }
+
   render () {
     if (this.props.instruction === undefined) return null;
     let detail;
@@ -77,36 +86,28 @@ class StepEdit extends React.Component {
       imageToUse = this.state.media;
     }
 
-    // <div className="edit-view-ind">
-    //   <img src={this.props.project.cover_img} className="edit-img"/>
-    //     <Link to=
-    //       {`/editcodeable/${this.props.project.id}/edit/project`}
-    //       className="edit-view-clicker">Click Here to Edit</Link>
-    //   <p className="intro-text">Intro: {this.props.project.title}</p>
-    // </div>
 
     return (
-
-
         <div className='update-outer'>
           <form onSubmit={this.handleSubmit} className='update-inner'>
             <section className="save">
               <input type="Submit" defaultValue="save"/>
             </section>
-              <div className="project-inner">
-                <section className='update-file'>
-                  <img src={imageToUse} className="edit-img"/>
-                  <div className="text-to-test">
-                    <div className="file-overlay" >
-                    <p className="add-file-overlay">Click to Add File</p>
-                    <input type="file" className="add-file" onChange={this.updateFile()}/>
-                    </div>
-                  </div>
-                </section>
-                  <input className="title" type="text" onChange={this.updateField('step_title')} value={this.state.step_title} />
-                  <textarea className="description" name="name"onChange={this.updateField('step_detail')} value={detail}></textarea>
-              </div>
+            <div className="project-inner">
+              <section className='update-file'>
+                <img src={imageToUse} className="edit-img"/>
+
+                <div className="file-overlay" >
+                <p className="add-file-overlay">Click to Add File</p>
+                <input type="file" className="add-file" onChange={this.updateFile()}/>
+                </div>
+
+              </section>
+                <input className="title" type="text" onChange={this.updateField('step_title')} value={this.state.step_title} />
+                <textarea className="description" name="name"onChange={this.updateField('step_detail')} value={detail}></textarea>
+            </div>
           </form>
+          <button onClick={this.handleDelete}>Delete!</button>
         </div>
     );
   }

@@ -13,6 +13,18 @@ const receiveAllInstructions = (instructions) => ({
   instructions
 });
 
+const removeInstruction = (instruction) => ({
+  type: REMOVE_INSTRUCTION,
+  instruction
+});
+
+export const deleteInstruction = (id) => dispatch => (
+  InstructionAPIUtil.deleteInstruction(id).then(
+    instruction => dispatch(removeInstruction(instruction))
+  )
+);
+
+
 export const createInstruction = (instruction) => dispatch => (
   InstructionAPIUtil.createInstruction(instruction).then(
     instruction => dispatch(receiveInstruction(instruction))

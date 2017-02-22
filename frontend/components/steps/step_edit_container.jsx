@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { createInstruction, updateInstruction, fetchInstruction } from '../../actions/instruction_actions';
+import { createInstruction, updateInstruction, fetchInstruction, deleteInstruction } from '../../actions/instruction_actions';
 import StepEdit from './step_edit';
 import { fetchProject } from '../../actions/project_actions';
 
@@ -17,17 +17,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     fetchProject: (project) => dispatch(fetchProject(project)),
     fetchInstruction: (instruction) => dispatch(fetchInstruction(instruction)),
-    updateInstruction: (instruction) => dispatch(updateInstruction(instruction))
+    updateInstruction: (instruction) => dispatch(updateInstruction(instruction)),
+    deleteInstruction: (id) => dispatch(deleteInstruction(id))
   };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(StepEdit);
-// const mapStateToProps = (state, ownProps) => {
-//   let project = { title:'', description:'', cover_img: '', imageUrl: '' };
-//   if (ownProps.params.projectId) {
-//     project = state.projects[parseInt(ownProps.params.projectId)];
-//   }
-//   return { project };
-// };
-// state.projects[parseInt(ownProps.params.projectId)]
-// ownProps.params.projectId
