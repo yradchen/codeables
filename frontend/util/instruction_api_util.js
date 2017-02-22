@@ -1,5 +1,4 @@
 export const createInstruction = (instruction) => {
-  debugger
   return $.ajax({
     method: 'POST',
     url: `api/instructions/`,

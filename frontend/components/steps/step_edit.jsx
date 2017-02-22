@@ -47,20 +47,14 @@ class StepEdit extends React.Component {
     e.preventDefault();
     let formData = new FormData();
     formData.append("instruction[media]", this.state.media);
-    formData.append("instruction[step_title]", this.state.step_detail);
+    formData.append("instruction[step_title]", this.state.step_title);
     formData.append("instruction[step_detail]", this.state.step_detail);
     formData.append("instruction[id]", this.state.id);
-    if (this.props.params.id[0] === 'N') {
-      let number = parseInt(this.props.params.projectId);
-      formData.append("instruction[project_id]", number);
-    }
-      this.props.action(formData);
+    this.props.updateInstruction(formData);
   }
 
   render () {
-
     if (this.props.instruction === undefined) return null;
-    const stepNumber = parseInt(this.props.params.id) + 1;
 
     return (
       <div className="update-outer">
