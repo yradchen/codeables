@@ -58,7 +58,6 @@ class StepForm extends React.Component {
   }
 
   render () {
-    // debugger
     if (this.props.project === undefined) return null;
     if (this.state === null) return null;
     let imageToUse = this.state.imageUrl;

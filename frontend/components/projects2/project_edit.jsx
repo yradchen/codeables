@@ -34,7 +34,6 @@ class ProjectEditPage extends React.Component {
 
   handleDelete(e) {
     e.preventDefault();
-    debugger
     this.props.deleteProject(this.props.project.id).then( () => {
       hashHistory.push("/");
     });
