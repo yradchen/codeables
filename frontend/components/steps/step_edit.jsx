@@ -96,8 +96,12 @@ class StepEdit extends React.Component {
               <div className="project-inner">
                 <section className='update-file'>
                   <img src={imageToUse} className="edit-img"/>
-                  <input type="file" className="add-file" onChange={this.updateFile()}/>
-                  <p className="title-inner"> {this.state.step_title}</p>
+                  <div className="text-to-test">
+                    <div className="file-overlay" >
+                    <p className="add-file-overlay">Click to Add File</p>
+                    <input type="file" className="add-file" onChange={this.updateFile()}/>
+                    </div>
+                  </div>
                 </section>
                   <input className="title" type="text" onChange={this.updateField('step_title')} value={this.state.step_title} />
                   <textarea className="description" name="name"onChange={this.updateField('step_detail')} value={detail}></textarea>

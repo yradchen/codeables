@@ -47,12 +47,8 @@
   align-items: center;
 }
 
-.add-file {
-  margin-left: 150px;
-  height: 116px;
-  cursor: pointer;
-  outline: none;
-}
+
+
 .title-inner {
   margin-left: 20px;
   color: #333;
@@ -60,6 +56,7 @@
   font-size: 14px;
   font-weight: bold;
 }
+
 
 .title {
   width: 760px;
@@ -89,6 +86,38 @@
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   width: 760px;
   height: 310px;
+}
+.add-file-overlay {
+  position: absolute;
+  text-align: center;
+  line-height: 120px;
+  left: 153px;
+  margin-bottom: 5px;
+  height: 120px;
+  background-color: #f6f6f6;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.15);
+  width: 600px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 20px;
+}
+.file-overlay {
+  margin-bottom: 4px;
+}
+
+
+.add-file {
+	position: relative;
+	text-align: right;
+  vertical-align: center;
+	opacity: 0;
+	z-index: 2;
+  width: 600px;
+  margin-left: 150px;
+  height: 116px;
+  cursor: pointer;
+  outline: none;
 }
 
 // .edit-img {
@@ -214,12 +243,7 @@
 // }
 //
 
-// .add-file {
-//   color: white;
-//
-//   width: 550px;
-//   height: 130px
-// }
+
 //
 // .form-outer {
 //   background-color: #d4e1e7;
