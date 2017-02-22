@@ -68,7 +68,7 @@ class ProjectEditPage extends React.Component {
       </div>
     );
     }
-    debugger;
+
     return (
       <div className="edit-view-outer">
         <div className="edit-view-inner">
@@ -89,10 +89,12 @@ class ProjectEditPage extends React.Component {
             </div>
             {instructions}
             {addedSteps}
+            <div className="instruction-container">
+              <button onClick={this.addInstruction} className="add-step">Add Step</button>
+            </div>
           </section>
-          <div className="instruction-container">
-            <button onClick={this.addInstruction}>Add Step</button>
-          </div>
+
+
         </div>
       </div>
     );

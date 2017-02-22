@@ -25,7 +25,8 @@
   align-items: center;
   border: 1px solid #ddd;
   border-radius: 8px;
-  margin-bottom: 35px;
+  margin-top: 15px;
+
   // justify-content: center;
 }
 .edit-view-top {
@@ -80,6 +81,23 @@
   font-size: 14px;
   font-weight: bold;
 }
+
+
+.add-step {
+  margin-top: 35px;
+  padding: 11px 19px;
+  font-size: 17.5px;
+  border-radius: 6px;
+  border-color: #dedede;
+  color: #333;
+  font-family: Helvetica, Arial, sans-serif;
+  background-color: #f6f6f6;
+  margin-bottom: 155px;
+  text-shadow: 0 1px 1px rgba(255,255,255,0.75);
+  outline: none;
+  cursor: pointer;
+}
+
 // .form-container {
 //   width: 1016px;
 //   margin: auto;
