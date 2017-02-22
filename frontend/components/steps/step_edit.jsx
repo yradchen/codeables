@@ -46,11 +46,12 @@ class StepEdit extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     let formData = new FormData();
+    debugger
     formData.append("instruction[media]", this.state.media);
     formData.append("instruction[step_title]", this.state.step_detail);
     formData.append("instruction[step_detail]", this.state.step_detail);
-    formData.append("instruction[id]", this.state.instruction.id);
-    this.props.updateProject(formData);
+    formData.append("instruction[id]", this.state.id);
+    this.props.updateInstruction(formData);
   }
 
   render () {
@@ -67,10 +68,10 @@ class StepEdit extends React.Component {
                   <input type="file" className="add-file" onChange={this.updateFile()}/>
 
                 <label>Step:
-                  <input type="text" onChange={this.updateField('title')} value={this.state.step_title} />
+                  <input type="text" onChange={this.updateField('step_title')} value={this.state.step_title} />
                 </label>
                 <label>Description:
-                  <textarea name="name"onChange={this.updateField('description')} value={this.state.step_detail}></textarea>
+                  <textarea name="name"onChange={this.updateField('step_detail')} value={this.state.step_detail}></textarea>
                 </label>
 
               </div>

@@ -14,14 +14,16 @@ class Api::InstructionsController < ApplicationController
 
   def update
     @instruction = Instruction.find(params[:id])
+    debugger
     # if @instruction.user_id != current_user.id
     #   render json: ["You can't edit a instruction you didn't create"]
     # else
-    #   if @instruction.update(instruction_params)
-    #     render :show
-    #   else
-    #     render json: @instruction.errors.full_messages, status: 422
-    #   end
+      if @instruction.update(instruction_params)
+        debugger
+        render 'api/projects/show'
+      else
+        render json: @instruction.errors.full_messages, status: 422
+      end
     # end
   end
 
@@ -33,7 +35,7 @@ class Api::InstructionsController < ApplicationController
 
   private
   def instruction_params
-    params.require(:instruction).permit(:step_title, :step_detail, :media_url, :project_id)
+    params.require(:instruction).permit(:step_title, :step_detail, :media, :project_id)
   end
 
 end

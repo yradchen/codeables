@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-// import { createInstruction, updateInstruction, fetchinstruction } from '../../actions/instruction_actions';
+import { createInstruction, updateInstruction } from '../../util/instruction_api_util';
 import StepEdit from './step_edit';
 
 const mapStateToProps = (state, ownProps) => {
@@ -15,7 +15,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     updateProject: (project) => dispatch(updateProject(project)),
-    fetchProject: (id) => dispatch(fetchProject(id))
+    fetchProject: (id) => dispatch(fetchProject(id)),
+    updateInstruction: (instruction) => updateInstruction(instruction)
   };
 };
 
