@@ -1,10 +1,10 @@
 class Api::InstructionsController < ApplicationController
   def create
-    debugger
+
     @instruction = Instruction.new(instruction_params)
-    debugger
+
     if @instruction.save
-      render '/show'
+      render 'api/instructions/show'
     else
       render json: @instruction.errors.full_messages, status: 422
     end
@@ -16,13 +16,11 @@ class Api::InstructionsController < ApplicationController
 
   def update
     @instruction = Instruction.find(params[:id])
-    debugger
-    # if @instruction.user_id != current_user.id
+      # if @instruction.user_id != current_user.id
     #   render json: ["You can't edit a instruction you didn't create"]
     # else
       if @instruction.update(instruction_params)
-        debugger
-        render 'api/projects/show'
+        render 'api/instructions/show'
       else
         render json: @instruction.errors.full_messages, status: 422
       end

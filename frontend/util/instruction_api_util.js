@@ -21,3 +21,10 @@ export const updateInstruction = (instruction) => {
     data: instruction
   });
 };
+
+export const fetchInstruction = (id) => {
+  return $.ajax({
+    method: 'GET',
+    url: `api/projects/${id}`,
+  });
+};

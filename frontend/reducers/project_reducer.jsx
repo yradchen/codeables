@@ -1,6 +1,6 @@
 import { RECEIVE_ALL_PROJECTS, RECEIVE_PROJECT, REMOVE_PROJECT } from '../actions/project_actions';
 import merge from 'lodash/merge';
-
+import { RECEIVE_INSTRUCTION } from '../actions/instruction_actions';
 
 const _projects = Object.freeze({
   1: {
@@ -25,6 +25,10 @@ const ProjectReducer = (state = _projects, action) => {
     case REMOVE_PROJECT:
       newState = merge({}, state);
       delete newState[action.project.id];
+      return newState;
+    case RECEIVE_INSTRUCTION:
+      newState = merge({}, state);
+      newState[action.instruction.project_id].instructions.push(action.instruction);
       return newState;
     default:
       return state;

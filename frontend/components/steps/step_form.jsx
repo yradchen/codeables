@@ -59,29 +59,29 @@ class StepForm extends React.Component {
 
   render () {
     if (this.props.project === undefined) return null;
+    let imageToUse = this.state.imageUrl;
+    if (this.state.imageUrl === undefined) {
+      imageToUse = this.state.cover_img;
+    }
 
     return (
       <div className="update-outer">
-        <div className='update-inner'>
-          <form onSubmit={this.handleSubmit} >
-            <div className="project-form">
-              <div className="project-inner">
-                  <input type="file" className="add-file" onChange={this.updateFile()}/>
+        <form onSubmit={this.handleSubmit} className='update-inner'>
+          <section className="publish">
+            <input type="Submit" defaultValue="save"/>
+          </section>
 
-                <label>Intro:
-                  <input type="text" onChange={this.updateField('title')} value={this.state.title} />
-                </label>
-                <label>Description:
-                  <textarea name="name"onChange={this.updateField('description')} value={this.state.description}></textarea>
-                </label>
+          <div className="project-inner">
+            <section className='update-file'>
+            <img src={imageToUse} className="edit-img"/>
+              <input type="file" className="add-file" onChange={this.updateFile()}/>
+              <p className="title-inner"> {this.state.title}</p>
+            </section>
 
-              </div>
-              <section className="publish">
-                <input type="Submit" defaultValue="save"/>
-              </section>
-            </div>
-          </form>
-        </div>
+            <input className="title" type="text" onChange={this.updateField('title')} value={this.state.title} />
+            <textarea className="description" name="name"onChange={this.updateField('description')} value={this.state.description}></textarea>
+          </div>
+        </form>
       </div>
     );
   }
