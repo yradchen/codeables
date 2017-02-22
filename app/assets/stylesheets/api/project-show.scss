@@ -1,0 +1,93 @@
+.show-outer {
+  background-color: #d4e1e7;
+  min-width: 1030px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 45px;
+  padding-bottom: 130px;
+}
+
+.show-inner {
+  background: #fff;
+  width: 1015px;
+  border: 1px solid rgba(119,130,135,.4);
+  border-radius: 9px;
+}
+
+.show-top {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  background: #f6f6f6;
+  border-top-right-radius: 9px;
+  border-top-left-radius: 9px;
+  padding: 20px 25px 20px 25px;
+  font-size: 24px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  box-shadow: 0 1px 2px rgba(0,0,0,.25);
+
+}
+.show-bottom {
+  background: #fff;
+  margin: 15px;
+  margin-right: 340px;
+}
+.owner-info {
+  display: flex;
+  align-items: baseline;
+}
+.all {
+  display: flex;
+  align-items: baseline;
+}
+.by {
+  font-size: 14px;
+  padding-right: 5px;
+  font-size: 14px;
+  margin-left: 5px;
+  color: #999;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.show-owner {
+  color: #555;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 14px;
+}
+
+.show-img-container {
+  background-color: #f6f6f6;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 35px;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.show-img {
+  max-width: 100%;
+  // height: auto;
+  max-height: 400px;
+}
+
+.show-description {
+  color: #333;
+  font-size: 17px;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  margin-left: 20px;
+  white-space: pre-wrap;
+}
+.show-instruction-title {
+  font-size: 22px;
+  margin: 12px 0;
+  font-weight: 700;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.show-logo {
+  max-height: 40px;
+}
