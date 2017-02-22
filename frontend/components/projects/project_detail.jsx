@@ -8,18 +8,25 @@ class ProjectDetail extends React.Component {
   }
   render () {
     if (this.props.project === undefined) return null;
-
-    const instructions = this.props.project.instructions.map( (instruction) => {
-      return (
-      <div>
-        <h2 className="show-instruction-title">{instruction.step_title}</h2>
-        <div className="show-img-container">
-          <img className="show-img" src={instruction.media}/>
+    let instructions = this.props.project.instructions;
+    if (instructions) {
+      instructions = this.props.project.instructions.map( (instruction) => {
+        let showImg = 'show-img-container';
+        if (instruction.media === "") {
+          showImg = 'show-img-container hidden';
+        }
+        return (
+        <div key={instruction.id}>
+          <h2 className="show-instruction-title">{instruction.step_title}</h2>
+          <div className={showImg}>
+            <img className={"show-img"} src={instruction.media}/>
+          </div>
+          <pre className="show-description">{instruction.step_detail}</pre>
         </div>
-        <pre className="show-description">{instruction.step_detail}</pre>
-      </div>
-      );
-    });
+        );
+      });
+    }
+
 
     return (
       <div className="show-outer">
