@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     store = configureStore();
   }
   const root = document.getElementById('root');
+  window.store = store; // testing
   Modal.setAppElement(document.body);
   ReactDOM.render(<Root store={store}/>, root);
 });

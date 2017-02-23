@@ -1,6 +1,6 @@
 import React from 'react';
 import Modal from 'react-modal';
-
+import { hashHistory } from 'react-router';
 class StepForm extends React.Component {
   constructor(props) {
     super(props);
@@ -13,7 +13,11 @@ class StepForm extends React.Component {
   componentDidMount() {
     const id = parseInt(this.props.params.projectId);
     this.props.fetchProject(id).then( () => {
+      if (this.props.project.owner !== currentUser.username) {
+        hashHistory.push("/");
+      } else {
       this.setState(this.props.project);
+      }
     });
   }
 
@@ -54,7 +58,10 @@ class StepForm extends React.Component {
     formData.append("project[title]", this.state.title);
     formData.append("project[description]", this.state.description);
     formData.append("project[id]", this.props.project.id);
-    this.props.updateProject(formData);
+    let url = `/editcodeable/${this.state.id}/edit`;
+    this.props.updateProject(formData).then( () => {
+      hashHistory.push(url);
+    });
   }
 
   render () {
@@ -96,17 +103,3 @@ class StepForm extends React.Component {
 }
 
 export default StepForm;
-{/* <input type="text" name="" value=""> */}
-// enter title
-//
-// id                     :integer          not null, primary key
-// #  title                  :string           not null
-// #  description            :text             not null
-// #  user_id                :integer          not null
-// #  created_at             :datetime         not null
-// #  updated_at             :datetime         not null
-// #  cover_img_file_name    :string
-// #  cover_img_content_type :string
-// #  cover_img_file_size    :integer
-// #  cover_img_updated_at   :datetime
-// #

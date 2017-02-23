@@ -3,11 +3,15 @@ import InstructionFormContainer from '../instructions/instruction_form_container
 import Modal from 'react-modal';
 import {Link} from 'react-router';
 import { hashHistory } from 'react-router';
+import { ResponseModal, ModalStyle } from '../steps/response_modal';
+
 class ProjectEditPage extends React.Component {
   constructor() {
     super();
+    this.state = ({modalOpen: false });
     this.addInstruction = this.addInstruction.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.handleResponse = this.handleResponse.bind(this);
   }
 
   componentDidMount() {
@@ -31,13 +35,20 @@ class ProjectEditPage extends React.Component {
     formData.append("instruction[project_id]", project_id);
     this.props.createInstruction(formData);
   }
-
   handleDelete(e) {
-    e.preventDefault();
-    this.props.deleteProject(this.props.project.id).then( () => {
-      hashHistory.push("/");
-    });
+    this.setState({modalOpen: true});
   }
+  //
+  handleResponse(response) {
+    if (response === 'confirm') {
+      this.props.deleteProject(this.props.project.id).then( () => {
+        hashHistory.push("/");
+      });
+    } else {
+      this.setState({modalOpen: false});
+    }
+  }
+
 
   render() {
     if (this.props.project === undefined) return null;
@@ -54,29 +65,41 @@ class ProjectEditPage extends React.Component {
     });
 
     return (
-      <div className="edit-view-outer">
-        <div className="edit-view-inner">
-          <section className="edit-view-top">
-            <p>Publish BUTTON PLACEHOLDER</p>
-            <div className="edit-view-welcome">
-            </div>
-            <div className="edit-view-publish">
-            </div>
-          </section>
-          <section className="edit-view-bottom">
-            <div className="edit-view-ind">
-              <img src={this.props.project.cover_img} className="edit-img"/>
-                <Link to=
-                  {`/editcodeable/${this.props.project.id}/edit/project`}
-                  className="edit-view-clicker">Click Here to Edit</Link>
-              <p className="intro-text">Intro: {this.props.project.title}</p>
-            </div>
-            {instructions}
-            <div className="instruction-container">
-              <button onClick={this.addInstruction} className="add-step">Add Step</button>
-            </div>
-          </section>
-          <button onClick={this.handleDelete}>Delete!</button>
+      <div>
+        <Modal
+          isOpen={this.state.modalOpen}
+          contentLabel="Modal"
+          id="Modal"
+          style={ModalStyle}
+          onRequestClose={(response) => this.handleResponse(response)}
+          >
+          <ResponseModal
+          handleResponse={this.handleResponse}/>
+        </Modal>
+        <div className="edit-view-outer">
+          <div className="edit-view-inner">
+            <section className="edit-view-top">
+              <p>Publish BUTTON PLACEHOLDER</p>
+              <div className="edit-view-welcome">
+              </div>
+              <div className="edit-view-publish">
+              </div>
+            </section>
+            <section className="edit-view-bottom">
+              <div className="edit-view-ind">
+                <img src={this.props.project.cover_img} className="edit-img"/>
+                  <Link to=
+                    {`/editcodeable/${this.props.project.id}/edit/project`}
+                    className="edit-view-clicker">Click Here to Edit</Link>
+                <p className="intro-text">Intro: {this.props.project.title}</p>
+              </div>
+              {instructions}
+              <div className="instruction-container">
+                <button onClick={this.addInstruction} className="add-step">Add Step</button>
+              </div>
+            </section>
+            <button onClick={this.handleDelete}>Delete!</button>
+          </div>
         </div>
       </div>
     );

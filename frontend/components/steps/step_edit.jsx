@@ -1,7 +1,7 @@
 import React from 'react';
 import Modal from 'react-modal';
 import { hashHistory } from 'react-router';
-
+import { ResponseModal, ModalStyle } from './response_modal';
 class StepEdit extends React.Component {
   constructor(props) {
     super(props);
@@ -10,14 +10,22 @@ class StepEdit extends React.Component {
     this.updateFile = this.updateFile.bind(this);
     this.updateField = this.updateField.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.handleResponse = this.handleResponse.bind(this);
   }
 
   componentDidMount() {
     const projectId = parseInt(this.props.params.projectId);
     if (!this.props.project) {
       this.props.fetchProject(projectId).then( () => {
+        if (this.props.project.owner !== currentUser.username) {
+          hashHistory.push("/");
+        } else {
         this.setState(this.props.instruction);
+        }
       });
+    } else if (this.props.project.owner !== currentUser.username) {
+
+      hashHistory.push("/");
     }
   }
   //
@@ -32,8 +40,8 @@ class StepEdit extends React.Component {
     } else if (this.props.instruction.id !== nextProps.instruction.id){
       this.setState(nextProps.instruction);
     }
-
   }
+
 
   updateFile(e) {
     return (e) => {
@@ -64,15 +72,25 @@ class StepEdit extends React.Component {
     formData.append("instruction[step_title]", this.state.step_title);
     formData.append("instruction[step_detail]", this.state.step_detail);
     formData.append("instruction[id]", this.state.id);
-    this.props.updateInstruction(formData);
+    let url = `/editcodeable/${this.state.project_id}/edit`;
+    this.props.updateInstruction(formData).then( () => {
+      hashHistory.push(url);
+    });
   }
 
   handleDelete(e) {
-    e.preventDefault();
-    let url = `/editcodeable/${this.state.project_id}/edit`;
-    this.props.deleteInstruction(this.state.id).then( () => {
-      hashHistory.push(url);
-    });
+    this.setState({modalOpen: true});
+  }
+
+  handleResponse(response) {
+    if (response === 'confirm') {
+      let url = `/editcodeable/${this.state.project_id}/edit`;
+      this.props.deleteInstruction(this.state.id).then( () => {
+        hashHistory.push(url);
+      });
+    } else {
+      this.setState({modalOpen: false});
+    }
   }
 
   render () {
@@ -88,6 +106,17 @@ class StepEdit extends React.Component {
 
 
     return (
+    <div>
+      <Modal
+        isOpen={this.state.modalOpen}
+        contentLabel="Modal"
+        id="Modal"
+        style={ModalStyle}
+        onRequestClose={(response) => this.handleResponse(response)}
+        >
+        <ResponseModal
+        handleResponse={this.handleResponse}/>
+      </Modal>
         <div className='update-outer'>
           <form onSubmit={this.handleSubmit} className='update-inner'>
             <section className="save">
@@ -108,7 +137,9 @@ class StepEdit extends React.Component {
             </div>
           </form>
           <button onClick={this.handleDelete}>Delete!</button>
+
         </div>
+      </div>
     );
   }
 }

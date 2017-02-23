@@ -59,7 +59,6 @@ class ProjectForm extends React.Component {
         isOpen={this.state.modalOpen}
         contentLabel="Modal"
         id="Modal"
-        // onSubmit={this.onModalClose}
         style={ModalStyle}
         >
       <NewProject action={this.props.action}
