@@ -13,7 +13,7 @@ class Api::ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.includes(:instructions).find(params[:id])
+    @project = Project.includes(:instructions, :comments).find(params[:id])
   end
 
   def index

@@ -4,7 +4,10 @@ import { hashHistory } from 'react-router';
 class ProjectDetail extends React.Component {
   constructor(props) {
     super(props);
+    this.state = { body: "" };
     this.goToEdit = this.goToEdit.bind(this);
+    this.createComment = this.createComment.bind(this);
+    this.updateField = this.updateField.bind(this);
   }
 
   componentDidMount() {
@@ -26,8 +29,22 @@ class ProjectDetail extends React.Component {
     hashHistory.push(url);
   }
 
+  createComment() {
+    this.props.createComment({ body: this.state.body, project_id: this.props.params.id });
+    // this.props.createComment(this.state)
+  }
+
+  updateField(field) {
+    return (e) => {
+      e.preventDefault();
+      this.setState({ [field]: e.target.value });
+    };
+  }
+
+
 
   render () {
+
     if (this.props.project === undefined) return null;
     let instructions = this.props.project.instructions;
     if (instructions) {
@@ -51,6 +68,19 @@ class ProjectDetail extends React.Component {
         );
       });
     }
+
+    let comments = this.props.project.comments;
+      if (comments) {
+        comments = this.props.project.comments.map( (comment) => {
+          return (
+            <div className="comment-container">
+              <h4 className="comment-author">{comment.author}</h4>
+              <h3 className="comment-body">{comment.body}</h3>
+            </div>
+          );
+        });
+      }
+
     return (
       <div className="show-outer">
         <div className="show-inner">
@@ -72,6 +102,12 @@ class ProjectDetail extends React.Component {
             </div>
             <pre className="show-description">{this.props.project.description}</pre>
             {instructions}
+            <form className= "comment-outer" onSubmit={this.createComment}>
+              <textarea name="name" onChange={this.updateField('body')}>
+              </textarea>
+              <input type="Submit" defaultValue='Post Comment'/>
+            </form>
+            {comments}
           </section>
         </div>
       </div>

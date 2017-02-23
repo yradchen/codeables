@@ -4,7 +4,7 @@
 #
 #  id                 :integer          not null, primary key
 #  step_title         :string           not null
-#  step_detail        :string           not null
+#  step_detail        :string
 #  project_id         :integer          not null
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
