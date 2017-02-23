@@ -25,6 +25,11 @@ export const fetchProjects = () => dispatch => (
     projects => dispatch(receiveAllProjects(projects))
   )
 );
+export const fetchSpecificProjects = (search) => dispatch => (
+  ProjectAPIUtil.fetchSpecificProjects(search).then(
+    projects => dispatch(receiveAllProjects(projects))
+  )
+);
 
 export const fetchProject = (id) => dispatch => (
   ProjectAPIUtil.fetchProject(id).then(

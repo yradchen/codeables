@@ -12,6 +12,8 @@ import ProjectFormContainer from './projects2/project_form_container';
 import StepFormContainer from './steps/step_form_container';
 import StepEditContainer from './steps/step_edit_container';
 import { fetchProject } from '../actions/project_actions';
+
+import SearchContainer from './search/search_container'
 // import { fetchProject } from '../util/project_api_util';
 
 const _ensureLoggedIn = (nextState, replace) => {
@@ -57,15 +59,12 @@ const Root = ({ store }) => {
       <Router history={ hashHistory }>
         <Route component={ App } >
           <Route path="/editcodeable/new" component={ ProjectFormContainer} />
-
-
-            <Route path="/editcodeable/:projectId/edit" component={ ProjectEditContainer} />
-            <Route path="/editcodeable/:projectId/edit/project" component={ StepFormContainer }/>
-            <Route path="/editcodeable/:projectId/edit/step/:id" component={ StepEditContainer } />
-
-
+          <Route path="/editcodeable/:projectId/edit" component={ ProjectEditContainer} />
+          <Route path="/editcodeable/:projectId/edit/project" component={ StepFormContainer }/>
+          <Route path="/editcodeable/:projectId/edit/step/:id" component={ StepEditContainer } />
           <Route path="/projects/:id" component= {ProjectDetailContainer} />
           <Route path="/" component={ Homepage } />
+          <Route path="/search" component={ SearchContainer } />
             <Route onEnter={_redirectIfLoggedIn } >
               <Route path="/account/login" component={ LoginFormContainer } />
               <Route path="/account/register" component={ SignUpFormContainer } />

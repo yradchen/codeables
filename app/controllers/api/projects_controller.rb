@@ -17,7 +17,12 @@ class Api::ProjectsController < ApplicationController
   end
 
   def index
-    @projects = Project.includes(:user).all
+    #how to do question mark to ensure it's safe.
+    if params[:project]
+      @projects = Project.includes(:user).where("title LIKE '%#{project_params[:title]}%'")
+    else
+      @projects = Project.includes(:user).all
+    end
   end
 
   def update

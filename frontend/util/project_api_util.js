@@ -12,6 +12,14 @@ export const fetchProjects = () => {
   });
 };
 
+export const fetchSpecificProjects = (title) => {
+  return $.ajax({
+    method: 'GET',
+    url: `api/projects/`,
+    data: { project: { title } }
+  });
+};
+
 export const deleteProject = (id) => {
   return $.ajax({
     method: 'DELETE',
