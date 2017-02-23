@@ -15,10 +15,12 @@
 #
 
 class Project < ApplicationRecord
-  validates :title, :user, presence: true
+  validates :title, :user, presence: true, length: { maximum: 80 }
   validates :description, presence: true, on: :update
 
-  has_attached_file :cover_img, default_url: ""
+  has_attached_file :cover_img, default_url: "coding-is-fun.jpg"
+  # :default_url => "/assets/:style/missing_avatar.jpg"
+  # codingIsFun: '<%= asset_path("coding-is-fun.jpg") %>'
   # has_attached_file :cover_img
   validates_attachment_content_type :cover_img, content_type: /\Aimage\/.*\z/
   # validates_attachment_presence :cover_img

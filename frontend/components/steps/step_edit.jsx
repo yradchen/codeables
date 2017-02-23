@@ -118,9 +118,10 @@ class StepEdit extends React.Component {
         handleResponse={this.handleResponse}/>
       </Modal>
         <div className='update-outer'>
-          <form onSubmit={this.handleSubmit} className='update-inner'>
+        <div className="update-inner">
+          <form onSubmit={this.handleSubmit} >
             <section className="save">
-              <input type="Submit" defaultValue="save"/>
+              <input className='save-button' type="Submit" defaultValue="Click to Save File"/>
             </section>
             <div className="project-inner">
               <section className='update-file'>
@@ -136,8 +137,8 @@ class StepEdit extends React.Component {
                 <textarea className="description" name="name"onChange={this.updateField('step_detail')} value={detail}></textarea>
             </div>
           </form>
-          <button onClick={this.handleDelete}>Delete!</button>
-
+          <button id="step-delete" className="delete-button" onClick={this.handleDelete}>DELETE</button>
+          </div>
         </div>
       </div>
     );

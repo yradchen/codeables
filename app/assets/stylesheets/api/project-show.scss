@@ -91,3 +91,18 @@
 .show-logo {
   max-height: 40px;
 }
+
+.edit-button {
+  border: 1px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+  background-color: #e86c00;
+  border-color: #cf6000;
+  color: #fff;
+  margin-left: 5px;
+  padding: 7px 15px;
+}

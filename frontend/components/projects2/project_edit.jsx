@@ -35,6 +35,7 @@ class ProjectEditPage extends React.Component {
     formData.append("instruction[project_id]", project_id);
     this.props.createInstruction(formData);
   }
+
   handleDelete(e) {
     this.setState({modalOpen: true});
   }
@@ -48,6 +49,7 @@ class ProjectEditPage extends React.Component {
       this.setState({modalOpen: false});
     }
   }
+
 
 
   render() {
@@ -64,6 +66,7 @@ class ProjectEditPage extends React.Component {
       );
     });
 
+
     return (
       <div>
         <Modal
@@ -79,11 +82,14 @@ class ProjectEditPage extends React.Component {
         <div className="edit-view-outer">
           <div className="edit-view-inner">
             <section className="edit-view-top">
-              <p>Publish BUTTON PLACEHOLDER</p>
-              <div className="edit-view-welcome">
+              <div className="owner-info">
+                <h1>{this.props.project.title}</h1>
+                <span className="all">
+                <p className="by">by</p>
+                <p className="show-owner">{this.props.project.owner}</p>
+                </span>
               </div>
-              <div className="edit-view-publish">
-              </div>
+              <button className="delete-button" onClick={this.handleDelete}>Delete!</button>
             </section>
             <section className="edit-view-bottom">
               <div className="edit-view-ind">
@@ -98,7 +104,7 @@ class ProjectEditPage extends React.Component {
                 <button onClick={this.addInstruction} className="add-step">Add Step</button>
               </div>
             </section>
-            <button onClick={this.handleDelete}>Delete!</button>
+
           </div>
         </div>
       </div>

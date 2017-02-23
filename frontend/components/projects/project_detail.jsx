@@ -1,14 +1,34 @@
 import React from 'react';
-
+import { hashHistory } from 'react-router';
 
 class ProjectDetail extends React.Component {
+  constructor(props) {
+    super(props);
+    this.goToEdit = this.goToEdit.bind(this);
+  }
 
   componentDidMount() {
     this.props.fetchProject(this.props.params.id);
   }
-  
+
+  renderEdit() {
+    if (!window.currentUser) return <p className="hidden"></p>;
+    if (this.props.project.owner === currentUser.username) {
+      return <button className="edit-button" onClick={this.goToEdit}>Edit</button>;
+    } else {
+      return <p className="hidden"></p>;
+    }
+  }
+
+  goToEdit() {
+    // "/editcodeable/:projectId/edit/project"
+    const url = `/editcodeable/${this.props.project.id}/edit/`;
+    hashHistory.push(url);
+  }
+
 
   render () {
+
     if (this.props.project === undefined) return null;
     let instructions = this.props.project.instructions;
     if (instructions) {
@@ -29,7 +49,6 @@ class ProjectDetail extends React.Component {
       });
     }
 
-
     return (
       <div className="show-outer">
         <div className="show-inner">
@@ -39,8 +58,10 @@ class ProjectDetail extends React.Component {
               <span className="all">
               <p className="by">by</p>
               <p className="show-owner">{this.props.project.owner}</p>
+              {this.renderEdit()}
               </span>
             </div>
+
             <img src={images.logo} alt="logo" className="show-logo"/>
           </header>
           <section className="show-bottom">
