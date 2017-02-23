@@ -41,14 +41,13 @@ class ProjectDetail extends React.Component {
         <div key={instruction.id}>
           <h2 className="show-instruction-title">{instruction.step_title}</h2>
           <div className={showImg}>
-            <img className={"show-img"} src={instruction.media}/>
+            <img className="show-img" src={instruction.media}/>
           </div>
           <pre className="show-description">{instruction.step_detail}</pre>
         </div>
         );
       });
     }
-
     return (
       <div className="show-outer">
         <div className="show-inner">

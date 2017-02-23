@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router';
 
 const ProjectIndexItem = ({ project }) => {
-
   return (
     <li className="outer-project-container">
       <img className="project-image" src={project.cover_img} />
