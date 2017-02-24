@@ -2,19 +2,18 @@ Instruction.delete_all
 Project.delete_all
 Comment.delete_all
 User.delete_all
+#
 
-User.create!([
-  {username: "Guest", password: "wizardhat1", email: "guest@guestlogin.fake"},
-  {username: "Guest2", password: 'wizardhat2', email: "guest@guestlogin.fake2"},
-  {username: "Daniel", password: 'Ilovealerts', email: "none@none.net"},
-  {username: "Mr. Colson", password: 'Ilovealerts2', email: "none2@none.net"}
-])
+guest = User.create!({username: "someone", password: "wizardhat1", email: "some@guestlogin.fake"})
+guest = User.create!({username: "aguest", password: 'wizardhat2', email: "something@gues23tlogin.fake2"})
+dan = User.create({username: "daniel", password: 'Ilovealerts', email: "nothing@none.net"})
+colson = User.create({username: "Mr. colson", password: 'Ilovealerts2', email: "what@n3one.net"})
 
 Project.create!([
-  {title: "How to make an alert", description: "The following will guide you in making one of the most misunderstood, underrated, and useful HTML tools. Alerts!", user_id: 15, cover_img_file_name: "Quality-alert-symbol.gif", cover_img_content_type: "image/gif", cover_img_file_size: 30047, cover_img_updated_at: "2017-02-24 04:20:10"},
-  {title: "Sorting", description: "Get ready to sort.\r\n\r\nUse the following to write quick sort, bubble sort, and merge sort!", user_id: 18, cover_img_file_name: "meta-box-sorting.jpg", cover_img_content_type: "image/jpeg", cover_img_file_size: 10544, cover_img_updated_at: "2017-02-24 05:10:55"},
-  {title: "Loops in ruby!", description: "Learn all about while loops!", user_id: 15, cover_img_file_name: "LoopmasterLoops.png", cover_img_content_type: "image/png", cover_img_file_size: 53822, cover_img_updated_at: "2017-02-24 05:18:55"},
-  {title: "Javascript loops!", description: "We can use JavaScript loops to run a task repetitively. For example, if we have an array that holds a series of user input and if we are looking for a specific user input, then we can run in a loop and keep iterating until we find an input that matches the specific input.\r\n\r\nConceptually, a loop depends upon a specified condition to determine whether to continue further or to terminate/stop; the condition can be a simple variable or an expression. Typically, a loop would periodically check if the condition is still true and will run as long as it remains true.\r\n\r\nNeedless to say, for the above scheme to work, the loop variable or the loop expression that form the condition, must also change as the loop progresses. If they do not, then the loop would continue to run forever -- imagine running in a circle, forever! We can articulate the scheme of condition check into three stages: loop-initialization (where the loop variable or the expression is initialized), loop-increment (where the loop variable or the expression is changed), and loop-condition (where we check if the condition is still true).\r\n\r\nJavaScript provides four different looping constructs: (1) while loop (2) do-while loop, (3) for loop, and (4) for/in loop. A while loop runs as long as the specified condition (\"loop-condition\") is true. During each round, we would (typically) also update the loop-condition so that the loop can terminate after some time. The do-while variant also has a similar format, except that the while sits at the very end of the loop block; we should remember to put a semicolon at the end of the while!. The next variant is the \"for\" loop. This variant cleanly tucks all the three tasks of looping in the beginning expression itself: loop-initialization, loop-increment, and loop-condition. The last variant, the \"for/in\" method traverses enumerable properties of objects.\r\n\r\nSince this module focuses on jQuery, we should mention that in addition to these native JavaScript loops, jQuery provides two of its own looping constructs. First, it has a .each() method that we can use to iterate over each elements of the returned list. Second, it also provides a static method, $.each() that can iterate over any generic objects -- jQuery based or even native JavaScript based. We will revisit both of these jQuery-specific methods when we talk about jQuery lists.\r\n\r\nLet us return back to our JavaScript loop overview and write a simple example that uses these four looping constructs (while, do-while, for, and for/in) to go over each element of an array, arrNobel.\r\n\r\n", user_id: 15, cover_img_file_name: "precious-loops.jpg", cover_img_content_type: "image/jpeg", cover_img_file_size: 126550, cover_img_updated_at: "2017-02-24 14:58:02"}
+  {title: "How to make an alert", description: "The following will guide you in making one of the most misunderstood, underrated, and useful HTML tools. Alerts!", user_id: guest2.id, cover_img_file_name: "Quality-alert-symbol.gif", cover_img_content_type: "image/gif", cover_img_file_size: 30047, cover_img_updated_at: "2017-02-24 04:20:10"},
+  {title: "Sorting", description: "Get ready to sort.\r\n\r\nUse the following to write quick sort, bubble sort, and merge sort!", user_id: guest.id, cover_img_file_name: "meta-box-sorting.jpg", cover_img_content_type: "image/jpeg", cover_img_file_size: 10544, cover_img_updated_at: "2017-02-24 05:10:55"},
+  {title: "Loops in ruby!", description: "Learn all about while loops!", user_id: guest.id, cover_img_file_name: "LoopmasterLoops.png", cover_img_content_type: "image/png", cover_img_file_size: 53822, cover_img_updated_at: "2017-02-24 05:18:55"},
+  {title: "Javascript loops!", description: "We can use JavaScript loops to run a task repetitively. For example, if we have an array that holds a series of user input and if we are looking for a specific user input, then we can run in a loop and keep iterating until we find an input that matches the specific input.\r\n\r\nConceptually, a loop depends upon a specified condition to determine whether to continue further or to terminate/stop; the condition can be a simple variable or an expression. Typically, a loop would periodically check if the condition is still true and will run as long as it remains true.\r\n\r\nNeedless to say, for the above scheme to work, the loop variable or the loop expression that form the condition, must also change as the loop progresses. If they do not, then the loop would continue to run forever -- imagine running in a circle, forever! We can articulate the scheme of condition check into three stages: loop-initialization (where the loop variable or the expression is initialized), loop-increment (where the loop variable or the expression is changed), and loop-condition (where we check if the condition is still true).\r\n\r\nJavaScript provides four different looping constructs: (1) while loop (2) do-while loop, (3) for loop, and (4) for/in loop. A while loop runs as long as the specified condition (\"loop-condition\") is true. During each round, we would (typically) also update the loop-condition so that the loop can terminate after some time. The do-while variant also has a similar format, except that the while sits at the very end of the loop block; we should remember to put a semicolon at the end of the while!. The next variant is the \"for\" loop. This variant cleanly tucks all the three tasks of looping in the beginning expression itself: loop-initialization, loop-increment, and loop-condition. The last variant, the \"for/in\" method traverses enumerable properties of objects.\r\n\r\nSince this module focuses on jQuery, we should mention that in addition to these native JavaScript loops, jQuery provides two of its own looping constructs. First, it has a .each() method that we can use to iterate over each elements of the returned list. Second, it also provides a static method, $.each() that can iterate over any generic objects -- jQuery based or even native JavaScript based. We will revisit both of these jQuery-specific methods when we talk about jQuery lists.\r\n\r\nLet us return back to our JavaScript loop overview and write a simple example that uses these four looping constructs (while, do-while, for, and for/in) to go over each element of an array, arrNobel.\r\n\r\n", user_id: guest.id, cover_img_file_name: "precious-loops.jpg", cover_img_content_type: "image/jpeg", cover_img_file_size: 126550, cover_img_updated_at: "2017-02-24 14:58:02"}
 ])
 
 
@@ -33,12 +32,7 @@ Instruction.create!([
 
 
 
-Comment.create!([
-  {user_id: 14, project_id: 80, body: "first comment"},
-  {user_id: 14, project_id: 80, body: "second comment"},
-  {user_id: 14, project_id: 79, body: "comment for project 79"},
-  {user_id: 13, project_id: 79, body: "comment for project 79"},
-  {user_id: 13, project_id: 79, body: "comment for project 79"},
-  {user_id: 17, project_id: 90, body: "Wow, this is a great guide! I wish more people used alerts!"},
-  {user_id: 18, project_id: 90, body: "↑ this guy gets it."}
-])
+# Comment.create!([
+#   {user_id: dan.id, project_id: 90, body: "Wow, this is a great guide! I wish more people used alerts!"},
+#   {user_id: colson.id, project_id: 90, body: "↑ this guy gets it."}
+# ])
