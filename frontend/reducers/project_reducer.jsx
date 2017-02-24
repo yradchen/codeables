@@ -29,7 +29,7 @@ const ProjectReducer = (state = _projects, action) => {
       return newState;
     case RECEIVE_INSTRUCTION:
       newState = merge({}, state);
-      let project = state[action.instruction.project_id];
+      let project = newState[action.instruction.project_id];
       project.instructions[action.instruction.id] = action.instruction;
       return newState;
     case REMOVE_INSTRUCTION:
