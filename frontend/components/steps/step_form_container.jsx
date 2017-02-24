@@ -4,9 +4,11 @@ import Stepform from './step_form';
 
 const mapStateToProps = (state, ownProps) => {
 
-  let project = { title:'', description:'', cover_img: '', imageUrl: '' };
+  let project = { title:'', description:'', cover_img: '', imageUrl: '', owner: '' };
   if (ownProps.params.projectId) {
-    project = state.projects[parseInt(ownProps.params.projectId)];
+    if (state.projects[parseInt(ownProps.params.projectId)]); {
+      project = state.projects[parseInt(ownProps.params.projectId)];
+    }
   }
   return { project };
 };

@@ -12,6 +12,11 @@ json.instructions do
   end
 end
 
+if @project.instructions.length == 0
+  # json.instructions do
+  json.instructions({})
+end
+
 json.comments do
   @project.comments.each do |comment|
     json.set! comment.id do

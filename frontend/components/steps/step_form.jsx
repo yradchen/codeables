@@ -12,16 +12,13 @@ class StepForm extends React.Component {
 
   componentDidMount() {
     const id = parseInt(this.props.params.projectId);
-    this.props.fetchProject(id).then( () => {
-      if (this.props.project.owner !== currentUser.username) {
+    this.props.fetchProject(id).then( (action) => {
+      if (action.project.owner !== currentUser.username) {
         hashHistory.push("/");
       } else {
-      this.setState(this.props.project);
+      this.setState(action.project);
       }
     });
-    if (this.state.description === null) {
-      this.setState({ description: ""});
-    }
   }
 
   componentWillReceiveProps(nextProps) {
