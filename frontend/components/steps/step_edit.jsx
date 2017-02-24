@@ -30,7 +30,6 @@ class StepEdit extends React.Component {
   }
   //
   componentWillReceiveProps(nextProps) {
-
     if (this.state.project_id !== parseInt(nextProps.params.projectId)) {
       const projectId = parseInt(nextProps.params.projectId);
       if (!nextProps.project) {
@@ -38,10 +37,13 @@ class StepEdit extends React.Component {
           this.setState(this.props.instruction);
         });
       }
-    } else if (this.props.instruction.id !== nextProps.instruction.id){
+    } else if (nextProps.instrcution) {
+      if (this.props.instruction.id !== nextProps.instruction.id) {
 
-      this.setState(nextProps.instruction);
+        this.setState(nextProps.instruction);
+      }
     }
+
   }
 
 
