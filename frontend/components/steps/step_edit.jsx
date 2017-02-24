@@ -30,6 +30,7 @@ class StepEdit extends React.Component {
   }
   //
   componentWillReceiveProps(nextProps) {
+
     if (this.state.project_id !== parseInt(nextProps.params.projectId)) {
       const projectId = parseInt(nextProps.params.projectId);
       if (!nextProps.project) {
@@ -38,6 +39,7 @@ class StepEdit extends React.Component {
         });
       }
     } else if (this.props.instruction.id !== nextProps.instruction.id){
+      
       this.setState(nextProps.instruction);
     }
   }
@@ -99,12 +101,13 @@ class StepEdit extends React.Component {
     if (this.state.step_detail === null) {
       detail = "";
     }
-    let imageTouse;
+    let imageToUse = <img src={images.rightPointer} className="edit-img opacity"/>;
     if (this.state.imageUrl === undefined) {
       imageToUse = <img src={images.rightPointer} className="edit-img opacity"/>;
-    } else {
-      imageToUse = <img src={this.state.imageUrl} className="edit-img"/>;
     }
+    // } else {
+    //   imageToUse = <img src={this.state.imageUrl} className="edit-img"/>;
+    // }
 
 
     return (
@@ -127,7 +130,7 @@ class StepEdit extends React.Component {
             </section>
             <div className="project-inner">
               <section className='update-file'>
-                <img src={imageToUse} className="edit-img"/>
+                {imageToUse}
 
                 <div className="file-overlay" >
                 <p className="add-file-overlay">Click to Add File</p>

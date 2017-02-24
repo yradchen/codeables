@@ -9,7 +9,7 @@ const mapStateToProps = (state, ownProps) => {
   const arrayIndex = parseInt(ownProps.params.id);
 
   if (project) {
-  
+
     let instructionKeys = Object.keys(state.projects[ownProps.params.projectId].instructions);
     instruction = project.instructions[instructionKeys[ownProps.params.id]];
   }

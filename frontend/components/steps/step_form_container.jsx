@@ -3,7 +3,7 @@ import { createProject, updateProject, fetchProject } from '../../actions/projec
 import Stepform from './step_form';
 
 const mapStateToProps = (state, ownProps) => {
-  debugger
+
   let project = { title:'', description:'', cover_img: '', imageUrl: '' };
   if (ownProps.params.projectId) {
     project = state.projects[parseInt(ownProps.params.projectId)];
