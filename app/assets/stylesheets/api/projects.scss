@@ -25,7 +25,11 @@
 .project-image {
   cursor: pointer;
   height: 270px;
-  width: 324px
+  width: 322.5px;
+  border-left: 0px solid rgba(0, 0, 0, 0.1);
+  border-right: 0px solid rgba(0, 0, 0, 0.1);
+  border-top: 0px solid rgba(0, 0, 0, 0.1);
+  // box-shadow: 0 1px 0px rgba(0, 0, 0, 0.15);
 }
 
 .inner-project-container {
