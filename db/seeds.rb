@@ -1,8 +1,8 @@
-# Instruction.delete_all
-# Project.delete_all
-# Comment.delete_all
-# User.delete_all
-# #
+Instruction.delete_all
+Project.delete_all
+Comment.delete_all
+User.delete_all
+#
 
 guest = User.create!({username: "someone", password: "wizardhat1", email: "some@guestlogin.fake"})
 guest2 = User.create!({username: "John Smith", password: 'wizardhat2', email: "something@gu22es23tlogin.fake2"})
