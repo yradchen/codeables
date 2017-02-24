@@ -56,7 +56,7 @@ const Root = ({ store }) => {
 
   return (
     <Provider store={store}>
-      <Router history={ hashHistory }>
+      <Router onUpdate={() => window.scrollTo(0, 0)} history={ hashHistory }>
         <Route component={ App } >
           <Route onEnter={_ensureLoggedIn} >
             <Route path="/editcodeable/new" component={ ProjectFormContainer} />
