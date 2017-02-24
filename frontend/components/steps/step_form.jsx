@@ -19,6 +19,9 @@ class StepForm extends React.Component {
       this.setState(this.props.project);
       }
     });
+    if (this.state.description === null) {
+      this.setState({ description: ""});
+    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -55,9 +58,12 @@ class StepForm extends React.Component {
     e.preventDefault();
     let formData = new FormData();
     formData.append("project[cover_img]", this.state.cover_img);
-    debugger
     formData.append("project[title]", this.state.title);
-    formData.append("project[description]", this.state.description);
+    let description = this.state.description;
+    if (description === null) {
+      description = " ";
+    }
+    formData.append("project[description]", description);
     formData.append("project[id]", this.props.project.id);
     let url = `/editcodeable/${this.state.id}/edit`;
     this.props.updateProject(formData).then( () => {

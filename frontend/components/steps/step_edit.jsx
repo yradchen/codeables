@@ -97,7 +97,7 @@ class StepEdit extends React.Component {
 
   render () {
     if (this.props.instruction === undefined) return null;
-    let detail;
+    let detail = this.state.step_detail;
     if (this.state.step_detail === null) {
       detail = "";
     }

@@ -12,6 +12,7 @@ class ProjectDetail extends React.Component {
   }
 
   componentDidMount() {
+
     this.props.fetchProject(this.props.params.id);
   }
 
@@ -60,9 +61,6 @@ class ProjectDetail extends React.Component {
       return <p className="hidden"></p>;
     }
   }
-
-
-
 
   render () {
 

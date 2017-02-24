@@ -16,7 +16,7 @@
 
 class Project < ApplicationRecord
   validates :title, :user, presence: true, length: { maximum: 80 }
-  validates :description, presence: true, on: :update
+  # validates :description, presence: true, on: :update
 
   has_many :comments
   has_attached_file :cover_img, default_url: "coding-is-fun.jpg"

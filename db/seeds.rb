@@ -11,13 +11,13 @@ Instruction.delete_all
 guest = User.create!(username: 'Guest', password: 'wizardhat1', email: 'guest@guestlogin.fake')
 
 guest2 = User.create!(username: 'Guest2', password: 'wizardhat1', email: 'guest@guestlogin.fake2')
-
-project1 = Project.create!(title: "first project", user_id: guest.id)
-project2 = Project.create!(title: "second project", user_id: guest.id)
-
-project3 = Project.create!(title: "third project", user_id: guest2.id)
-
-Instruction.create(step_title: "Step one:", step_detail: "write a detail", project_id: project1.id)
-Instruction.create(step_title: "Step two:", step_detail: "hit create", project_id: project1.id)
-
-Instruction.create(step_title: "Step one: user 2", step_detail: "user 2 detail", project_id: project2.id)
+#
+# project1 = Project.create!(title: "first project", user_id: guest.id)
+# project2 = Project.create!(title: "second project", user_id: guest.id)
+#
+# project3 = Project.create!(title: "third project", user_id: guest2.id)
+#
+# Instruction.create(step_title: "Step one:", step_detail: "write a detail", project_id: project1.id)
+# Instruction.create(step_title: "Step two:", step_detail: "hit create", project_id: project1.id)
+#
+# Instruction.create(step_title: "Step one: user 2", step_detail: "user 2 detail", project_id: project2.id)
