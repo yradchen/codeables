@@ -4,7 +4,7 @@ Comment.delete_all
 User.delete_all
 #
 
-guest = User.create!({username: "someone", password: "wizardhat1", email: "some@guestlogin.fake"})
+guest = User.create!({username: "Guest", password: "wizardhat1", email: "some@guestlogin.fake"})
 guest2 = User.create!({username: "John Smith", password: 'wizardhat2', email: "something@gu22es23tlogin.fake2"})
 dan = User.create({username: "Daniel", password: 'Ilovealerts', email: "nothing@none.net"})
 colson = User.create({username: "Mr. Colson", password: 'Ilovealerts2', email: "w2hat@n3one.net"})
