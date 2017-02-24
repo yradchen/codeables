@@ -4,10 +4,10 @@ Comment.delete_all
 User.delete_all
 
 User.create!([
-  {username: "Guest", password_digest: "$2a$10$YJnB0zjg82w.4FOud9yIM.39Bpl0cWdbtuB17FT7QceesUln6rqj6", session_token: "yTg5A6AjL8mmYtR6xDBJVA", email: "guest@guestlogin.fake"},
-  {username: "Guest2", password_digest: "$2a$10$.CdFQXYH..4bJckDHSsEauXjuMXjAE5KTARw9Q4z9LaJcGYfFoDYW", session_token: "O64MP2JH52az9dYrT3mNJQ", email: "guest@guestlogin.fake2"},
-  {username: "Daniel", password_digest: "$2a$10$FImwfk6.2n/FAJS2Pi5Xx.4YyHl.Ksms1XMUvMTnFYNd.HouFJHuu", session_token: "-FSOdaEl0efs97PPwfecCw", email: "none@none.net"},
-  {username: "Mr. Colson", password_digest: "$2a$10$aCDjskTLDWpr0Rpp0X4SbetmfJ42tDVT1zBnAChB9dE3yiDU0deA.", session_token: "6cuJpV1sG_glYikps29eHQ", email: "none2@none.net"}
+  {username: "Guest", password: "wizardhat1", email: "guest@guestlogin.fake"},
+  {username: "Guest2", password: 'wizardhat2', email: "guest@guestlogin.fake2"},
+  {username: "Daniel", password: 'Ilovealerts', email: "none@none.net"},
+  {username: "Mr. Colson", password: 'Ilovealerts2', email: "none2@none.net"}
 ])
 
 Project.create!([
