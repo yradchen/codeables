@@ -7,8 +7,10 @@ const mapStateToProps = (state, ownProps) => {
   let instruction = { step_title:'', step_detail:'', media: '', mediaUrl: '', project_id: '', id: '' };
   const project = state.projects[parseInt(ownProps.params.projectId)];
   const arrayIndex = parseInt(ownProps.params.id);
+
   if (project) {
-    instruction = project.instructions[arrayIndex];
+    let instructionKeys = Object.keys(state.projects[ownProps.params.projectId].instructions);
+    instruction = project.instructions[instructionKeys[ownProps.params.id]];
   }
   return { instruction, project };
 };

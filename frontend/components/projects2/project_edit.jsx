@@ -27,7 +27,7 @@ class ProjectEditPage extends React.Component {
 
   addInstruction(e) {
     e.preventDefault();
-    const stepNumber = this.props.project.instructions.length + 1;
+    const stepNumber = this.props.instructions.length + 1;
     let step_title = `Step ${stepNumber}:`;
     let formData = new FormData();
     let project_id = this.props.params.projectId;
@@ -55,7 +55,7 @@ class ProjectEditPage extends React.Component {
   render() {
     if (this.props.project === undefined) return null;
 
-    const instructions = this.props.project.instructions.map( (instruction, index) => {
+    const instructions = this.props.instructions.map( (instruction, index) => {
       let img = <img src={instruction.media} className="edit-img"/>;
       if (instruction.media === "") {
         img = <img src={images.rightPointer} className="edit-img opacity"/>;

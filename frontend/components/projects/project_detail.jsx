@@ -67,43 +67,43 @@ class ProjectDetail extends React.Component {
   render () {
 
     if (this.props.project === undefined) return null;
-    let instructions = this.props.project.instructions;
-    if (instructions) {
-      instructions = this.props.project.instructions.map( (instruction) => {
-        let showImg = 'show-img-container';
-        if (instruction.media === "") {
-          showImg = 'show-img-container hidden';
-        }
-        let text = instruction.step_detail;
-        if (text === "null") {
-          text = " ";
-        }
-        return (
-        <div key={instruction.id}>
-          <h2 className="show-instruction-title">{instruction.step_title}</h2>
-          <div className={showImg}>
-            <img className="show-img" src={instruction.media}/>
-          </div>
-          <pre className="show-description">{text}</pre>
+    let instructions = this.props.instructions;
+
+    instructions = this.props.instructions.map( (instruction) => {
+      let showImg = 'show-img-container';
+      if (instruction.media === "") {
+        showImg = 'show-img-container hidden';
+      }
+      let text = instruction.step_detail;
+      if (text === "null") {
+        text = " ";
+      }
+      return (
+      <div key={instruction.id}>
+        <h2 className="show-instruction-title">{instruction.step_title}</h2>
+        <div className={showImg}>
+          <img className="show-img" src={instruction.media}/>
         </div>
-        );
-      });
-    }
+        <pre className="show-description">{text}</pre>
+      </div>
+      );
+    });
+
 
     let comments = this.props.comments;
-      if (comments) {
-        comments = comments.map( (comment) => {
-          return (
-            <div className="comment-container" key={comment.id}>
-              <h4 className="comment-author">{comment.author}</h4>
-              <h3 className="comment-body">{comment.body}</h3>
-              <div className="comment-delete-container">
-              {this.renderDeleteComment(comment)}
-              </div>
-            </div>
-          );
-        });
-      }
+
+    comments = comments.map( (comment) => {
+      return (
+        <div className="comment-container" key={comment.id}>
+          <h4 className="comment-author">{comment.author}</h4>
+          <h3 className="comment-body">{comment.body}</h3>
+          <div className="comment-delete-container">
+          {this.renderDeleteComment(comment)}
+          </div>
+        </div>
+      );
+    });
+
 
     return (
       <div className="show-outer">

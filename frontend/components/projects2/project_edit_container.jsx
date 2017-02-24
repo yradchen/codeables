@@ -5,11 +5,24 @@ import ProjectEditPage from './project_edit';
 
 const mapStateToProps = (state, ownProps) => {
   let project = { title:'', description:'', instructions: [] };
+  let instructions = [];
   if (ownProps.params.projectId) {
     project = state.projects[parseInt(ownProps.params.projectId)];
+
+    if (project) {
+      instructions = Object.keys(state.projects[ownProps.params.projectId].instructions);
+      instructions = instructions.map(id => state.projects[ownProps.params.projectId].instructions[id]);
+    }
+      // state.projects[ownProps.params.projectId].instructions) {
+    //   
+    //   instructions = Object.keys(state.projects[ownProps.params.projectId].instructions);
+    //   instructions = instructions.map(id => state.projects[ownProps.params.projectId].instructions[id]);
+    // }
   }
-  return { project };
+
+  return { project, instructions };
 };
+
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   let action = createProject;

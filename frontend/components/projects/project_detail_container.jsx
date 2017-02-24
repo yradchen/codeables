@@ -4,17 +4,24 @@ import ProjectDetail from './project_detail';
 import { createComment, deleteComment } from '../../actions/comment_actions';
 
 const mapStateToProps = (state, ownProps) => {
-  let comments;
+  let comments = [];
+  let instructions = [];
+
     // projects: Object.keys(state.projects).map(id => state.projects[id])
   if (state.projects[ownProps.params.id]) {
     if (state.projects[ownProps.params.id].comments) {
       comments = Object.keys(state.projects[ownProps.params.id].comments);
       comments = comments.map(id => state.projects[ownProps.params.id].comments[id]);
     }
+    if (state.projects[ownProps.params.id].instructions) {
+      instructions = Object.keys(state.projects[ownProps.params.id].instructions);
+      instructions = instructions.map(id => state.projects[ownProps.params.id].instructions[id]);
+    }
   }
   return  {
     project: state.projects[ownProps.params.id],
-    comments
+    comments,
+    instructions
   };
 };
 
