@@ -8,6 +8,7 @@ class ProjectDetail extends React.Component {
     this.goToEdit = this.goToEdit.bind(this);
     this.createComment = this.createComment.bind(this);
     this.updateField = this.updateField.bind(this);
+    this.deleteComment = this.deleteComment.bind(this);
   }
 
   componentDidMount() {
@@ -29,9 +30,10 @@ class ProjectDetail extends React.Component {
     hashHistory.push(url);
   }
 
-  createComment() {
+  createComment(e) {
+    e.preventDefault();
     this.props.createComment({ body: this.state.body, project_id: this.props.params.id });
-    // this.props.createComment(this.state)
+    this.setState({ body: "" });
   }
 
   updateField(field) {
@@ -40,6 +42,25 @@ class ProjectDetail extends React.Component {
       this.setState({ [field]: e.target.value });
     };
   }
+
+  deleteComment(comment) {
+    return (e) => {
+      e.preventDefault();
+      this.props.deleteComment(comment.id);
+    };
+    // this.props.fetchProject(this.props.params.id);
+  }
+
+  renderDeleteComment(comment) {
+    if (!window.currentUser) return <p className="hidden"></p>;
+    if (comment.author === currentUser.username) {
+      return <button className="delete-comment"
+      onClick={this.deleteComment(comment)}>[delete]</button>;
+    } else {
+      return <p className="hidden"></p>;
+    }
+  }
+
 
 
 
@@ -69,13 +90,16 @@ class ProjectDetail extends React.Component {
       });
     }
 
-    let comments = this.props.project.comments;
+    let comments = this.props.comments;
       if (comments) {
-        comments = this.props.project.comments.map( (comment) => {
+        comments = comments.map( (comment) => {
           return (
-            <div className="comment-container">
+            <div className="comment-container" key={comment.id}>
               <h4 className="comment-author">{comment.author}</h4>
               <h3 className="comment-body">{comment.body}</h3>
+              <div className="comment-delete-container">
+              {this.renderDeleteComment(comment)}
+              </div>
             </div>
           );
         });
@@ -103,9 +127,9 @@ class ProjectDetail extends React.Component {
             <pre className="show-description">{this.props.project.description}</pre>
             {instructions}
             <form className= "comment-outer" onSubmit={this.createComment}>
-              <textarea name="name" onChange={this.updateField('body')}>
+              <textarea className="comment-text" value={this.state.body} onChange={this.updateField('body')}>
               </textarea>
-              <input type="Submit" defaultValue='Post Comment'/>
+              <input className="post-comment" type="Submit" defaultValue='Post Comment'/>
             </form>
             {comments}
           </section>

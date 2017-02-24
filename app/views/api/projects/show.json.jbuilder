@@ -9,9 +9,13 @@ json.instructions do
     json.media asset_path(instruction.media.url)
   end
 end
+
+
 json.comments do
-  json.array! @project.comments do |comment|
-    json.extract! comment, :body, :project_id
-    json.author comment.user.username
+  @project.comments.each do |comment|
+    json.set! comment.id do
+      json.extract! comment, :body, :project_id, :id
+      json.author comment.user.username
+    end
   end
 end

@@ -1,6 +1,7 @@
 import { RECEIVE_ALL_PROJECTS, RECEIVE_PROJECT, REMOVE_PROJECT } from '../actions/project_actions';
 import merge from 'lodash/merge';
 import { RECEIVE_INSTRUCTION, REMOVE_INSTRUCTION } from '../actions/instruction_actions';
+import { REMOVE_COMMENT, RECEIVE_COMMENT } from '../actions/comment_actions';
 
 const _projects = Object.freeze({
   1: {
@@ -34,6 +35,18 @@ const ProjectReducer = (state = _projects, action) => {
       newState = merge({}, state);
       delete newState[action.instruction.project_id].instructions[action.instruction.id];
       return newState;
+    case REMOVE_COMMENT:
+      newState = merge({}, state);
+      let project_id = action.comment.project_id;
+      let commentId = action.comment.id;
+      delete newState[project_id].comments[commentId];
+      return newState;
+    case RECEIVE_COMMENT:
+      newState = merge({}, state);
+      project_id = action.comment.project_id;
+      commentId = action.comment.id;
+      newState[project_id].comments[commentId] = action.comment;
+    return newState;
     default:
       return state;
   }
