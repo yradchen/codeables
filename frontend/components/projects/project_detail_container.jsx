@@ -7,8 +7,10 @@ const mapStateToProps = (state, ownProps) => {
   let comments;
     // projects: Object.keys(state.projects).map(id => state.projects[id])
   if (state.projects[ownProps.params.id]) {
-    comments = Object.keys(state.projects[ownProps.params.id].comments);
-    comments = comments.map(id => state.projects[ownProps.params.id].comments[id]);
+    if (state.projects[ownProps.params.id].comments) {
+      comments = Object.keys(state.projects[ownProps.params.id].comments);
+      comments = comments.map(id => state.projects[ownProps.params.id].comments[id]);
+    }
   }
   return  {
     project: state.projects[ownProps.params.id],

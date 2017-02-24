@@ -4,8 +4,9 @@ import { Link } from 'react-router';
 const ProjectIndexItem = ({ project }) => {
   return (
     <li className="outer-project-container">
-      <img className="project-image" src={project.cover_img} />
-
+      <Link to={`/projects/${project.id}`}>
+        <img className="project-image" src={project.cover_img} />
+      </Link>
       <div className="inner-project-container">
         <section>
           <Link to={`/projects/${project.id}`}>

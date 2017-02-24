@@ -56,9 +56,14 @@ class ProjectEditPage extends React.Component {
     if (this.props.project === undefined) return null;
 
     const instructions = this.props.project.instructions.map( (instruction, index) => {
+      let img = <img src={instruction.media} className="edit-img"/>;
+      if (instruction.media === "") {
+        img = <img src={images.rightPointer} className="edit-img opacity"/>;
+      }
+
       return (
         <div className="edit-view-ind" key={`instruction-${index}`}>
-          <img src={instruction.media} className="edit-img"/>
+          {img}
             <Link to={`/editcodeable/${this.props.project.id}/edit/step/${index}`}
             className="edit-view-clicker">Click Here to Edit</Link>
           <p className="intro-text">{instruction.step_title}</p>

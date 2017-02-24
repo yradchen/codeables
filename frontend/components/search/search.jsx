@@ -27,6 +27,7 @@ class Searches extends React.Component {
   }
 
   render() {
+    
     const allProjects = this.props.projects.map(project => {
       return (
         <li className="outer-project-container" key={project.id}>

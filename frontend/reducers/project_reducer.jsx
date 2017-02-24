@@ -4,13 +4,13 @@ import { RECEIVE_INSTRUCTION, REMOVE_INSTRUCTION } from '../actions/instruction_
 import { REMOVE_COMMENT, RECEIVE_COMMENT } from '../actions/comment_actions';
 
 const _projects = Object.freeze({
-  1: {
-    title: '',
-    description: '',
-    owner: '',
-    cover_img: '',
-    instructions: []
-  }
+  // "": {
+  //   title: '',
+  //   description: '',
+  //   owner: '',
+  //   cover_img: '',
+  //   instructions: []
+  // }
 });
 
 const ProjectReducer = (state = _projects, action) => {
