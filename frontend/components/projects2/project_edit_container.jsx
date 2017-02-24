@@ -9,11 +9,13 @@ const mapStateToProps = (state, ownProps) => {
   if (ownProps.params.projectId) {
     project = state.projects[parseInt(ownProps.params.projectId)];
     if (project) {
-      instructions = Object.keys(state.projects[ownProps.params.projectId].instructions);
-      instructions = instructions.map(id => state.projects[ownProps.params.projectId].instructions[id]);
+      if (project.instructions) {
+        instructions = Object.keys(state.projects[ownProps.params.projectId].instructions);
+        instructions = instructions.map(id => state.projects[ownProps.params.projectId].instructions[id]);
+      }
     }
   }
-  
+
 
   return { project, instructions };
 };

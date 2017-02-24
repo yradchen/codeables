@@ -99,9 +99,11 @@ class StepEdit extends React.Component {
     if (this.state.step_detail === null) {
       detail = "";
     }
-    let imageToUse = this.state.imageUrl;
+    let imageTouse;
     if (this.state.imageUrl === undefined) {
-      imageToUse = this.state.media;
+      imageToUse = <img src={images.rightPointer} className="edit-img opacity"/>;
+    } else {
+      imageToUse = <img src={this.state.imageUrl} className="edit-img"/>;
     }
 
 
