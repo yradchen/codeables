@@ -55,6 +55,7 @@ class StepForm extends React.Component {
     e.preventDefault();
     let formData = new FormData();
     formData.append("project[cover_img]", this.state.cover_img);
+    debugger
     formData.append("project[title]", this.state.title);
     formData.append("project[description]", this.state.description);
     formData.append("project[id]", this.props.project.id);
@@ -77,10 +78,11 @@ class StepForm extends React.Component {
     }
 
     return (
-      <div className="update-outer">
-        <form onSubmit={this.handleSubmit} className='update-inner'>
-          <section className="publish">
-            <input type="Submit" defaultValue="save"/>
+      <div className='update-outer'>
+      <div className="update-inner">
+        <form onSubmit={this.handleSubmit} >
+          <section className="save">
+            <input className='save-button' type="Submit" defaultValue="Click to Save File"/>
           </section>
 
           <div className="project-inner">
@@ -97,6 +99,7 @@ class StepForm extends React.Component {
             <textarea className="description" name="name"onChange={this.updateField('description')} value={description}></textarea>
           </div>
         </form>
+        </div>
       </div>
     );
   }

@@ -39,7 +39,7 @@ class StepEdit extends React.Component {
         });
       }
     } else if (this.props.instruction.id !== nextProps.instruction.id){
-      
+
       this.setState(nextProps.instruction);
     }
   }
@@ -101,7 +101,8 @@ class StepEdit extends React.Component {
     if (this.state.step_detail === null) {
       detail = "";
     }
-    let imageToUse = <img src={images.rightPointer} className="edit-img opacity"/>;
+    let imageToUse = <img src={this.state.imageUrl} className="edit-img"/>;
+
     if (this.state.imageUrl === undefined) {
       imageToUse = <img src={images.rightPointer} className="edit-img opacity"/>;
     }
