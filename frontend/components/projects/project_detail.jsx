@@ -12,13 +12,11 @@ class ProjectDetail extends React.Component {
   }
 
   componentDidMount() {
-
     this.props.fetchProject(this.props.params.id);
   }
 
   renderEdit() {
-    if (!window.currentUser) return <p className="hidden"></p>;
-    if (this.props.project.owner === currentUser.username) {
+    if (this.props.project.owner === this.props.currentUser.username) {
       return <button className="edit-button" onClick={this.goToEdit}>Edit</button>;
     } else {
       return <p className="hidden"></p>;

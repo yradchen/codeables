@@ -4,6 +4,7 @@ import ProjectDetail from './project_detail';
 import { createComment, deleteComment } from '../../actions/comment_actions';
 
 const mapStateToProps = (state, ownProps) => {
+  
   let comments = [];
   let instructions = [];
 
@@ -21,7 +22,8 @@ const mapStateToProps = (state, ownProps) => {
   return  {
     project: state.projects[ownProps.params.id],
     comments,
-    instructions
+    instructions,
+    currentUser: state.session.currentUser
   };
 };
 

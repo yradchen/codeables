@@ -63,9 +63,10 @@ const Root = ({ store }) => {
             <Route path="/editcodeable/:projectId/edit" component={ ProjectEditContainer} />
             <Route path="/editcodeable/:projectId/edit/project" component={ StepFormContainer }/>
             <Route path="/editcodeable/:projectId/edit/step/:id" component={ StepEditContainer } />
+            <Route path="/projects/:id" component= {ProjectDetailContainer} />
           </Route>
 
-          <Route path="/projects/:id" component= {ProjectDetailContainer} />
+          {/* <Route path="/projects/:id" component= {ProjectDetailContainer} /> */}
           <Route path="/" component={ Homepage } />
           <Route path="/search" component={ SearchContainer } />
             <Route onEnter={_redirectIfLoggedIn } >
