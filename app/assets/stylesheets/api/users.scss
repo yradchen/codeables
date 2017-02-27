@@ -1,9 +1,3 @@
-// Place all the styles related to the api/users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-//
-// <p className="material-icons">search</p>
-// <i class="material-icons">arrow_drop_down</i>
 .you {
   color: #777;
   text-decoration: none;
@@ -88,13 +82,45 @@
   width: 88%;
   text-align: center;
   padding: 15px 19px;
-  margin-bottom: 22px
+  margin-bottom: 22px;
+  margin-top: 30px;
 }
 
 .drop-divider {
   height: 1px;
   margin-top: 9px;
-  margin-bottom: 29px;
+  margin-bottom: 20px;
   border-bottom: 1px solid #ddd;
   background-color: #e5e5e5;
+}
+
+.drafts-li {
+  // margin-bottom: 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+  flex-direction: row;
+}
+
+#folder {
+  margin-left: 20px;
+  color:  #bbb;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.drafts-text {
+  margin-left: -10px;
+  line-height: 37px;
+}
+
+.drafts-link {
+  display: flex;
+  flex-direction: row;
+  // align-items: center;
+  color: #777;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
 }

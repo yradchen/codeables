@@ -12,7 +12,6 @@ class Searches extends React.Component {
   }
 
   search() {
-    debugger
     this.props.fetchSpecificProjects({ title: this.state.inputVal });
   }
 

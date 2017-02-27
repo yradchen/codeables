@@ -25,3 +25,7 @@ json.comments do
     end
   end
 end
+
+if @project.comments.length == 0
+  json.comments({})
+end

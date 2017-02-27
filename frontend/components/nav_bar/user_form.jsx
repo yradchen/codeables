@@ -57,8 +57,11 @@ class UserForm extends React.Component {
         </li>
         <li className='drop-divider'>
         </li>
-        <li>
-          <Link to='/mycodeables/drafts'>Drafts</Link>
+        <li className ='drafts-li'>
+          <Link to='/mycodeables/drafts' className="drafts-link" >
+          <i id="folder" className="material-icons">
+        folder</i><p className='drafts-text'>
+          Draft Codeables</p></Link>
         </li>
         <li className="bottom-drop" onClick={this.toggleClass}>
             <Link to="/editcodeable/new" className='new-project'>

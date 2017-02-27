@@ -5,7 +5,6 @@ import { Link } from 'react-router';
 class Drafts extends React.Component {
 
   componentDidMount() {
-    debugger
     this.props.fetchSpecificProjects({ user_id: this.props.currentUser.id });
   }
 
@@ -14,8 +13,9 @@ class Drafts extends React.Component {
     const allProjects = this.props.projects.map(project => {
       return (
         <li className="outer-project-container" key={project.id}>
+          <Link to={`/projects/${project.id}`}>
           <img className="project-image" src={project.cover_img} />
-
+          </Link>
           <div className="inner-project-container">
             <section>
               <Link to={`/projects/${project.id}`}>
@@ -34,9 +34,16 @@ class Drafts extends React.Component {
     });
 
     return (
-      <ul className="projects-ul">
-      {allProjects}
-      </ul>
+      <div className="search-outer">
+        <div className="search-inner">
+          <section className="search-top-bar">
+            <h3 className="code-big">{this.props.currentUser.username}'s current Drafts</h3>
+          </section>
+          <ul className="projects-ul">
+          {allProjects}
+          </ul>
+        </div>
+      </div>
     );
   }
 }
