@@ -3,4 +3,20 @@ footer {
   width: 100%;
   background-color: #404040;
   border-top: 1.5px solid #323232;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.creator {
+  color: #999;
+  margin-left: 25px;
+}
+.github {
+  cursor: pointer;
+  text-decoration: none;
+  outline: none;
+  color: #999;
+  margin-right: 25px;
 }
