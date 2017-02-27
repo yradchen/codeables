@@ -145,7 +145,7 @@ class StepEdit extends React.Component {
                 <textarea className="description" name="name"onChange={this.updateField('step_detail')} value={detail}></textarea>
             </div>
           </form>
-          <button id="step-delete" className="delete-button" onClick={this.handleDelete}>DELETE</button>
+          {/* <button id="step-delete" className="delete-button" onClick={this.handleDelete}>DELETE</button> */}
           </div>
         </div>
       </div>

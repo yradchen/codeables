@@ -81,7 +81,7 @@ class ProjectEditPage extends React.Component {
             <Link to={`/editcodeable/${this.props.project.id}/edit/step/${index}`}
             className="edit-view-clicker">Click Here to Edit</Link>
           <p className="intro-text">{instruction.step_title}</p>
-            <button id="step-delete" className="delete-button" onClick={this.handleInstructionDelete(instruction)}>DELETE</button>
+            <button className="step-delete" onClick={this.handleInstructionDelete(instruction)}><i id="clear-icon" className="material-icons">clear</i></button>
         </div>
       );
     });
@@ -108,7 +108,7 @@ class ProjectEditPage extends React.Component {
                 <p className="show-owner">{this.props.project.owner}</p>
                 </span>
               </div>
-              <button onClick={this.updatePublish}>{publish}</button>
+              <button id="publish" onClick={this.updatePublish}>{publish}</button>
             </section>
             <section className="edit-view-bottom">
               <div className="edit-view-ind">
