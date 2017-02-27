@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import { hashHistory } from 'react-router';
 
 class UserForm extends React.Component {
   constructor (props) {
@@ -7,6 +8,7 @@ class UserForm extends React.Component {
     this.state = { listVisible: false };
     this.toggleClass = this.toggleClass.bind(this);
     this.logOutUser = this.logOutUser.bind(this);
+    this.drafts = this.drafts.bind(this);
   }
 
   logOutUser(e) {
@@ -43,7 +45,12 @@ class UserForm extends React.Component {
       </nav>
     );
   }
-
+  drafts(e) {
+    e.preventDefault();
+    let url = '/mycodeables/drafts'
+    this.toggleClass();
+    hashHistory.push(url);
+  }
 //
 // http://localhost:3000/#/mycodeables/
   dropDown() {
@@ -58,10 +65,10 @@ class UserForm extends React.Component {
         <li className='drop-divider'>
         </li>
         <li className ='drafts-li'>
-          <Link to='/mycodeables/drafts' className="drafts-link" >
+          <button onClick={this.drafts} className="drafts-link" >
           <i id="folder" className="material-icons">
         folder</i><p className='drafts-text'>
-          Draft Codeables</p></Link>
+          Draft Codeables</p></button>
         </li>
         <li className="bottom-drop" onClick={this.toggleClass}>
             <Link to="/editcodeable/new" className='new-project'>
