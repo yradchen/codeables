@@ -12,11 +12,11 @@ export const fetchProjects = () => {
   });
 };
 
-export const fetchSpecificProjects = (title) => {
+export const fetchSpecificProjects = (project) => {
   return $.ajax({
     method: 'GET',
     url: `api/projects/`,
-    data: { project: { title } }
+    data: { project }
   });
 };
 

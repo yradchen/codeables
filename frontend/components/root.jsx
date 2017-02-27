@@ -14,6 +14,7 @@ import StepEditContainer from './steps/step_edit_container';
 import { fetchProject } from '../actions/project_actions';
 
 import SearchContainer from './search/search_container'
+import DraftsContainer from './user_projects/drafts_container';
 // import { fetchProject } from '../util/project_api_util';
 
 const _ensureLoggedIn = (nextState, replace) => {
@@ -29,8 +30,6 @@ const _redirectIfLoggedIn = (nextState, replace) => {
     replace('/');
   }
 }
-
-
 
 const _redirectIfBadLink = (nextState, replace) => {
   replace('/')
@@ -65,6 +64,7 @@ const Root = ({ store }) => {
             <Route path="/editcodeable/:projectId/edit/step/:id" component={ StepEditContainer } />
             <Route path="/projects/:id" component= {ProjectDetailContainer} />
           </Route>
+          <Route path="/mycodeables/:id/drafts" component={DraftsContainer} />
 
           {/* <Route path="/projects/:id" component= {ProjectDetailContainer} /> */}
           <Route path="/" component={ Homepage } />

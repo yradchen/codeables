@@ -1,4 +1,4 @@
-json.extract! @project, :title, :description, :id
+json.extract! @project, :title, :description, :id, :publish
 json.cover_img asset_path(@project.cover_img.url)
 json.owner @project.user.username
 

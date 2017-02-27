@@ -11,9 +11,9 @@ class ProjectEditPage extends React.Component {
     this.state = ({modalOpen: false });
     this.instructionToDelete = null;
     this.addInstruction = this.addInstruction.bind(this);
-    this.handleDelete = this.handleDelete.bind(this);
     this.handleResponse = this.handleResponse.bind(this);
     this.handleInstructionDelete = this.handleInstructionDelete.bind(this);
+    this.updatePublish = this.updatePublish.bind(this);
   }
 
   componentDidMount() {
@@ -45,6 +45,7 @@ class ProjectEditPage extends React.Component {
     this.instructionToDelete = null;
     this.setState({modalOpen: false});
   }
+
   handleInstructionDelete(instruction) {
     return (e) => {
       this.instructionToDelete = (instruction.id);
@@ -52,9 +53,22 @@ class ProjectEditPage extends React.Component {
     };
   }
 
+  updatePublish(e) {
+    e.preventDefault();
+    let formData = new FormData();
+    formData.append('project[publish]', !this.props.project.publish);
+    formData.append('project[id]', this.props.project.id);
+    this.props.updateProject(formData);
+  }
+
   render() {
     if (this.props.project === undefined) return null;
-
+    let publish;
+    if (this.props.project.publish) {
+      publish = "PUBLISH";
+    } else {
+      publish = 'UNPUBLISH';
+    }
     const instructions = this.props.instructions.map( (instruction, index) => {
       let img = <img src={instruction.media} className="edit-img"/>;
       if (instruction.media === "") {
@@ -71,7 +85,6 @@ class ProjectEditPage extends React.Component {
         </div>
       );
     });
-
 
     return (
       <div>
@@ -95,7 +108,7 @@ class ProjectEditPage extends React.Component {
                 <p className="show-owner">{this.props.project.owner}</p>
                 </span>
               </div>
-              <button className="delete-button" onClick={this.handleDelete}>Delete!</button>
+              <button onClick={this.updatePublish}>{publish}</button>
             </section>
             <section className="edit-view-bottom">
               <div className="edit-view-ind">

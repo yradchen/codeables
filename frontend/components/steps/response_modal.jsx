@@ -31,7 +31,6 @@ export const ModalStyle = {
 
 
 export const ResponseModal = (props) => {
-  debugger
   return (
     <div className="modal-section">
       <p className="confirm" >Confirm</p>

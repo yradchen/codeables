@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { createProject, updateProject, fetchProject, deleteProject } from '../../actions/project_actions';
+import { createProject, updateProject, fetchProject } from '../../actions/project_actions';
 import { createInstruction, deleteInstruction } from '../..//actions/instruction_actions';
 import ProjectEditPage from './project_edit';
 
@@ -15,22 +15,15 @@ const mapStateToProps = (state, ownProps) => {
       }
     }
   }
-
-
   return { project, instructions };
 };
 
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  let action = createProject;
-  if (ownProps.params.projectId) {
-    action = updateProject;
-  }
   return {
-    action: (project) => dispatch(action(project)),
+    updateProject: (project) => dispatch(updateProject(project)),
     fetchProject: (id) => dispatch(fetchProject(id)),
     createInstruction: (instruction) => dispatch(createInstruction(instruction)),
-    deleteProject: (id) => dispatch(deleteProject(id)),
     deleteInstruction: (id) => dispatch(deleteInstruction(id))
   };
 };

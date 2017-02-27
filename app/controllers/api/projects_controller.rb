@@ -17,9 +17,12 @@ class Api::ProjectsController < ApplicationController
   end
 
   def index
-    #how to do question mark to ensure it's safe.
     if params[:project]
-      @projects = Project.includes(:user).where("title LIKE '%#{project_params[:title]}%'")
+      if project_params[:user_id]
+        @projects = Project.includes(:user).where("user_id = '#{project_params[:user_id]}'")
+      else
+        @projects = Project.includes(:user).where("title LIKE '%#{project_params[:title]}%'")
+      end
     else
       @projects = Project.includes(:user).all
     end
@@ -47,10 +50,7 @@ class Api::ProjectsController < ApplicationController
 
   private
   def project_params
-    params.require(:project).permit(:title, :description, :cover_img, instructions: [])
+    params.require(:project).permit(:title, :description, :cover_img, :publish, :user_id, instructions: [])
   end
-  # def instruction_params
-  #   params.permit(:media, :step_title, :step_detail)
-  # end
 
 end
