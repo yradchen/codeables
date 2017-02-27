@@ -13,7 +13,7 @@ class NavBar extends React.Component {
   }
 
   search(property) {
-    this.props.fetchSpecificProjects(this.state.inputVal).then(projects =>{
+    this.props.fetchSpecificProjects({ title: this.state.inputVal}).then(projects =>{
       hashHistory.push("/search");
     });
     // have to handle props not having projects.

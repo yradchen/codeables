@@ -1,12 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
-//
-// class Search extends React.Component {
-//   constructor(props) {
-//     super(props);
-//   }
-//
-//   matches() {
+
 
 
 class Searches extends React.Component {
@@ -18,6 +12,7 @@ class Searches extends React.Component {
   }
 
   search() {
+    debugger
     this.props.fetchSpecificProjects({ title: this.state.inputVal });
   }
 

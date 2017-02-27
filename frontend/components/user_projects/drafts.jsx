@@ -5,6 +5,7 @@ import { Link } from 'react-router';
 class Drafts extends React.Component {
 
   componentDidMount() {
+    debugger
     this.props.fetchSpecificProjects({ user_id: this.props.currentUser.id });
   }
 
@@ -33,7 +34,7 @@ class Drafts extends React.Component {
     });
 
     return (
-      <ul>
+      <ul className="projects-ul">
       {allProjects}
       </ul>
     );
