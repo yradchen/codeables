@@ -65,9 +65,9 @@ class ProjectEditPage extends React.Component {
     if (this.props.project === undefined) return null;
     let publish;
     if (this.props.project.publish) {
-      publish = "PUBLISH";
+      publish = "UNPUBLISH";
     } else {
-      publish = 'UNPUBLISH';
+      publish = 'PUBLISH';
     }
     const instructions = this.props.instructions.map( (instruction, index) => {
       let img = <img src={instruction.media} className="edit-img"/>;

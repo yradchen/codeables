@@ -10,7 +10,6 @@ class NavBar extends React.Component {
     this.state = { inputVal: '' };
     this.handleInput = this.handleInput.bind(this);
     this.search = this.search.bind(this);
-
   }
 
   search(property) {
