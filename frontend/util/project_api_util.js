@@ -26,7 +26,7 @@ export const deleteProject = (id) => {
     url: `api/projects/${id}`
   });
 };
-// send project and instruction
+
 export const createProject = (project) => {
   return $.ajax({
     method: 'POST',

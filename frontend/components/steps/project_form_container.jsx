@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { createProject, updateProject, fetchProject } from '../../actions/project_actions';
-import Stepform from './step_form';
+import Projectform from './project_form';
 
 const mapStateToProps = (state, ownProps) => {
 
@@ -20,4 +20,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Stepform);
+export default connect(mapStateToProps, mapDispatchToProps)(Projectform);

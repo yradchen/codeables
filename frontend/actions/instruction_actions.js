@@ -43,9 +43,3 @@ export const fetchInstruction = (id) => dispatch => (
     instruction => dispatch(receiveInstruction(instruction))
   )
 );
-
-// export const fetchProject = (id) => dispatch => (
-//   ProjectAPIUtil.fetchProject(id).then(
-//     project => dispatch(receiveProject(project))
-//   )
-// );

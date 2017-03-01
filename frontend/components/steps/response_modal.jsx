@@ -42,4 +42,3 @@ export const ResponseModal = (props) => {
     </div>
   );
 };
-// export default ResponseModal;

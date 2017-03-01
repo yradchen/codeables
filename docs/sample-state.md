@@ -32,9 +32,4 @@
     }
   }
 }
-// comments as an object since we modify individual ones.
-// project view container
-// projects index container
-// new project form container
-// comments container
-// if it dispatches an action - if container above has a lot of actions might just thread one down.
+/

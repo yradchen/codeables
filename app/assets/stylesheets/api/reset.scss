@@ -1,6 +1,4 @@
-// Place all the styles related to the api/sessions controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+
 header, body, footer, section,
 div,
 h1, h2, h3, h4, p,
@@ -13,7 +11,7 @@ ul, li {
   text-align: inherit;
   text-decoration: inherit;
   color: inherit;
-  // background: none;
+
 }
 input, button {
   border: 1px solid black;
@@ -22,5 +20,3 @@ input, button {
 a {
   text-decoration: none;
 }
-
- // input not reseting input to keep border

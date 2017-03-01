@@ -1,4 +1,4 @@
-import { fetchSpecificProjects } from '../../actions/project_actions';
+import { fetchSpecificProjects } from '../../../actions/project_actions';
 import Drafts from './drafts';
 import { connect } from 'react-redux';
 

@@ -3,17 +3,7 @@ import merge from 'lodash/merge';
 import { RECEIVE_INSTRUCTION, REMOVE_INSTRUCTION } from '../actions/instruction_actions';
 import { REMOVE_COMMENT, RECEIVE_COMMENT } from '../actions/comment_actions';
 
-const _projects = Object.freeze({
-  // "": {
-  //   title: '',
-  //   description: '',
-  //   owner: '',
-  //   cover_img: '',
-  //   instructions: []
-  // }
-});
-
-const ProjectReducer = (state = _projects, action) => {
+const ProjectReducer = (state = {}, action) => {
 
   let newState;
   switch (action.type) {

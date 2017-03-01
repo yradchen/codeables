@@ -139,7 +139,3 @@ class SignUpForm extends React.Component {
 }
 
 export default SignUpForm;
-
-
-// give it some kind of classname through state?
-// use setInterval?

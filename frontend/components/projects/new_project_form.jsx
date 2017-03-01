@@ -68,13 +68,9 @@ class ProjectForm extends React.Component {
       </Modal>
     );
   }
-  renderEdit() {
-    // <div className="edit-outer">
-  }
+
 
   render () {
-
-    // if(!this.state) return null;
     let objToRender;
     if (this.props.params.projectId) {
 

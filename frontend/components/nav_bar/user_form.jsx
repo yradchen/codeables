@@ -51,8 +51,7 @@ class UserForm extends React.Component {
     this.toggleClass();
     hashHistory.push(url);
   }
-//
-// http://localhost:3000/#/mycodeables/
+
   dropDown() {
   if (this.state.listVisible) {
     return (
@@ -107,10 +106,3 @@ class UserForm extends React.Component {
 
 
 export default UserForm;
-
-// const personalGreeting = (currentUser, logout) => (
-// 	<hgroup className="header-group">
-//     <h2 className="header-name">Hi, {currentUser.username}!</h2>
-//     <button className="header-button" onClick={logout}>Log Out</button>
-// 	</hgroup>
-// );

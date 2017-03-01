@@ -24,7 +24,6 @@ class ProjectDetail extends React.Component {
   }
 
   goToEdit() {
-    // "/editcodeable/:projectId/edit/project"
     const url = `/editcodeable/${this.props.project.id}/edit/`;
     hashHistory.push(url);
   }
@@ -47,7 +46,6 @@ class ProjectDetail extends React.Component {
       e.preventDefault();
       this.props.deleteComment(comment.id);
     };
-    // this.props.fetchProject(this.props.params.id);
   }
 
   renderDeleteComment(comment) {

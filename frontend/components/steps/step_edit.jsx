@@ -28,7 +28,7 @@ class StepEdit extends React.Component {
       hashHistory.push("/");
     }
   }
-  //
+
   componentWillReceiveProps(nextProps) {
     if (this.state.project_id !== parseInt(nextProps.params.projectId)) {
       const projectId = parseInt(nextProps.params.projectId);
@@ -108,9 +108,6 @@ class StepEdit extends React.Component {
     if (this.state.imageUrl === undefined) {
       imageToUse = <img src={images.rightPointer} className="edit-img opacity"/>;
     }
-    // } else {
-    //   imageToUse = <img src={this.state.imageUrl} className="edit-img"/>;
-    // }
 
 
     return (
@@ -145,7 +142,6 @@ class StepEdit extends React.Component {
                 <textarea className="description" name="name"onChange={this.updateField('step_detail')} value={detail}></textarea>
             </div>
           </form>
-          {/* <button id="step-delete" className="delete-button" onClick={this.handleDelete}>DELETE</button> */}
           </div>
         </div>
       </div>

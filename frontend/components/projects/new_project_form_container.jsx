@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { createProject, updateProject, fetchProject } from '../../actions/project_actions';
-import ProjectForm from './project_form';
+import ProjectForm from './new_project_form';
 
 const mapStateToProps = (state, ownProps) => {
   let project = { title:'', description:'' };

@@ -3,7 +3,6 @@ import { fetchSpecificProjects } from '../../actions/project_actions';
 import NavBar from './nav_bar';
 
 const mapStateToProps = (state) => {
-  // const projects = state.projects;
   let keys = Object.keys(state.projects);
   const projects = keys.map((id) => (state.projects[id] ));
   return {

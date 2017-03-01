@@ -16,7 +16,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  // justify-content: center;
 }
 .project-inner {
   position: relative;
@@ -31,13 +30,10 @@
   background-color: #f6f6f6;
   border-radius: 12px;
   margin-bottom: 50px;
-
-  // justify-content: center;
 }
 .update-file {
   position: relative;
   width: 772px;
-
   margin-top: 15px;
   color: #AAA;
   border-radius: 10px;
@@ -128,7 +124,6 @@
   font-family: Helvetica, Arial, sans-serif;
   box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.15);
   color: #AAA;
-  // font-weight: bold;
 }
 .step-delete {
   position: absolute;

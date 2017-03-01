@@ -32,16 +32,6 @@ class InstructionForm extends React.Component {
     };
   }
 
-  // handleSubmit(e) {
-  //   e.preventDefault();
-  //   let formData = new FormData();
-  //   formData.append("instruction[media]", this.state.media);
-  //   formData.append("instruction[step_title]", this.state.step_title);
-  //   formData.append("instruction[step_detail]", this.state.step_detail);
-  //   // this.props.createProject(formData);
-  // }
-
-
   render () {
     return (
       <section>

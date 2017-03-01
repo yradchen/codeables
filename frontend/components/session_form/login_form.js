@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router';
-// import signInGuest from './sessionmethods';
 
 
 class LoginForm extends React.Component {

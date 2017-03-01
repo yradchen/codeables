@@ -1,7 +1,7 @@
 import React from 'react';
 import Modal from 'react-modal';
 import { hashHistory } from 'react-router';
-class StepForm extends React.Component {
+class ProjectForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = this.props.project;
@@ -108,4 +108,4 @@ class StepForm extends React.Component {
   }
 }
 
-export default StepForm;
+export default ProjectForm;
