@@ -50,8 +50,6 @@ class UserForm extends React.Component {
   }
 
   dropDown() {
-    // debugger
-    // this.props.setVisibility(true)
   if (this.props.listVisibility) {
     return (
       <ul className="nav-drop-down">
