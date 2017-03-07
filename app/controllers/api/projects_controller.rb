@@ -19,12 +19,12 @@ class Api::ProjectsController < ApplicationController
   def index
     if params[:project]
       if project_params[:user_id]
-        @projects = Project.includes(:user).where("user_id = '#{project_params[:user_id]}'")
+        @projects = Project.includes(:user).where("user_id = ?", project_params[:user_id])
       else
-        @projects = Project.includes(:user).where("title LIKE '%#{project_params[:title]}%'")
+        @projects = Project.includes(:user).where("title LIKE ?", "%#{project_params[:title]}%")
       end
     else
-      @projects = Project.includes(:user).all
+      @projects = Project.includes(:user).where("publish = '#{true}'").all
     end
   end
 

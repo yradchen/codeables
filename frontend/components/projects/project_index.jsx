@@ -11,6 +11,7 @@ class ProjectIndex extends React.Component {
 
   render () {
 
+
     const singleProjects = this.props.projects.map(project => {
       return (
         <ProjectIndexItem
