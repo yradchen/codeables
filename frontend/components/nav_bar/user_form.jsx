@@ -5,7 +5,6 @@ import { hashHistory } from 'react-router';
 class UserForm extends React.Component {
   constructor (props) {
     super(props);
-    this.state = { listVisible: false };
     this.toggleClass = this.toggleClass.bind(this);
     this.logOutUser = this.logOutUser.bind(this);
     this.drafts = this.drafts.bind(this);
@@ -14,7 +13,6 @@ class UserForm extends React.Component {
   logOutUser(e) {
     e.preventDefault();
     this.props.logout();
-    this.toggleClass();
   }
 
   sessionLinks () {
@@ -48,12 +46,13 @@ class UserForm extends React.Component {
   drafts(e) {
     e.preventDefault();
     let url = '/mycodeables/drafts'
-    this.toggleClass();
     hashHistory.push(url);
   }
 
   dropDown() {
-  if (this.state.listVisible) {
+    // debugger
+    // this.props.setVisibility(true)
+  if (this.props.listVisibility) {
     return (
       <ul className="nav-drop-down">
         <li className="top-drop">
@@ -69,7 +68,7 @@ class UserForm extends React.Component {
         folder</i><p className='drafts-text'>
           Draft Codeables</p></button>
         </li>
-        <li className="bottom-drop" onClick={this.toggleClass}>
+        <li className="bottom-drop">
             <Link to="/editcodeable/new" className='new-project'>
             New Codeable »
             </Link>
@@ -82,10 +81,11 @@ class UserForm extends React.Component {
   }
 
   toggleClass(e) {
-    if (e !== undefined) {
-      e.preventDefault();
-    };
-    this.setState({ listVisible : !this.state.listVisible});
+    e.preventDefault();
+    e.stopPropagation();
+    if (!this.props.listVisibility) {
+      this.props.setVisibility(true);
+    }
   }
 
 

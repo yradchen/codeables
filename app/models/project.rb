@@ -19,7 +19,8 @@ class Project < ApplicationRecord
   # validates :description, presence: true, on: :update
 
   has_many :comments
-  has_attached_file :cover_img, default_url: "https://s3.amazonaws.com/codeables-DEV/coding-is-fun.jpg"
+  has_attached_file :cover_img, default_url:
+  	 "https://s3.amazonaws.com/codeables-DEV/coding-is-fun.jpg"
   # :default_url => "/assets/:style/missing_avatar.jpg"
   # codingIsFun: '<%= asset_path("coding-is-fun.jpg") %>'
   # has_attached_file :cover_img
