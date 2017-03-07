@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 
 const mapStateToProps = (state) => {
   return {
-    listVisibility: state.visibility
+    listVisibility: state.navBar.listVisibility
   }
 }
 

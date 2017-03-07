@@ -48,7 +48,7 @@ const Root = ({ store }) => {
           <Route path="/mycodeables/drafts" component={DraftsContainer} />
 
           <Route path="/" component={ Homepage } />
-          <Route path="/search" component={ SearchContainer } />
+          <Route path="/search/" component={ SearchContainer } />
             <Route onEnter={_redirectIfLoggedIn } >
               <Route path="/account/login" component={ LoginFormContainer } />
               <Route path="/account/register" component={ SignUpFormContainer } />

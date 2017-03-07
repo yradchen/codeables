@@ -6,7 +6,7 @@ import { setVisibility } from '../../actions/nav_bar_actions';
 const mapStateToProps = (state) => {
   return {
     currentUser: state.session.currentUser,
-    listVisibility: state.visibility
+    listVisibility: state.navBar.listVisibility
   };
 }
 ;

@@ -1,19 +1,29 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link, hashHistory } from 'react-router';
 
 
 
 class Searches extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { inputVal: '' };
+    this.state = { inputVal: props.inputVal};
     this.handleInput = this.handleInput.bind(this);
     this.search = this.search.bind(this);
   }
 
-  search() {
-    this.props.fetchSpecificProjects({ title: this.state.inputVal });
+  search(e) {
+    e.preventDefault();
+    const terms = this.state.inputVal;
+    this.props.setSearchTerms(terms);
+    this.props.fetchSpecificProjects({ title: this.state.inputVal});
   }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.inputVal !== this.state.inputVal) {
+      this.setState({ inputVal: nextProps.inputVal});
+    }
+  }
+
 
   handleInput(event) {
    this.setState({inputVal: event.currentTarget.value});
@@ -25,7 +35,6 @@ class Searches extends React.Component {
       return (
         <li className="outer-project-container" key={project.id}>
           <img className="project-image" src={project.cover_img} />
-
           <div className="inner-project-container">
             <section>
               <Link to={`/projects/${project.id}`}>
@@ -48,11 +57,13 @@ class Searches extends React.Component {
         <div className="search-inner">
           <section className="search-top-bar">
             <h3 className="code-big">Let's Code</h3>
-            <input type="text"
-              onKeyUp={this.search}
-              value={this.state.inputVal}
-              onChange={this.handleInput}
-              className="searchbar-big"/>
+              <form onSubmit={this.search}>
+                <input type="text"
+                  value={this.state.inputVal}
+                  onChange={this.handleInput}
+                  className="searchbar-big"/>
+              </form>
+              <i className="material-icons" id="big-search" onClick={this.search}>search</i>
           </section>
           <ul className="projects-ul">
             {allProjects}
@@ -68,3 +79,4 @@ export default Searches;
   value={this.state.inputVal}
   onChange={this.handleInput}
   className="searchbar"/> */}
+  // <i className="material-icons">search</i>

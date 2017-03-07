@@ -1,7 +1,6 @@
 import React from 'react';
 import UserFormContainer from './user_form_container';
-import { Link } from 'react-router';
-import { hashHistory } from 'react-router';
+import { Link, hashHistory, withRouter } from 'react-router';
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -11,9 +10,16 @@ class NavBar extends React.Component {
     this.search = this.search.bind(this);
   }
 
-  search(property) {
-    this.props.fetchSpecificProjects({ title: this.state.inputVal}).then(projects =>{
-      hashHistory.push("/search");
+  search(e) {
+    const terms = this.state.inputVal;
+    e.preventDefault();
+    this.props.setSearchTerms(terms);
+    this.setState({ inputVal: '' });
+    this.props.fetchSpecificProjects({ title: this.state.inputVal}).then( () =>{
+      const location = this.props.location.pathname;
+      if (location !== "/search/") {
+        hashHistory.push(`/search/`);
+      }
     });
   }
 
@@ -31,12 +37,13 @@ class NavBar extends React.Component {
             </Link>
             <div className="search-container">
               <label className="lets-code">let's code
+                <form onSubmit={this.search}>
                 <input type="text"
-                  onKeyUp={this.search}
                   value={this.state.inputVal}
                   onChange={this.handleInput}
                   className="searchbar"/>
-
+                </form>
+                <i className="material-icons" onClick={this.search}>search</i>
             </label>
             </div>
           </section>
@@ -51,4 +58,4 @@ class NavBar extends React.Component {
   }
 }
 
-export default NavBar;
+export default withRouter(NavBar);

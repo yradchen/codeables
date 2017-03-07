@@ -50,10 +50,10 @@ class UserForm extends React.Component {
   }
 
   dropDown() {
-  if (this.props.listVisibility) {
-    return (
-      <ul className="nav-drop-down">
-        <li className="top-drop">
+    if (this.props.listVisibility) {
+      return (
+        <ul className="nav-drop-down">
+          <li className="top-drop">
             <futurecontent><p></p></futurecontent>
             <button className="logout"
                     onClick={this.logOutUser}>Log Out</button>

@@ -90,6 +90,10 @@
   letter-spacing: 2px;
  }
 
+#big-search {
+  padding: 5.8px;
+}
+
 .searchbar-big {
   font-size: 18px;
   color: #757575;
@@ -97,7 +101,7 @@
   margin-left: 10px;
   background-color: #fff;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 4px 0px 0px 4px;
   box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
   padding: 4px 6px;
 }
