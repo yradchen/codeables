@@ -1,12 +1,10 @@
 import React from 'react';
-// import UserFormContainer from './user/user_form_container';
+
 import NavBar from './nav_bar/nav_bar';
 import Footer from './footer/footer';
 import NavBarContainer from './nav_bar/nav_bar_container';
 import { setVisibility } from '../actions/nav_bar_actions';
 import { connect } from 'react-redux';
-
- // connect(mapStateToProps, mapDispatchToProps)(UserForm);
 
 const mapStateToProps = (state) => {
   return {
@@ -22,7 +20,6 @@ const mapDispatchToProps = (dispatch) => {
 
 const removeVisibility = (setVisibility, listVisibility) => {
   return (e) => {
-    e.preventDefault();
     if (listVisibility) {
       setVisibility(false);
     }
