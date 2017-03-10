@@ -17,7 +17,7 @@ input, button {
   border: 1px solid black;
   border-radius: 6px;
 }
-button:focus {
+button:focus, input:focus {
   outline: 0;
 }
 a {
