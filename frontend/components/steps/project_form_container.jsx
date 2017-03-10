@@ -10,7 +10,8 @@ const mapStateToProps = (state, ownProps) => {
       project = state.projects[parseInt(ownProps.params.projectId)];
     }
   }
-  return { project };
+  return { currentUser: state.session.currentUser,
+           project };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {

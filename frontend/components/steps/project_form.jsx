@@ -13,7 +13,7 @@ class ProjectForm extends React.Component {
   componentDidMount() {
     const id = parseInt(this.props.params.projectId);
     this.props.fetchProject(id).then( (action) => {
-      if (action.project.owner !== currentUser.username) {
+      if (action.project.owner !== this.props.currentUser.username) {
         hashHistory.push("/");
       } else {
       this.setState(action.project);

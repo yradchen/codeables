@@ -17,13 +17,13 @@ class StepEdit extends React.Component {
     const projectId = parseInt(this.props.params.projectId);
     if (!this.props.project) {
       this.props.fetchProject(projectId).then( () => {
-        if (this.props.project.owner !== currentUser.username) {
+        if (this.props.project.owner !== this.props.currentUser.username) {
           hashHistory.push("/");
         } else {
         this.setState(this.props.instruction);
         }
       });
-    } else if (this.props.project.owner !== currentUser.username) {
+    } else if (this.props.project.owner !== this.props.currentUser.username) {
 
       hashHistory.push("/");
     }

@@ -13,7 +13,7 @@ const mapStateToProps = (state, ownProps) => {
     let instructionKeys = Object.keys(state.projects[ownProps.params.projectId].instructions);
     instruction = project.instructions[instructionKeys[ownProps.params.id]];
   }
-  return { instruction, project };
+  return { instruction, project, currentUser: state.session.currentUser };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
