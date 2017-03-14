@@ -16,7 +16,6 @@ import DraftsContainer from './projects/unpublished/drafts_container';
 
 const _ensureLoggedIn = (store) => {
   return (nextState, replace) => {
-    debugger
     const currentUser = store.getState().session.currentUser;
     if (!currentUser) {
       replace('/account/login');
