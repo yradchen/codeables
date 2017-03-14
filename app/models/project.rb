@@ -16,17 +16,25 @@
 
 class Project < ApplicationRecord
   validates :title, :user, presence: true, length: { maximum: 80 }
-  # validates :description, presence: true, on: :update
-
-  has_many :comments
-  has_attached_file :cover_img, default_url:
-  	 "https://s3.amazonaws.com/codeables-DEV/coding-is-fun.jpg"
-  # :default_url => "/assets/:style/missing_avatar.jpg"
-  # codingIsFun: '<%= asset_path("coding-is-fun.jpg") %>'
-  # has_attached_file :cover_img
-  validates_attachment_content_type :cover_img, content_type: /\Aimage\/.*\z/
-  # validates_attachment_presence :cover_img
-
   belongs_to :user
+  has_many :comments
   has_many :instructions, dependent: :destroy
+
+  has_attached_file :cover_img, styles: { thumb: "351x235" }, default_url:
+  	"https://s3.amazonaws.com/codeables-DEV/coding-is-fun.jpg"
+  validates_attachment_content_type :cover_img, content_type: /\Aimage\/.*\z/
+
+  def self.find_by_title(title)
+    title = title.downcase
+    Project.includes(:user).where("loweR(title) LIKE ?", "%#{title}%")
+  end
+
+  def self.find_by_user_id(user_id)
+    Project.includes(:user).where("user_id = ?", user_id)
+  end
+
+  def self.find_by_published()
+    Project.includes(:user).where("publish = '#{true}'").all
+  end
+
 end

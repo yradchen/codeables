@@ -11,21 +11,27 @@ import NewProjectFormContainer from './projects/new_project_form_container';
 import ProjectFormContainer from './steps/project_form_container';
 import StepEditContainer from './steps/step_edit_container';
 import { fetchProject } from '../actions/project_actions';
-
 import SearchContainer from './search/search_container'
 import DraftsContainer from './projects/unpublished/drafts_container';
 
-const _ensureLoggedIn = (nextState, replace) => {
-  const currentUser = store.getState().session.currentUser;
-  if (!currentUser) {
-    replace('/account/login');
+const _ensureLoggedIn = (store) => {
+  return (nextState, replace) => {
+    debugger
+    const currentUser = store.getState().session.currentUser;
+    if (!currentUser) {
+      replace('/account/login');
+    }
   }
+
 };
 
-const _redirectIfLoggedIn = (nextState, replace) => {
-  const currentUser = store.getState().session.currentUser;
-  if (currentUser) {
-    replace('/');
+
+const _redirectIfLoggedIn = (store) => {
+  return (nextState, replace) => {
+    const currentUser = store.getState().session.currentUser;
+    if (currentUser) {
+      replace('/');
+    }
   }
 }
 
@@ -33,12 +39,11 @@ const _redirectIfBadLink = (nextState, replace) => {
   replace('/')
 }
 const Root = ({ store }) => {
-
   return (
     <Provider store={store}>
       <Router onUpdate={() => window.scrollTo(0, 0)} history={ hashHistory }>
         <Route component={ App } >
-          <Route onEnter={_ensureLoggedIn} >
+          <Route onEnter={_ensureLoggedIn(store)} >
             <Route path="/editcodeable/new" component={ NewProjectFormContainer} />
             <Route path="/editcodeable/:projectId/edit" component={ ProjectEditContainer} />
             <Route path="/editcodeable/:projectId/edit/project" component={ ProjectFormContainer }/>
