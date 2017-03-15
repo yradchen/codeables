@@ -27,14 +27,6 @@ class ProjectForm extends React.Component {
     this.updateField = this.updateField.bind(this);
   }
 
-
-// delta is what i'm saving to database as json
-// just quill editor and paste empty code?
-// to paste? quill.setContents(delta)
-// so description send up JSON.stringify(delta)
-
-
-
   componentDidMount() {
     this.setupQuillEditor();
     const id = parseInt(this.props.params.projectId);
@@ -58,9 +50,6 @@ class ProjectForm extends React.Component {
     const contents = this.props.project.description;
     this.quill.setContents(JSON.parse(contents));
   }
-
-
-
 
   componentWillReceiveProps(nextProps) {
     if (this.props.params.projectId !== nextProps.params.projectId) {
@@ -99,7 +88,6 @@ class ProjectForm extends React.Component {
     let formData = new FormData();
     formData.append("project[cover_img]", this.state.cover_img);
     formData.append("project[title]", this.state.title);
-
     formData.append("project[description]", description);
     formData.append("project[id]", this.props.project.id);
     let url = `/editcodeable/${this.state.id}/edit`;
@@ -145,7 +133,7 @@ class ProjectForm extends React.Component {
             </section>
 
             <input className="title" type="text" onChange={this.updateField('title')} value={this.state.title} />
-            <div id="editor" className="description"></div>
+            <div id="editor"></div>
           </div>
 
         </form>
