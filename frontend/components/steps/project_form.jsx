@@ -28,13 +28,13 @@ class ProjectForm extends React.Component {
   }
 
   componentDidMount() {
-    this.setupQuillEditor();
     const id = parseInt(this.props.params.projectId);
     this.props.fetchProject(id).then( (action) => {
       if (action.project.owner !== this.props.currentUser.username) {
         hashHistory.push("/");
       } else {
       this.setState(action.project);
+      this.setupQuillEditor();
       }
     });
   }

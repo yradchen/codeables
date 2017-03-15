@@ -22,18 +22,19 @@ class StepEdit extends React.Component {
 
   componentDidMount() {
     const projectId = parseInt(this.props.params.projectId);
-    this.setupQuillEditor();
     if (!this.props.project) {
       this.props.fetchProject(projectId).then( () => {
         if (this.props.project.owner !== this.props.currentUser.username) {
           hashHistory.push("/");
         } else {
         this.setState(this.props.instruction);
+        this.setupQuillEditor();
         }
       });
     } else if (this.props.project.owner !== this.props.currentUser.username) {
-
       hashHistory.push("/");
+    } else {
+      this.setupQuillEditor();
     }
   }
 
