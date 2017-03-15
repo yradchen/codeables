@@ -1,6 +1,24 @@
 import React from 'react';
 import Modal from 'react-modal';
 import { hashHistory } from 'react-router';
+
+import Quill from 'quill/core';
+import Toolbar from 'quill/modules/toolbar';
+import Snow from 'quill/themes/snow';
+import Bold from 'quill/formats/bold';
+import Italic from 'quill/formats/italic';
+import Header from 'quill/formats/header';
+import CodeBlock from 'quill/formats/code';
+Quill.register({
+  'modules/toolbar': Toolbar,
+  'themes/snow': Snow,
+  'formats/bold': Bold,
+  // 'formats/italic': Italic,
+  // 'formats/header': Header,
+  'formats/code': CodeBlock
+});
+
+
 class ProjectForm extends React.Component {
   constructor(props) {
     super(props);
@@ -10,7 +28,20 @@ class ProjectForm extends React.Component {
     this.updateField = this.updateField.bind(this);
   }
 
+  setupQuillEditor() {
+    const toolbarOptions = ['bold', 'code-block'];
+    const quill = new Quill('#editor', {
+      modules: {
+        toolbar: 
+        toolbarOptions
+       },
+      theme: "snow"
+    });
+  }
+
   componentDidMount() {
+    // debugger
+    this.setupQuillEditor();
     const id = parseInt(this.props.params.projectId);
     this.props.fetchProject(id).then( (action) => {
       if (action.project.owner !== this.props.currentUser.username) {
@@ -20,6 +51,9 @@ class ProjectForm extends React.Component {
       }
     });
   }
+
+
+
 
   componentWillReceiveProps(nextProps) {
     if (this.props.params.projectId !== nextProps.params.projectId) {
@@ -68,6 +102,8 @@ class ProjectForm extends React.Component {
     });
   }
 
+
+
   render () {
     if (this.props.project === undefined) return null;
     if (this.state === null) return null;
@@ -81,31 +117,47 @@ class ProjectForm extends React.Component {
     }
 
     return (
-      <div className='update-outer'>
-      <div className="update-inner">
-        <form onSubmit={this.handleSubmit} >
-          <section className="save">
-            <input className='save-button' type="Submit" defaultValue="Click to Save File"/>
-          </section>
+      // <div className='update-outer'>
+      // <div className="update-inner">
+      //   <form onSubmit={this.handleSubmit} >
+      //     <section className="save">
+      //       <input className='save-button' type="Submit" defaultValue="Click to Save File"/>
+      //     </section>
+      //
+      //     <div className="project-inner">
+      //       <section className='update-file'>
+      //         <img src={imageToUse} className="edit-img"/>
+      //
+      //         <div className="file-overlay" >
+      //         <p className="add-file-overlay">Click to Add File</p>
+      //         <input type="file" className="add-file" onChange={this.updateFile()}/>
+      //         </div>
+      //
+      //       </section>
+      //
+      //       <input className="title" type="text" onChange={this.updateField('title')} value={this.state.title} />
+      //
+      //       <textarea className="description" name="name"onChange={this.updateField('description')} value={description}></textarea>
+      //
+      //     </div>
+      //
+      //   </form>
+      //   </div>
+      <section>
+        <div id="toolbar"></div>
+        <div id="editor"></div>
 
-          <div className="project-inner">
-            <section className='update-file'>
-              <img src={imageToUse} className="edit-img"/>
+      </section>
+      // </div>
 
-              <div className="file-overlay" >
-              <p className="add-file-overlay">Click to Add File</p>
-              <input type="file" className="add-file" onChange={this.updateFile()}/>
-              </div>
-
-            </section>
-            <input className="title" type="text" onChange={this.updateField('title')} value={this.state.title} />
-            <textarea className="description" name="name"onChange={this.updateField('description')} value={description}></textarea>
-          </div>
-        </form>
-        </div>
-      </div>
     );
   }
 }
 
 export default ProjectForm;
+
+// two divs
+// 1. toolbar = id = toolbar
+// 2. editor = id = editor
+
+//
