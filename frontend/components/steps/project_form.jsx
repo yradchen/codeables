@@ -133,8 +133,8 @@ class ProjectForm extends React.Component {
             </section>
 
             <input className="title" type="text" onChange={this.updateField('title')} value={this.state.title} />
-            <div className="hello">
-            <div id="editor"></div>
+            <div className="quill-container">
+            <div className="editor-box" id="editor"></div>
             </div>
           </div>
 

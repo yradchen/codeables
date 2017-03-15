@@ -162,8 +162,9 @@ class StepEdit extends React.Component {
 
               </section>
                 <input className="title" type="text" onChange={this.updateField('step_title')} value={this.state.step_title} />
-                <div id="editor" className="description"></div>
-                {/* <textarea className="description" name="name"onChange={this.updateField('step_detail')} value={detail}></textarea> */}
+                <div className="quill-container">
+                <div className="editor-box" id="editor"></div>
+                </div>
             </div>
           </form>
           </div>

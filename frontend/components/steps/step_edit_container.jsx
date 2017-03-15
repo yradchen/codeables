@@ -22,7 +22,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     fetchInstruction: (instruction) => dispatch(fetchInstruction(instruction)),
     updateInstruction: (instruction) => dispatch(updateInstruction(instruction)),
     deleteInstruction: (id) => dispatch(deleteInstruction(id)),
-    deleeteProject: (id) => dispatch(deleeteProject(id))
+    deleteProject: (id) => dispatch(deleteProject(id))
   };
 };
 
