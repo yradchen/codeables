@@ -1,5 +1,7 @@
 import React from 'react';
 import { hashHistory } from 'react-router';
+import Quill from 'quill/core';
+import Snow from 'quill/themes/snow';
 
 class ProjectDetail extends React.Component {
   constructor(props) {
@@ -12,7 +14,34 @@ class ProjectDetail extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchProject(this.props.params.id);
+    this.props.fetchProject(this.props.params.id).then( (action) => {
+      this.instructionQuills();
+      const description = JSON.parse(action.project.description);
+      const quill = new Quill('#quill', {
+        modules: {
+          toolbar: false
+        },
+        theme: 'snow'
+      });
+      quill.setContents(description);
+      quill.disable();
+    });
+  }
+
+  instructionQuills() {
+    let instructionIds = Object.keys(this.props.project.instructions);
+    instructionIds.forEach(id => {
+      const htmlId = `int-` + id;
+      const quill = new Quill(`#${htmlId}`, {
+        modules: {
+          toolbar: false
+        },
+        theme: 'snow'
+      });
+      let step_detail = this.props.project.instructions[id].step_detail;
+      quill.setContents(JSON.parse(step_detail));
+      quill.disable();
+    });
   }
 
   renderEdit() {
@@ -58,19 +87,12 @@ class ProjectDetail extends React.Component {
     }
   }
 
-  render () {
-
-    if (this.props.project === undefined) return null;
+  setupInstructions() {
     let instructions = this.props.instructions;
-
     instructions = this.props.instructions.map( (instruction) => {
       let showImg = 'show-img-container';
       if (instruction.media === "") {
         showImg = 'show-img-container hidden';
-      }
-      let text = instruction.step_detail;
-      if (text === "null") {
-        text = " ";
       }
       return (
       <div key={instruction.id}>
@@ -78,11 +100,18 @@ class ProjectDetail extends React.Component {
         <div className={showImg}>
           <img className="show-img" src={instruction.media}/>
         </div>
-        <pre className="show-description">{text}</pre>
+        <div id={`int-${instruction.id}`} ></div>
       </div>
       );
     });
+    return instructions;
+  }
 
+
+  render () {
+
+    if (this.props.project === undefined) return null;
+    const instructions = this.setupInstructions();
 
     let comments = this.props.comments;
 
@@ -118,7 +147,8 @@ class ProjectDetail extends React.Component {
             <div className="show-img-container">
               <img className="show-img" src={this.props.project.cover_img}/>
             </div>
-            <pre className="show-description">{this.props.project.description}</pre>
+            <div id="quill" className="show-description"></div>
+            {/* <pre className="show-description">{this.props.project.description}</pre> */}
             {instructions}
             <form className= "comment-outer" onSubmit={this.createComment}>
               <textarea className="comment-text" value={this.state.body} onChange={this.updateField('body')}>

@@ -2,6 +2,14 @@ import React from 'react';
 import Modal from 'react-modal';
 import { hashHistory } from 'react-router';
 import { ResponseModal, ModalStyle } from './response_modal';
+
+import Quill from 'quill/core';
+import Toolbar from 'quill/modules/toolbar';
+import Bold from 'quill/formats/bold';
+import Italic from 'quill/formats/italic';
+import CodeBlock from 'quill/formats/code';
+import Snow from 'quill/themes/snow';
+
 class StepEdit extends React.Component {
   constructor(props) {
     super(props);
@@ -15,6 +23,7 @@ class StepEdit extends React.Component {
 
   componentDidMount() {
     const projectId = parseInt(this.props.params.projectId);
+    this.setupQuillEditor();
     if (!this.props.project) {
       this.props.fetchProject(projectId).then( () => {
         if (this.props.project.owner !== this.props.currentUser.username) {
@@ -27,6 +36,18 @@ class StepEdit extends React.Component {
 
       hashHistory.push("/");
     }
+  }
+
+  setupQuillEditor() {
+    const toolbarOptions = ['bold', 'italic','code-block'];
+    this.quill = new Quill('#editor', {
+      modules: {
+        toolbar: toolbarOptions
+       },
+      theme: "snow"
+    });
+    const contents = this.props.instruction.step_detail;
+    this.quill.setContents(JSON.parse(contents));
   }
 
   componentWillReceiveProps(nextProps) {
@@ -71,10 +92,12 @@ class StepEdit extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    const delta = this.quill.getContents();
+    const step_detail = JSON.stringify(delta);
     let formData = new FormData();
     formData.append("instruction[media]", this.state.media);
     formData.append("instruction[step_title]", this.state.step_title);
-    formData.append("instruction[step_detail]", this.state.step_detail);
+    formData.append("instruction[step_detail]", step_detail);
     formData.append("instruction[id]", this.state.id);
     let url = `/editcodeable/${this.state.project_id}/edit`;
     this.props.updateInstruction(formData).then( () => {
@@ -139,7 +162,8 @@ class StepEdit extends React.Component {
 
               </section>
                 <input className="title" type="text" onChange={this.updateField('step_title')} value={this.state.step_title} />
-                <textarea className="description" name="name"onChange={this.updateField('step_detail')} value={detail}></textarea>
+                <div id="editor" className="description"></div>
+                {/* <textarea className="description" name="name"onChange={this.updateField('step_detail')} value={detail}></textarea> */}
             </div>
           </form>
           </div>

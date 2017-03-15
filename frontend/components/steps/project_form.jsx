@@ -4,17 +4,16 @@ import { hashHistory } from 'react-router';
 
 import Quill from 'quill/core';
 import Toolbar from 'quill/modules/toolbar';
-import Snow from 'quill/themes/snow';
 import Bold from 'quill/formats/bold';
 import Italic from 'quill/formats/italic';
-import Header from 'quill/formats/header';
 import CodeBlock from 'quill/formats/code';
+import Snow from 'quill/themes/snow';
+
 Quill.register({
   'modules/toolbar': Toolbar,
   'themes/snow': Snow,
   'formats/bold': Bold,
-  // 'formats/italic': Italic,
-  // 'formats/header': Header,
+  'formats/italic': Italic,
   'formats/code': CodeBlock
 });
 
@@ -28,19 +27,15 @@ class ProjectForm extends React.Component {
     this.updateField = this.updateField.bind(this);
   }
 
-  setupQuillEditor() {
-    const toolbarOptions = ['bold', 'code-block'];
-    const quill = new Quill('#editor', {
-      modules: {
-        toolbar: 
-        toolbarOptions
-       },
-      theme: "snow"
-    });
-  }
+
+// delta is what i'm saving to database as json
+// just quill editor and paste empty code?
+// to paste? quill.setContents(delta)
+// so description send up JSON.stringify(delta)
+
+
 
   componentDidMount() {
-    // debugger
     this.setupQuillEditor();
     const id = parseInt(this.props.params.projectId);
     this.props.fetchProject(id).then( (action) => {
@@ -50,6 +45,18 @@ class ProjectForm extends React.Component {
       this.setState(action.project);
       }
     });
+  }
+
+  setupQuillEditor() {
+    const toolbarOptions = ['bold', 'italic','code-block'];
+    this.quill = new Quill('#editor', {
+      modules: {
+        toolbar: toolbarOptions
+       },
+      theme: "snow"
+    });
+    const contents = this.props.project.description;
+    this.quill.setContents(JSON.parse(contents));
   }
 
 
@@ -87,13 +94,12 @@ class ProjectForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    const delta = this.quill.getContents();
+    const description = JSON.stringify(delta);
     let formData = new FormData();
     formData.append("project[cover_img]", this.state.cover_img);
     formData.append("project[title]", this.state.title);
-    let description = this.state.description;
-    if (description === null) {
-      description = " ";
-    }
+
     formData.append("project[description]", description);
     formData.append("project[id]", this.props.project.id);
     let url = `/editcodeable/${this.state.id}/edit`;
@@ -101,6 +107,8 @@ class ProjectForm extends React.Component {
       hashHistory.push(url);
     });
   }
+
+
 
 
 
@@ -116,39 +124,33 @@ class ProjectForm extends React.Component {
       description = "";
     }
 
-    return (
-      // <div className='update-outer'>
-      // <div className="update-inner">
-      //   <form onSubmit={this.handleSubmit} >
-      //     <section className="save">
-      //       <input className='save-button' type="Submit" defaultValue="Click to Save File"/>
-      //     </section>
-      //
-      //     <div className="project-inner">
-      //       <section className='update-file'>
-      //         <img src={imageToUse} className="edit-img"/>
-      //
-      //         <div className="file-overlay" >
-      //         <p className="add-file-overlay">Click to Add File</p>
-      //         <input type="file" className="add-file" onChange={this.updateFile()}/>
-      //         </div>
-      //
-      //       </section>
-      //
-      //       <input className="title" type="text" onChange={this.updateField('title')} value={this.state.title} />
-      //
-      //       <textarea className="description" name="name"onChange={this.updateField('description')} value={description}></textarea>
-      //
-      //     </div>
-      //
-      //   </form>
-      //   </div>
-      <section>
-        <div id="toolbar"></div>
-        <div id="editor"></div>
 
-      </section>
-      // </div>
+    return (
+      <div className='update-outer'>
+      <div className="update-inner">
+        <form onSubmit={this.handleSubmit} >
+          <section className="save">
+            <input className='save-button' type="Submit" defaultValue="Click to Save File"/>
+          </section>
+
+          <div className="project-inner">
+            <section className='update-file'>
+              <img src={imageToUse} className="edit-img"/>
+
+              <div className="file-overlay" >
+              <p className="add-file-overlay">Click to Add File</p>
+              <input type="file" className="add-file" onChange={this.updateFile()}/>
+              </div>
+
+            </section>
+
+            <input className="title" type="text" onChange={this.updateField('title')} value={this.state.title} />
+            <div id="editor" className="description"></div>
+          </div>
+
+        </form>
+        </div>
+      </div>
 
     );
   }
