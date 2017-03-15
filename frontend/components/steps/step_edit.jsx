@@ -18,7 +18,6 @@ class StepEdit extends React.Component {
     this.updateFile = this.updateFile.bind(this);
     this.updateField = this.updateField.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
-    this.handleResponse = this.handleResponse.bind(this);
   }
 
   componentDidMount() {
@@ -109,42 +108,19 @@ class StepEdit extends React.Component {
     this.setState({modalOpen: true});
   }
 
-  handleResponse(response) {
-    if (response === 'confirm') {
-      let url = `/editcodeable/${this.state.project_id}/edit`;
-      this.props.deleteInstruction(this.state.id).then( () => {
-        hashHistory.push(url);
-      });
-    } else {
-      this.setState({modalOpen: false});
-    }
-  }
-
   render () {
     if (this.props.instruction === undefined) return null;
     let detail = this.state.step_detail;
     if (this.state.step_detail === null) {
       detail = "";
     }
-    let imageToUse = <img src={this.state.imageUrl} className="edit-img"/>;
-
-    if (this.state.imageUrl === undefined) {
+    let imageToUse = <img src={this.state.media} className="edit-img"/>;
+    if (this.state.media === "") {
       imageToUse = <img src={images.rightPointer} className="edit-img opacity"/>;
     }
 
-
     return (
     <div>
-      <Modal
-        isOpen={this.state.modalOpen}
-        contentLabel="Modal"
-        id="Modal"
-        style={ModalStyle}
-        onRequestClose={(response) => this.handleResponse(response)}
-        >
-        <ResponseModal
-        handleResponse={this.handleResponse}/>
-      </Modal>
         <div className='update-outer'>
         <div className="update-inner">
           <form onSubmit={this.handleSubmit} >
