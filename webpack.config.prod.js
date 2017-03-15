@@ -22,17 +22,29 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
+      test: /\.jsx?$/,
+      use: [{
         loader: 'babel-loader',
-        query: {
-          presets: ['react', 'es2015']
+        options: {
+          presets: ['es2015', 'react']
         }
-      }
-    ]
+      }],
+    },
+      {
+      test: /\.svg$/,
+      use: [{
+        loader: 'html-loader',
+        options: {
+          minimize: true
+        }
+      }]
+    }]
   },
   devtool: 'source-map',
   resolve: {
+    alias: {
+      'quill$': path.resolve(__dirname, 'node_modules/quill/quill.js'),
+    },
     extensions: ['.js', '.jsx', '*']
   }
 };
