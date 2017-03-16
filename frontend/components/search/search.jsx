@@ -34,7 +34,9 @@ class Searches extends React.Component {
     const allProjects = this.props.projects.map(project => {
       return (
         <li className="outer-project-container" key={project.id}>
-          <img className="project-image" src={project.cover_img} />
+          <Link to={`/projects/${project.id}`}>
+            <img className="project-image" src={project.cover_img} />
+          </Link>
           <div className="inner-project-container">
             <section>
               <Link to={`/projects/${project.id}`}>
