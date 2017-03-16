@@ -45,6 +45,7 @@ class ProjectDetail extends React.Component {
   }
 
   renderEdit() {
+
     if (this.props.project.owner === this.props.currentUser.username) {
       return <button className="edit-button" onClick={this.goToEdit}>Edit</button>;
     } else {
@@ -75,6 +76,10 @@ class ProjectDetail extends React.Component {
       e.preventDefault();
       this.props.deleteComment(comment.id);
     };
+  }
+
+  componentWillReceiveProps() {
+
   }
 
   renderDeleteComment(comment) {

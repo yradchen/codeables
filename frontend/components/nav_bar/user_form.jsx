@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router';
-import { hashHistory } from 'react-router';
+import { Link, hashHistory, withRouter } from 'react-router';
 
 class UserForm extends React.Component {
   constructor (props) {
@@ -13,6 +12,10 @@ class UserForm extends React.Component {
   logOutUser(e) {
     e.preventDefault();
     this.props.logout();
+    
+    if (this.props.location.pathname !== "/") {
+      hashHistory.push("/");
+    }
   }
 
   sessionLinks () {
@@ -103,4 +106,4 @@ class UserForm extends React.Component {
 }
 
 
-export default UserForm;
+export default withRouter(UserForm);
