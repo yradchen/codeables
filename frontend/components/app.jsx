@@ -61,4 +61,3 @@ const App = ({ children, setVisibility, listVisibility, loading }) => {
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
-// export default App;

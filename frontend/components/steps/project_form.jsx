@@ -149,9 +149,3 @@ class ProjectForm extends React.Component {
 }
 
 export default ProjectForm;
-
-// two divs
-// 1. toolbar = id = toolbar
-// 2. editor = id = editor
-
-//

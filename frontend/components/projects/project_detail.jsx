@@ -153,7 +153,6 @@ class ProjectDetail extends React.Component {
               <img className="show-img" src={this.props.project.cover_img}/>
             </div>
             <div id="quill" className="show-description"></div>
-            {/* <pre className="show-description">{this.props.project.description}</pre> */}
             {instructions}
             <form className= "comment-outer" onSubmit={this.createComment}>
               <textarea className="comment-text" value={this.state.body} onChange={this.updateField('body')}>

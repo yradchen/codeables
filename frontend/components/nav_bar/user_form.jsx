@@ -12,7 +12,7 @@ class UserForm extends React.Component {
   logOutUser(e) {
     e.preventDefault();
     this.props.logout();
-    
+
     if (this.props.location.pathname !== "/") {
       hashHistory.push("/");
     }
@@ -67,7 +67,7 @@ class UserForm extends React.Component {
           <button onClick={this.drafts} className="drafts-link" >
           <i id="folder" className="material-icons">
         folder</i><p className='drafts-text'>
-          Draft Codeables</p></button>
+          {this.props.currentUser.username}'s Current Codeables</p></button>
         </li>
         <li className="bottom-drop">
             <Link to="/editcodeable/new" className='new-project'>

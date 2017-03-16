@@ -65,9 +65,9 @@ class ProjectEditPage extends React.Component {
     if (this.props.project === undefined) return null;
     let publish;
     if (this.props.project.publish) {
-      publish = "UNPUBLISH";
+      publish = "Unpublish";
     } else {
-      publish = 'PUBLISH';
+      publish = 'Publish';
     }
     const instructions = this.props.instructions.map( (instruction, index) => {
       let img = <img src={instruction.media} className="edit-img"/>;
@@ -108,7 +108,10 @@ class ProjectEditPage extends React.Component {
                 <p className="show-owner">{this.props.project.owner}</p>
                 </span>
               </div>
-              <button id="publish" onClick={this.updatePublish}>{publish}</button>
+              <section>
+                <Link to={`projects/${this.props.project.id}`} id="preview">Full Preview</Link>
+                <button id="publish" onClick={this.updatePublish}>{publish}</button>
+              </section>
             </section>
             <section className="edit-view-bottom">
               <div className="edit-view-ind">

@@ -74,20 +74,10 @@
 
 .description {
   margin-top: 15px;
-  // background-color: #fff;
-  // box-shadow: inset 0 0 3px rgba(0,0,0,0.15);
-  // border: 1px solid #ccc;
-  // font-family: Helvetica, Arial, sans-serif;
-  // border-radius: 10px;
-  // font-size: 18px;
   padding-left: 10px;
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-  // width: 95%;
-  // max-width: 95%;
-  // min-height: 310px;
-  // margin-bottom: 20px;
-
 }
+
 .add-file-overlay {
   position: absolute;
   text-align: center;
@@ -159,7 +149,22 @@
   outline: none;
 }
 
+
+#preview {
+  background-color: #f6f6f6;
+  color: #333;
+  border: 1px solid #dedede;
+  font-family: Helvetica, Arial, sans-serif;
+  height: 80%;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 6px 12px 8px 12px;
+  text-align: center;
+}
+
 #publish {
+  margin-left: 8px;
   background-color: #e86c00;
   border-color: #cf6000;
   color: #fff;
