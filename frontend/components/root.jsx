@@ -8,8 +8,8 @@ import Homepage from './homepage/homepage';
 import ProjectDetailContainer from './projects/project_detail_container';
 import ProjectEditContainer from './projects/project_edit_overview_container';
 import NewProjectFormContainer from './projects/new_project_form_container';
-import ProjectFormContainer from './steps/project_form_container';
-import StepEditContainer from './steps/step_edit_container';
+import ProjectFormContainer from './projects/forms/project_form_container';
+import InstructionEditContainer from './projects/forms/instruction_edit_container';
 import { fetchProject } from '../actions/project_actions';
 import SearchContainer from './search/search_container'
 import DraftsContainer from './projects/unpublished/drafts_container';
@@ -46,7 +46,7 @@ const Root = ({ store }) => {
             <Route path="/editcodeable/new" component={ NewProjectFormContainer} />
             <Route path="/editcodeable/:projectId/edit" component={ ProjectEditContainer} />
             <Route path="/editcodeable/:projectId/edit/project" component={ ProjectFormContainer }/>
-            <Route path="/editcodeable/:projectId/edit/step/:id" component={ StepEditContainer } />
+            <Route path="/editcodeable/:projectId/edit/step/:id" component={ InstructionEditContainer } />
             <Route path="/projects/:id" component= {ProjectDetailContainer} />
           </Route>
           <Route path="/mycodeables/drafts" component={DraftsContainer} />

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
-import { createProject, updateProject, fetchProject } from '../../actions/project_actions';
+import { createProject, updateProject, fetchProject } from '../../../actions/project_actions';
 import Projectform from './project_form';
-import { setLoadingState } from '../../actions/nav_bar_actions';
+import { setLoadingState } from '../../../actions/nav_bar_actions';
 
 const mapStateToProps = (state, ownProps) => {
 

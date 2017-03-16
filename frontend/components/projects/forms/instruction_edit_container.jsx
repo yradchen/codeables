@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
-import { createInstruction, updateInstruction, fetchInstruction, deleteInstruction } from '../../actions/instruction_actions';
-import StepEdit from './step_edit';
-import { fetchProject, deleteProject } from '../../actions/project_actions';
-import { setLoadingState } from '../../actions/nav_bar_actions';
+import { createInstruction, updateInstruction, fetchInstruction, deleteInstruction } from '../../../actions/instruction_actions';
+import InstructionEdit from './instruction_edit';
+import { fetchProject, deleteProject } from '../../../actions/project_actions';
+import { setLoadingState } from '../../../actions/nav_bar_actions';
 
 const mapStateToProps = (state, ownProps) => {
   let instruction = { step_title:'', step_detail:'', media: '', mediaUrl: '', project_id: '', id: '' };
@@ -28,4 +28,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(StepEdit);
+export default connect(mapStateToProps, mapDispatchToProps)(InstructionEdit);

@@ -10,7 +10,7 @@ import Italic from 'quill/formats/italic';
 import CodeBlock from 'quill/formats/code';
 import Snow from 'quill/themes/snow';
 
-class StepEdit extends React.Component {
+class InstructionEdit extends React.Component {
   constructor(props) {
     super(props);
     this.state = this.props.instruction;
@@ -153,4 +153,4 @@ class StepEdit extends React.Component {
   }
 }
 
-export default StepEdit;
+export default InstructionEdit;
