@@ -83,6 +83,7 @@ class ProjectForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    this.props.setLoadingState(true);
     const delta = this.quill.getContents();
     const description = JSON.stringify(delta);
     let formData = new FormData();
@@ -92,6 +93,7 @@ class ProjectForm extends React.Component {
     formData.append("project[id]", this.props.project.id);
     let url = `/editcodeable/${this.state.id}/edit`;
     this.props.updateProject(formData).then( () => {
+      this.props.setLoadingState(false);
       hashHistory.push(url);
     });
   }

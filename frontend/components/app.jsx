@@ -8,7 +8,8 @@ import { connect } from 'react-redux';
 
 const mapStateToProps = (state) => {
   return {
-    listVisibility: state.navBar.listVisibility
+    listVisibility: state.navBar.listVisibility,
+    loading: state.navBar.loading
   }
 }
 
@@ -26,18 +27,34 @@ const removeVisibility = (setVisibility, listVisibility) => {
   }
 }
 
+const spinner = (loading) => {
+  if (loading) {
+    return (
+      <section>
+        <div id="loading-spinner"></div>
+        <div id="grey-loader"></div>
+      </section>
+    )
+  } else {
+    return <div></div>
+  }
+}
 
-const App = ({ children, setVisibility, listVisibility }) => {
+
+const App = ({ children, setVisibility, listVisibility, loading }) => {
   let navBarflex = "nav-top";
   if (children.props.location.pathname.includes("account")) {
     navBarflex += " center"
   };
   return (
-  <div onClick={removeVisibility(setVisibility, listVisibility)}>
-    <NavBarContainer flex={navBarflex}/>
-    { children }
-    <Footer />
-  </div>
+    <div>
+      {spinner(loading)}
+      <div onClick={removeVisibility(setVisibility, listVisibility)}>
+        <NavBarContainer flex={navBarflex}/>
+        { children }
+        <Footer />
+      </div>
+    </div>
   )
 }
 

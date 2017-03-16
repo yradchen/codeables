@@ -92,6 +92,7 @@ class StepEdit extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    this.props.setLoadingState(true);
     const delta = this.quill.getContents();
     const step_detail = JSON.stringify(delta);
     let formData = new FormData();
@@ -101,6 +102,7 @@ class StepEdit extends React.Component {
     formData.append("instruction[id]", this.state.id);
     let url = `/editcodeable/${this.state.project_id}/edit`;
     this.props.updateInstruction(formData).then( () => {
+      this.props.setLoadingState(false);
       hashHistory.push(url);
     });
   }
