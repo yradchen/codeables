@@ -39,7 +39,7 @@ The search currently looks for projects by titles that include the searched keyw
 
 While I will continue to work on Codeables in the future and there are many features I would like to implement, the ones I find most valubale to implement next are listed below.
 
-### Code Snippets
+### Code Snippets - Added!
 While instructables only allows images to be inserted, Codeables is designed to allow users to show others how to make coding projects. Thus, a future implementation will allows users to insert code snippets.
 
 ### Comment sorting and likes
