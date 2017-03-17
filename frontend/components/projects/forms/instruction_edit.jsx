@@ -111,15 +111,23 @@ class InstructionEdit extends React.Component {
     this.setState({modalOpen: true});
   }
 
+  chooseImage() {
+    let imageToUse = this.state.imageUrl;
+    if (imageToUse === undefined) {
+      imageToUse = this.state.media;
+    }
+    if (imageToUse === "") {
+      return <img src={images.rightPointer} className="edit-img opacity"/>;
+    }
+    return <img src={imageToUse} className="edit-img"/>;
+  }
+
   render () {
     if (this.props.instruction === undefined) return null;
     let detail = this.state.step_detail;
+    const imageToUse = this.chooseImage();
     if (this.state.step_detail === null) {
       detail = "";
-    }
-    let imageToUse = <img src={this.state.media} className="edit-img"/>;
-    if (this.state.media === "") {
-      imageToUse = <img src={images.rightPointer} className="edit-img opacity"/>;
     }
 
     return (

@@ -3,7 +3,7 @@ import InstructionFormContainer from '../instructions/instruction_form_container
 import Modal from 'react-modal';
 import {Link} from 'react-router';
 import { hashHistory } from 'react-router';
-import { ResponseModal, ModalStyle } from '../steps/response_modal';
+import { ResponseModal, ModalStyle } from './forms/response_modal';
 
 class ProjectEditPage extends React.Component {
   constructor() {

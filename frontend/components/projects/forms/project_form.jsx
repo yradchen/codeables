@@ -106,6 +106,7 @@ class ProjectForm extends React.Component {
     if (this.props.project === undefined) return null;
     if (this.state === null) return null;
     let imageToUse = this.state.imageUrl;
+    debugger
     if (this.state.imageUrl === undefined) {
       imageToUse = this.state.cover_img;
     }
