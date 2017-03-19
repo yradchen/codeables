@@ -95,6 +95,9 @@ class ProjectForm extends React.Component {
     this.props.updateProject(formData).then( () => {
       this.props.setLoadingState(false);
       hashHistory.push(url);
+    }, (data) => {
+      this.props.setLoadingState(false);
+      debugger
     });
   }
 
@@ -106,7 +109,6 @@ class ProjectForm extends React.Component {
     if (this.props.project === undefined) return null;
     if (this.state === null) return null;
     let imageToUse = this.state.imageUrl;
-    debugger
     if (this.state.imageUrl === undefined) {
       imageToUse = this.state.cover_img;
     }
