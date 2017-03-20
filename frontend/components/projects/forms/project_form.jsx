@@ -17,7 +17,6 @@ Quill.register({
   'formats/code': CodeBlock
 });
 
-
 class ProjectForm extends React.Component {
   constructor(props) {
     super(props);
@@ -26,6 +25,7 @@ class ProjectForm extends React.Component {
     this.updateFile = this.updateFile.bind(this);
     this.updateField = this.updateField.bind(this);
     this.handleErrors = this.handleErrors.bind(this);
+    this.opacity = "";
   }
 
   componentDidMount() {
@@ -155,28 +155,25 @@ class ProjectForm extends React.Component {
   chooseInstructionImage() {
     let imageToUse = this.state.media;
     if (imageToUse === "") {
-      imageToUse = images.rightPointer;
+      return <img src={images.rightPointer} className="edit-img opacity"/>;
     }
-    return imageToUse;
+    return <img src={imageToUse} className="edit-img"/>;
   }
 
 
   render () {
     if (this.props.formInfo === undefined) return null;
     if (this.state === null) return null;
-    let imageToUse = this.state.imageUrl;
-    let opacity = "";
+    let imageToUse = <img src={this.state.imageUrl} className="edit-img"/>;
     if (this.state.imageUrl === undefined) {
       if (this.state.cover_img) {
-        imageToUse = this.state.cover_img;
+        imageToUse = <img src={this.state.cover_img} className="edit-img"/>;
       } else {
         imageToUse = this.chooseInstructionImage();
-        opacity = "opacity";
       }
 
     }
     const errors = this.boxError();
-
 
     return (
       <div className='update-outer'>
@@ -190,7 +187,7 @@ class ProjectForm extends React.Component {
 
           <div className="project-inner">
             <section className='update-file'>
-              <img src={imageToUse} className={`edit-img ${opacity}`}/>
+              {imageToUse}
 
               <div className="file-overlay" >
               <p className="add-file-overlay">Click to Add File</p>
