@@ -21,7 +21,6 @@ Quill.register({
 class ProjectForm extends React.Component {
   constructor(props) {
     super(props);
-    // if instruction it needs to be this.props.instruction
     this.state = this.props.formInfo;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateFile = this.updateFile.bind(this);
@@ -90,9 +89,12 @@ class ProjectForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.setLoadingState(true);
-    // const delta = this.quill.getContents();
-    // const description = JSON.stringify(delta);
-    let formData = this.projectFormData();
+    let formData;
+    // if (this.state.title) {
+      formData = this.projectFormData();
+    // } else {
+    //   formData = this.instructionFormData();
+    // }
     let url = `/editcodeable/${this.state.id}/edit`;
     this.props.updateProjectForm(formData).then( () => {
       this.setState( { errors: undefined } );
@@ -114,8 +116,20 @@ class ProjectForm extends React.Component {
     formData.append("project[title]", this.state.title);
     formData.append("project[description]", description);
     formData.append("project[id]", this.state.id);
-    return formData
+    return formData;
   }
+
+  instructionFormData() {
+    const formData = new FormData();
+    const delta = this.quill.getContents();
+    const step_detail = JSON.stringify(delta);
+    formData.append("instruction[media]", this.state.media);
+    formData.append("instruction[step_title]", this.state.step_title);
+    formData.append("instruction[step_detail]", step_detail);
+    formData.append("instruction[id]", this.state.id);
+    return formData;
+  }
+
 
   boxError() {
     if (this.state.errors) {

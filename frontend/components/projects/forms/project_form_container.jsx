@@ -18,13 +18,14 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  // look at ownProps //
+  let updateProjectForm = (project) => dispatch(updateProject(project));
+  if (ownProps.params.instructionId) {
+    updateProjectForm = (project) => dispatch(updateInstruction(instruction));
+  }
   return {
-    updateProjectForm: (project) => dispatch(updateProject(project)),
+    updateProjectForm: updateProjectForm,
     fetchProject: (id) => dispatch(fetchProject(id)),
-    setLoadingState: (boolean) => dispatch(setLoadingState(boolean)),
-    fetchInstruction: (instruction) => dispatch(fetchInstruction(instruction)),
-    updateInstruction: (instruction) => dispatch(updateInstruction(instruction))
+    setLoadingState: (boolean) => dispatch(setLoadingState(boolean))
   };
 };
 
