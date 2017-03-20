@@ -94,15 +94,27 @@ class ProjectForm extends React.Component {
     formData.append("project[id]", this.props.project.id);
     let url = `/editcodeable/${this.state.id}/edit`;
     this.props.updateProject(formData).then( () => {
+      this.setState( { errors: undefined } );
       this.props.setLoadingState(false);
       hashHistory.push(url);
     }, this.handleErrors);
   }
 
   handleErrors(data) {
-    debugger
     this.props.setLoadingState(false);
+    this.setState( { errors: data.responseJSON[0] } );
+  }
 
+  boxError() {
+    if (this.state.errors) {
+      return (
+        <ul className="project-box-error">
+          <li>
+            <h3 className="box-error-message">{this.state.errors}</h3>
+          </li>
+        </ul>
+      );
+    }
   }
 
 
@@ -118,14 +130,17 @@ class ProjectForm extends React.Component {
     if (description === null) {
       description = "";
     }
+    const errors = this.boxError();
 
 
     return (
       <div className='update-outer'>
       <div className="update-inner">
+
         <form onSubmit={this.handleSubmit} >
           <section className="save">
             <input className='save-button' type="Submit" defaultValue="Click to Save File"/>
+            {errors}
           </section>
 
           <div className="project-inner">

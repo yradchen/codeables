@@ -99,8 +99,10 @@
 
 .save {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
+
 
 .save-button {
   cursor: pointer;

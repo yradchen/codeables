@@ -107,3 +107,16 @@
   border-color: #bd362f #bd362f #802420;
   background-color: #da4f49;
 }
+
+.project-box-error {
+  margin-top: 10px;
+  list-style: none;
+  background-color: #b94a48;
+  font-size: 12px;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  border: 1px #b94a48;
+  border-radius: 3px;
+  margin-bottom: 20px;
+  padding: 2px 4px;
+  display: flex;
+}

@@ -110,6 +110,19 @@ class InstructionEdit extends React.Component {
 
   handleErrors(data) {
     this.props.setLoadingState(false);
+    this.setState( { errors: data.responseJSON[0] } );
+  }
+
+  boxError() {
+    if (this.state.errors) {
+      return (
+        <ul className="project-box-error">
+          <li>
+            <h3 className="box-error-message">{this.state.errors}</h3>
+          </li>
+        </ul>
+      );
+    }
   }
 
   handleDelete(e) {
@@ -134,6 +147,7 @@ class InstructionEdit extends React.Component {
     if (this.state.step_detail === null) {
       detail = "";
     }
+    const errors = this.boxError();
 
     return (
     <div>
@@ -142,6 +156,7 @@ class InstructionEdit extends React.Component {
           <form onSubmit={this.handleSubmit} >
             <section className="save">
               <input className='save-button' type="Submit" defaultValue="Click to Save File"/>
+              {errors}
             </section>
             <div className="project-inner">
               <section className='update-file'>
