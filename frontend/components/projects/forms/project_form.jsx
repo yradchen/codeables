@@ -67,15 +67,19 @@ class ProjectForm extends React.Component {
     return (e) => {
       let file = e.currentTarget.files[0];
       let reader = new FileReader();
+      let fileName = "media";
+      if (this.state.cover_img) {
+        fileName = "cover_img";
+      }
       reader.onloadend = () => {
-        // change from media to cover_img
-        this.setState( {imageUrl: reader.result, cover_img: file} );
+        this.setState( {imageUrl: reader.result, [`${fileName}`]: file} );
       };
+
       if (file) {
         reader.readAsDataURL(file);
       } else {
         // change from media to cover_img
-        this.setState({ imageUrl: null, cover_img: null});
+        this.setState({ imageUrl: null, [`${fileName}`]: null});
       }
     };
   }
@@ -100,7 +104,7 @@ class ProjectForm extends React.Component {
     if (this.state.project_id) {
       url = `/editcodeable/${this.state.project_id}/edit`;
     }
-    
+
     this.props.updateProjectForm(formData).then( () => {
       this.setState( { errors: undefined } );
       this.props.setLoadingState(false);
