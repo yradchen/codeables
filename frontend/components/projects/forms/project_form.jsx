@@ -96,8 +96,11 @@ class ProjectForm extends React.Component {
     } else {
       formData = this.instructionFormData();
     }
-
     let url = `/editcodeable/${this.state.id}/edit`;
+    if (this.state.project_id) {
+      url = `/editcodeable/${this.state.project_id}/edit`;
+    }
+    
     this.props.updateProjectForm(formData).then( () => {
       this.setState( { errors: undefined } );
       this.props.setLoadingState(false);
@@ -111,7 +114,6 @@ class ProjectForm extends React.Component {
   }
 
   projectFormData() {
-    debugger
     const formData = new FormData();
     const delta = this.quill.getContents();
     const description = JSON.stringify(delta);
@@ -123,7 +125,6 @@ class ProjectForm extends React.Component {
   }
 
   instructionFormData() {
-    debugger
     const formData = new FormData();
     const delta = this.quill.getContents();
     const step_detail = JSON.stringify(delta);
