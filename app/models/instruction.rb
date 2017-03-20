@@ -17,7 +17,6 @@
 class Instruction < ApplicationRecord
   validates :step_title, :project, presence: true
   validates :step_detail, presence: true, on: :update
-# :step_detail
   has_attached_file :media, default_url: ""
   validates_attachment_content_type :media, content_type: /\Aimage\/.*\z/
 

@@ -18,6 +18,7 @@ class InstructionEdit extends React.Component {
     this.updateFile = this.updateFile.bind(this);
     this.updateField = this.updateField.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.handleErrors = this.handleErrors.bind(this);
   }
 
   componentDidMount() {

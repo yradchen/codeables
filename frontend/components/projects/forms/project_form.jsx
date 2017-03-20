@@ -100,6 +100,7 @@ class ProjectForm extends React.Component {
   }
 
   handleErrors(data) {
+    debugger
     this.props.setLoadingState(false);
 
   }
