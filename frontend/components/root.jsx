@@ -10,7 +10,6 @@ import ProjectEditContainer from './projects/project_edit_overview_container';
 import NewProjectFormContainer from './projects/new_project_form_container';
 import ProjectFormContainer from './projects/forms/project_form_container';
 import InstructionEditContainer from './projects/forms/instruction_edit_container';
-import { fetchProject } from '../actions/project_actions';
 import SearchContainer from './search/search_container'
 import DraftsContainer from './projects/unpublished/drafts_container';
 
@@ -37,6 +36,7 @@ const _redirectIfLoggedIn = (store) => {
 const _redirectIfBadLink = (nextState, replace) => {
   replace('/')
 }
+
 const Root = ({ store }) => {
   return (
     <Provider store={store}>
