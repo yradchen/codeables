@@ -1,6 +1,4 @@
 import React from 'react';
-
-import NavBar from './nav_bar/nav_bar';
 import Footer from './footer/footer';
 import NavBarContainer from './nav_bar/nav_bar_container';
 import { setVisibility } from '../actions/nav_bar_actions';
@@ -40,7 +38,6 @@ const spinner = (loading) => {
   }
 }
 
-
 const App = ({ children, setVisibility, listVisibility, loading }) => {
   let navBarflex = "nav-top";
   if (children.props.location.pathname.includes("account")) {
@@ -57,7 +54,5 @@ const App = ({ children, setVisibility, listVisibility, loading }) => {
     </div>
   )
 }
-
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

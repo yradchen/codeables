@@ -21,7 +21,8 @@ Quill.register({
 class ProjectForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = this.props.project;
+    // if instruction it needs to be this.props.instruction
+    this.state = this.props.formInfo;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateFile = this.updateFile.bind(this);
     this.updateField = this.updateField.bind(this);
@@ -34,6 +35,7 @@ class ProjectForm extends React.Component {
       if (action.project.owner !== this.props.currentUser.username) {
         hashHistory.push("/");
       } else {
+        // changed based on action
       this.setState(action.project);
       this.setupQuillEditor();
       }
@@ -48,14 +50,15 @@ class ProjectForm extends React.Component {
        },
       theme: "snow"
     });
-    const contents = this.props.project.description;
+    // would change to this.props.instruction.step_detail
+    const contents = this.props.formInfo.description;
     this.quill.setContents(JSON.parse(contents));
   }
 
   componentWillReceiveProps(nextProps) {
     if (this.props.params.projectId !== nextProps.params.projectId) {
       this.props.fetchProject(parseInt(nextProps.params.projectId)).then( () => {
-        this.setState(this.props.project);
+        this.setState(this.props.formInfo);
       });
     }
   }
@@ -65,11 +68,13 @@ class ProjectForm extends React.Component {
       let file = e.currentTarget.files[0];
       let reader = new FileReader();
       reader.onloadend = () => {
+        // change from media to cover_img
         this.setState( {imageUrl: reader.result, cover_img: file} );
       };
       if (file) {
         reader.readAsDataURL(file);
       } else {
+        // change from media to cover_img
         this.setState({ imageUrl: null, cover_img: null});
       }
     };
@@ -85,15 +90,11 @@ class ProjectForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.setLoadingState(true);
-    const delta = this.quill.getContents();
-    const description = JSON.stringify(delta);
-    let formData = new FormData();
-    formData.append("project[cover_img]", this.state.cover_img);
-    formData.append("project[title]", this.state.title);
-    formData.append("project[description]", description);
-    formData.append("project[id]", this.props.project.id);
+    // const delta = this.quill.getContents();
+    // const description = JSON.stringify(delta);
+    let formData = this.projectFormData();
     let url = `/editcodeable/${this.state.id}/edit`;
-    this.props.updateProject(formData).then( () => {
+    this.props.updateProjectForm(formData).then( () => {
       this.setState( { errors: undefined } );
       this.props.setLoadingState(false);
       hashHistory.push(url);
@@ -103,6 +104,17 @@ class ProjectForm extends React.Component {
   handleErrors(data) {
     this.props.setLoadingState(false);
     this.setState( { errors: data.responseJSON[0] } );
+  }
+
+  projectFormData() {
+    const formData = new FormData();
+    const delta = this.quill.getContents();
+    const description = JSON.stringify(delta);
+    formData.append("project[cover_img]", this.state.cover_img);
+    formData.append("project[title]", this.state.title);
+    formData.append("project[description]", description);
+    formData.append("project[id]", this.state.id);
+    return formData
   }
 
   boxError() {
@@ -120,7 +132,7 @@ class ProjectForm extends React.Component {
 
 
   render () {
-    if (this.props.project === undefined) return null;
+    if (this.props.formInfo === undefined) return null;
     if (this.state === null) return null;
     let imageToUse = this.state.imageUrl;
     if (this.state.imageUrl === undefined) {

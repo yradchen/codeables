@@ -17,7 +17,6 @@ class InstructionEdit extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateFile = this.updateFile.bind(this);
     this.updateField = this.updateField.bind(this);
-    this.handleDelete = this.handleDelete.bind(this);
     this.handleErrors = this.handleErrors.bind(this);
   }
 
@@ -125,9 +124,7 @@ class InstructionEdit extends React.Component {
     }
   }
 
-  handleDelete(e) {
-    this.setState({modalOpen: true});
-  }
+
 
   chooseImage() {
     let imageToUse = this.state.imageUrl;

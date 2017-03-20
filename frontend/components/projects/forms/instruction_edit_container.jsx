@@ -5,14 +5,15 @@ import { fetchProject, deleteProject } from '../../../actions/project_actions';
 import { setLoadingState } from '../../../actions/nav_bar_actions';
 
 const mapStateToProps = (state, ownProps) => {
+  debugger
   let instruction = { step_title:'', step_detail:'', media: '', mediaUrl: '', project_id: '', id: '' };
   const project = state.projects[parseInt(ownProps.params.projectId)];
-  const arrayIndex = parseInt(ownProps.params.id);
+  const arrayIndex = parseInt(ownProps.params.instructionId);
 
   if (project) {
 
     let instructionKeys = Object.keys(state.projects[ownProps.params.projectId].instructions);
-    instruction = project.instructions[instructionKeys[ownProps.params.id]];
+    instruction = project.instructions[instructionKeys[ownProps.params.instructionId]];
   }
   return { instruction, project, currentUser: state.session.currentUser };
 };
