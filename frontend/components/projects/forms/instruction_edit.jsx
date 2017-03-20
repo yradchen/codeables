@@ -104,7 +104,11 @@ class InstructionEdit extends React.Component {
     this.props.updateInstruction(formData).then( () => {
       this.props.setLoadingState(false);
       hashHistory.push(url);
-    });
+    }, this.handleErrors);
+  }
+
+  handleErrors(data) {
+    this.props.setLoadingState(false);
   }
 
   handleDelete(e) {

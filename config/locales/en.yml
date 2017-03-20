@@ -21,3 +21,8 @@
 
 en:
   hello: "Hello world"
+en:
+  activerecord:
+    attributes:
+      project:
+        cover_img: "Cover Image"

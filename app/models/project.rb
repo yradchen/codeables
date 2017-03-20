@@ -26,7 +26,7 @@ class Project < ApplicationRecord
 
   def self.find_by_title(title)
     title = title.downcase
-    Project.includes(:user).where("loweR(title) LIKE ?", "%#{title}%")
+    Project.includes(:user).where("lower(title) LIKE ?", "%#{title}%")
   end
 
   def self.find_by_user_id(user_id)

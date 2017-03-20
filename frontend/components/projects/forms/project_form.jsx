@@ -25,6 +25,7 @@ class ProjectForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateFile = this.updateFile.bind(this);
     this.updateField = this.updateField.bind(this);
+    this.handleErrors = this.handleErrors.bind(this);
   }
 
   componentDidMount() {
@@ -95,13 +96,13 @@ class ProjectForm extends React.Component {
     this.props.updateProject(formData).then( () => {
       this.props.setLoadingState(false);
       hashHistory.push(url);
-    }, (data) => {
-      this.props.setLoadingState(false);
-      debugger
-    });
+    }, this.handleErrors);
   }
 
+  handleErrors(data) {
+    this.props.setLoadingState(false);
 
+  }
 
 
 
