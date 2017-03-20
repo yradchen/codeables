@@ -58,7 +58,7 @@ class InstructionEdit extends React.Component {
           this.setState(this.props.instruction);
         });
       }
-    } else if (nextProps.instrcution) {
+    } else if (nextProps.instruction) {
       if (this.props.instruction.id !== nextProps.instruction.id) {
 
         this.setState(nextProps.instruction);

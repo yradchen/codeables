@@ -5,7 +5,6 @@ import { fetchProject, deleteProject } from '../../../actions/project_actions';
 import { setLoadingState } from '../../../actions/nav_bar_actions';
 
 const mapStateToProps = (state, ownProps) => {
-  debugger
   let instruction = { step_title:'', step_detail:'', media: '', mediaUrl: '', project_id: '', id: '' };
   const project = state.projects[parseInt(ownProps.params.projectId)];
   const arrayIndex = parseInt(ownProps.params.instructionId);

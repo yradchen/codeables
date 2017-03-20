@@ -46,7 +46,7 @@ const Root = ({ store }) => {
             <Route path="/editcodeable/new" component={ NewProjectFormContainer} />
             <Route path="/editcodeable/:projectId/edit" component={ ProjectEditContainer} />
             <Route path="/editcodeable/:projectId/edit/project" component={ ProjectFormContainer }/>
-            <Route path="/editcodeable/:projectId/edit/step/:instructionId" component={ InstructionEditContainer } />
+            <Route path="/editcodeable/:projectId/edit/step/:instructionId" component={ ProjectFormContainer } />
             <Route path="/projects/:id" component= {ProjectDetailContainer} />
           </Route>
           <Route path="/mycodeables/drafts" component={DraftsContainer} />

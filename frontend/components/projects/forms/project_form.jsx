@@ -34,9 +34,8 @@ class ProjectForm extends React.Component {
       if (action.project.owner !== this.props.currentUser.username) {
         hashHistory.push("/");
       } else {
-        // changed based on action
-      this.setState(action.project);
-      this.setupQuillEditor();
+        this.setState(this.props.formInfo);
+        this.setupQuillEditor();
       }
     });
   }
@@ -49,8 +48,10 @@ class ProjectForm extends React.Component {
        },
       theme: "snow"
     });
-    // would change to this.props.instruction.step_detail
-    const contents = this.props.formInfo.description;
+    let contents = this.props.formInfo.description;
+    if (!contents) {
+      contents = this.props.formInfo.step_detail;
+    }
     this.quill.setContents(JSON.parse(contents));
   }
 
@@ -90,11 +91,12 @@ class ProjectForm extends React.Component {
     e.preventDefault();
     this.props.setLoadingState(true);
     let formData;
-    // if (this.state.title) {
+    if (this.state.title) {
       formData = this.projectFormData();
-    // } else {
-    //   formData = this.instructionFormData();
-    // }
+    } else {
+      formData = this.instructionFormData();
+    }
+
     let url = `/editcodeable/${this.state.id}/edit`;
     this.props.updateProjectForm(formData).then( () => {
       this.setState( { errors: undefined } );
@@ -109,6 +111,7 @@ class ProjectForm extends React.Component {
   }
 
   projectFormData() {
+    debugger
     const formData = new FormData();
     const delta = this.quill.getContents();
     const description = JSON.stringify(delta);
@@ -120,6 +123,7 @@ class ProjectForm extends React.Component {
   }
 
   instructionFormData() {
+    debugger
     const formData = new FormData();
     const delta = this.quill.getContents();
     const step_detail = JSON.stringify(delta);
@@ -143,18 +147,28 @@ class ProjectForm extends React.Component {
     }
   }
 
+  chooseInstructionImage() {
+    let imageToUse = this.state.media;
+    if (imageToUse === "") {
+      imageToUse = images.rightPointer;
+    }
+    return imageToUse;
+  }
 
 
   render () {
     if (this.props.formInfo === undefined) return null;
     if (this.state === null) return null;
     let imageToUse = this.state.imageUrl;
+    let opacity = "";
     if (this.state.imageUrl === undefined) {
-      imageToUse = this.state.cover_img;
-    }
-    let description = this.state.description;
-    if (description === null) {
-      description = "";
+      if (this.state.cover_img) {
+        imageToUse = this.state.cover_img;
+      } else {
+        imageToUse = this.chooseInstructionImage();
+        opacity = "opacity";
+      }
+
     }
     const errors = this.boxError();
 
@@ -171,7 +185,7 @@ class ProjectForm extends React.Component {
 
           <div className="project-inner">
             <section className='update-file'>
-              <img src={imageToUse} className="edit-img"/>
+              <img src={imageToUse} className={`edit-img ${opacity}`}/>
 
               <div className="file-overlay" >
               <p className="add-file-overlay">Click to Add File</p>
