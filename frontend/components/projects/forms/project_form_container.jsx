@@ -13,7 +13,7 @@ const mapStateToProps = (state, ownProps) => {
     const project = state.projects[parseInt(ownProps.params.projectId)];
     const arrayIndex = parseInt(ownProps.params.instructionId);
     if (project) {
-      let instructionKeys = Object.keys(state.projects[ownProps.params.projectId].instructions);
+      const instructionKeys = Object.keys(state.projects[ownProps.params.projectId].instructions);
       formInfo = project.instructions[instructionKeys[ownProps.params.instructionId]];
     }
   } else if (ownProps.params.projectId) {

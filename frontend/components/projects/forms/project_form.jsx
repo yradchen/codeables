@@ -65,8 +65,8 @@ class ProjectForm extends React.Component {
 
   updateFile(e) {
     return (e) => {
-      let file = e.currentTarget.files[0];
-      let reader = new FileReader();
+      const file = e.currentTarget.files[0];
+      const reader = new FileReader();
       let fileName = "media";
       if (this.state.cover_img) {
         fileName = "cover_img";
@@ -188,12 +188,10 @@ class ProjectForm extends React.Component {
           <div className="project-inner">
             <section className='update-file'>
               {imageToUse}
-
               <div className="file-overlay" >
               <p className="add-file-overlay">Click to Add File</p>
               <input type="file" className="add-file" onChange={this.updateFile()}/>
               </div>
-
             </section>
 
             <input className="title" type="text" onChange={this.updateField('title')} value={this.state.title} />

@@ -11,7 +11,7 @@ const mapStateToProps = (state, ownProps) => {
 
   if (project) {
 
-    let instructionKeys = Object.keys(state.projects[ownProps.params.projectId].instructions);
+    const instructionKeys = Object.keys(state.projects[ownProps.params.projectId].instructions);
     instruction = project.instructions[instructionKeys[ownProps.params.instructionId]];
   }
   return { instruction, project, currentUser: state.session.currentUser };

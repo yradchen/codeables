@@ -57,7 +57,7 @@ class LoginForm extends React.Component {
   }
 
   blankFieldError(field) {
-    let message = `Please enter your ${field}.`;
+    const message = `Please enter your ${field}.`;
     if (this.state[`${field}`] === "") {
       return (
         <ul className={this.errorOuter}>
@@ -72,7 +72,7 @@ class LoginForm extends React.Component {
   }
 
   signInGuest(e) {
-    let guest = { username: "Guest", password: "wizardhat1"};
+    const guest = { username: "Guest", password: "wizardhat1"};
     e.preventDefault();
     this.props.login(guest);
     this.redirectIfLoggedIn();
@@ -111,7 +111,7 @@ class LoginForm extends React.Component {
   }
 
   render() {
-    let guest = { username: "Guest", password: "wizardhat1"};
+
     return (
       <div className="session-outer-container">
         <div className="session-inner-container">

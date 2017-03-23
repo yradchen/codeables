@@ -38,11 +38,11 @@ class ProjectForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    let formData = new FormData();
+    const formData = new FormData();
     formData.append("project[title]", this.state.title);
     this.props.action(formData).then(
       (promise) => {
-        let url = `/editcodeable/${promise.project.id}/edit`;
+        const url = `/editcodeable/${promise.project.id}/edit`;
         this.onModalClose();
         hashHistory.push(url);
       }

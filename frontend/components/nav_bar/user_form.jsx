@@ -19,7 +19,7 @@ class UserForm extends React.Component {
   }
 
   sessionLinks () {
-    let guest = { username: "Guest", password: "wizardhat1"};
+    const guest = { username: "Guest", password: "wizardhat1"};
     return (
       <nav className='login-signup'>
         <Link to="/account/login">Login</Link>
@@ -48,7 +48,7 @@ class UserForm extends React.Component {
   }
   drafts(e) {
     e.preventDefault();
-    let url = '/mycodeables/drafts'
+    const url = '/mycodeables/drafts'
     hashHistory.push(url);
   }
 

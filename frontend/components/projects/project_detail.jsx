@@ -29,7 +29,7 @@ class ProjectDetail extends React.Component {
   }
 
   instructionQuills() {
-    let instructionIds = Object.keys(this.props.project.instructions);
+    const instructionIds = Object.keys(this.props.project.instructions);
     instructionIds.forEach(id => {
       const htmlId = `int-` + id;
       const quill = new Quill(`#${htmlId}`, {
@@ -38,7 +38,7 @@ class ProjectDetail extends React.Component {
         },
         theme: 'snow'
       });
-      let step_detail = this.props.project.instructions[id].step_detail;
+      const step_detail = this.props.project.instructions[id].step_detail;
       quill.setContents(JSON.parse(step_detail));
       quill.disable();
     });

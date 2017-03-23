@@ -1,5 +1,4 @@
 import React from 'react';
-import InstructionFormContainer from '../instructions/instruction_form_container';
 import Modal from 'react-modal';
 import {Link} from 'react-router';
 import { hashHistory } from 'react-router';
@@ -30,9 +29,9 @@ class ProjectEditPage extends React.Component {
   addInstruction(e) {
     e.preventDefault();
     const stepNumber = this.props.instructions.length + 1;
-    let step_title = `Step ${stepNumber}:`;
-    let formData = new FormData();
-    let project_id = this.props.params.projectId;
+    const step_title = `Step ${stepNumber}:`;
+    const formData = new FormData();
+    const project_id = this.props.params.projectId;
     formData.append('instruction[step_title]', step_title);
     formData.append("instruction[project_id]", project_id);
     this.props.createInstruction(formData);
@@ -55,7 +54,7 @@ class ProjectEditPage extends React.Component {
 
   updatePublish(e) {
     e.preventDefault();
-    let formData = new FormData();
+    const formData = new FormData();
     formData.append('project[publish]', !this.props.project.publish);
     formData.append('project[id]', this.props.project.id);
     this.props.updateProject(formData);

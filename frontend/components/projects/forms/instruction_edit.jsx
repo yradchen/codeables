@@ -70,8 +70,8 @@ class InstructionEdit extends React.Component {
 
   updateFile(e) {
     return (e) => {
-      let file = e.currentTarget.files[0];
-      let reader = new FileReader();
+      const file = e.currentTarget.files[0];
+      const reader = new FileReader();
       reader.onloadend = () => {
         this.setState( {imageUrl: reader.result, media: file} );
       };
@@ -95,12 +95,12 @@ class InstructionEdit extends React.Component {
     this.props.setLoadingState(true);
     const delta = this.quill.getContents();
     const step_detail = JSON.stringify(delta);
-    let formData = new FormData();
+    const formData = new FormData();
     formData.append("instruction[media]", this.state.media);
     formData.append("instruction[step_title]", this.state.step_title);
     formData.append("instruction[step_detail]", step_detail);
     formData.append("instruction[id]", this.state.id);
-    let url = `/editcodeable/${this.state.project_id}/edit`;
+    const url = `/editcodeable/${this.state.project_id}/edit`;
     this.props.updateInstruction(formData).then( () => {
       this.props.setLoadingState(false);
       hashHistory.push(url);
