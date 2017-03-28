@@ -12,6 +12,7 @@
 #  cover_img_content_type :string
 #  cover_img_file_size    :integer
 #  cover_img_updated_at   :datetime
+#  publish                :boolean          default("false")
 #
 
 class Project < ApplicationRecord
