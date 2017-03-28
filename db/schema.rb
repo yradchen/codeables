@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170328205617) do
+ActiveRecord::Schema.define(version: 20170328210515) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,9 +39,13 @@ ActiveRecord::Schema.define(version: 20170328205617) do
   create_table "media", force: :cascade do |t|
     t.string   "mediable_type"
     t.integer  "mediable_id"
-    t.integer  "user_id",       null: false
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.integer  "user_id",            null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "media_file_name"
+    t.string   "media_content_type"
+    t.integer  "media_file_size"
+    t.datetime "media_updated_at"
     t.index ["mediable_type", "mediable_id"], name: "index_media_on_mediable_type_and_mediable_id", using: :btree
     t.index ["user_id"], name: "index_media_on_user_id", using: :btree
   end
