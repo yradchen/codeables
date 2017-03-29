@@ -14,11 +14,13 @@
 #  media_updated_at   :datetime
 #
 
-class Media < ApplicationRecord
+
+
+class Medium < ApplicationRecord
   validates :user, presence: true
   belongs_to :mediable, polymorphic: true
   belongs_to :user
-  
+
   has_attached_file :media, styles: { thumb: "351x235" }, default_url:
   	"https://s3.amazonaws.com/codeables-DEV/coding-is-fun.jpg"
   validates_attachment_content_type :media, content_type: /\Aimage\/.*\z/
