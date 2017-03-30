@@ -63,20 +63,24 @@ class ProjectEditPage extends React.Component {
 
     return(e) => {
       e.preventDefault();
-      const file = e.currentTarget.files[0];
+      const files = e.currentTarget.files;
       const formData = new FormData();
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        formData.append('medium[media]', reader.result);
-        this.props.createMedium(formData);
 
-      };
-      if (file) {
-        reader.readAsDataURL(file);
+      if (files) {
+        const keys = Object.keys(files);
+        keys.forEach(key => {
+          const reader = new FileReader();
+          reader.readAsDataURL(files[key]);
+          reader.onloadend = () => {
+            formData.append('medium[media]', reader.result);
+            this.props.createMedium(formData);
+          };
+        });
+
       }
 
     };
-    
+
   }
 
 
@@ -121,7 +125,7 @@ class ProjectEditPage extends React.Component {
             <section className="edit-view-top">
               <section className="images">
                 <p className="new-file-overlay">Click To Add Image</p>
-                <input type="file" className="upload-file" onChange={this.uploadFiles()}/>
+                <input type="file" className="upload-file" onChange={this.uploadFiles()} multiple/>
               </section>
               <section>
                 <Link to={`projects/${this.props.project.id}`} id="preview">Full Preview</Link>

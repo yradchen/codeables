@@ -10,9 +10,9 @@ class Api::MediaController < ApplicationController
     @medium.mediable_id = current_user.id
     @medium.mediable_type = "User"
     if @medium.save
-      debugger
+
     end
-    debugger
+
   end
 
   private
