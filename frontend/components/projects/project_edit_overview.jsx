@@ -85,7 +85,7 @@ class ProjectEditPage extends React.Component {
   }
   setUrls() {
     return this.state.mediaUrls.map(url => {
-      return <img src={url}/>;
+      return <img src={url} className="multiple-images"/>;
     });
   }
 

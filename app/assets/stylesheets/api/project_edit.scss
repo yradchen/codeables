@@ -116,12 +116,7 @@
   border-bottom: 1px solid #DDD;
   padding: 10px 10px;
 }
-.images {
-  width: 100%;
-  position: relative;
-  height: 125px;
-  margin-bottom: 10px;
-}
+
 
 .new-file-overlay {
   position: absolute;
@@ -146,6 +141,26 @@
   z-index: 1000;
 }
 
+.multiple-images {
+  height: 100%;
+  position: relative;
+  margin-right: 10px;
+  max-width: 125px;
+}
+.images {
+  width: 100%;
+  position: relative;
+  height: 125px;
+  margin-bottom: 10px;
+  // overflow-x: scroll;
+  // overflow-y: hidden;
+  // white-space: nowrap;
+}
+// .scroll {
+//
+// }
+
+
 .add-file {
 	position: relative;
 	text-align: right;
@@ -159,24 +174,6 @@
   outline: none;
 }
 
-// .add-file-overlay {
-//   position: absolute;
-//   text-align: center;
-//   line-height: 120px;
-//   left: 153px;
-//   margin-bottom: 5px;
-//   min-height: 120px;
-//   background-color: #f6f6f6;
-//   border: 1px solid #ddd;
-//   border-radius: 8px;
-//   box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.15);
-//   width: 600px;
-//   font-family: Helvetica, Arial, sans-serif;
-//   font-size: 20px;
-// }
-// .file-overlay {
-//   margin-bottom: 4px;
-// }
 
 
 
