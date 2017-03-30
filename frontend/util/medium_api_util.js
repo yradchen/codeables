@@ -1,4 +1,4 @@
-export const createMedia = (media) => {
+export const createMedium = (media) => {
   return $.ajax({
     method: 'POST',
     url: `api/media/`,
@@ -9,9 +9,11 @@ export const createMedia = (media) => {
   });
 };
 
-export const fetchMedia = (id) => {
+export const fetchMedium = (id) => {
   return $.ajax({
     method: 'GET',
     url: `api/media/${id}`,
   });
 };
+// never use fetchInstruction.
+// need to provide mediable_type and mediable_id when using find_by

@@ -1,11 +1,11 @@
 class Api::MediaController < ApplicationController
 
   def index
-    @media = Media.all
+    @media = Medium.all
   end
 
   def create
-    @media = Media.new(media_params)
+    @media = Medium.new(media_params)
     if @media.save
       render 'api/media/show'
     else

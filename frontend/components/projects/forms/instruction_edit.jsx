@@ -67,7 +67,6 @@ class InstructionEdit extends React.Component {
 
   }
 
-
   updateFile(e) {
     return (e) => {
       const file = e.currentTarget.files[0];

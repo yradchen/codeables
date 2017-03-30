@@ -20,7 +20,7 @@ class Project < ApplicationRecord
   belongs_to :user
   has_many :comments
   has_many :instructions, dependent: :destroy
-  has_many :media, as: :mediable
+  has_one :medium, as: :mediable
 
   has_attached_file :cover_img, styles: { thumb: "351x235" }, default_url:
   	"https://s3.amazonaws.com/codeables-DEV/coding-is-fun.jpg"

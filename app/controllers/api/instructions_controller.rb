@@ -2,7 +2,6 @@ class Api::InstructionsController < ApplicationController
   def create
 
     @instruction = Instruction.new(instruction_params)
-
     if @instruction.save
       render 'api/instructions/show'
     else
@@ -16,15 +15,11 @@ class Api::InstructionsController < ApplicationController
 
   def update
     @instruction = Instruction.find(params[:id])
-      # if @instruction.user_id != current_user.id
-    #   render json: ["You can't edit a instruction you didn't create"]
-    # else
       if @instruction.update(instruction_params)
         render 'api/instructions/show'
       else
         render json: @instruction.errors.full_messages, status: 422
       end
-    # end
   end
 
   def destroy
