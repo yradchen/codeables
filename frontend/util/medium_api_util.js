@@ -1,11 +1,12 @@
-export const createMedium = (media) => {
+export const createMedium = (medium) => {
+
   return $.ajax({
     method: 'POST',
     url: `api/media/`,
     contentType: false,
     processData: false,
     dataType: 'json',
-    data: media
+    data: medium
   });
 };
 

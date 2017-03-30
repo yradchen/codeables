@@ -5,11 +5,18 @@ class Api::MediaController < ApplicationController
   end
 
   def create
-    @media = Medium.new(media_params)
-    if @media.save
-      render 'api/media/show'
-    else
-      render json: @media.errors.full_messages, status: 422
+    @medium = Medium.new(medium_params)
+    @medium.user_id = current_user.id
+    @medium.mediable_id = current_user.id
+    @medium.mediable_type = "User"
+    if @medium.save
+      debugger
     end
+    debugger
+  end
+
+  private
+  def medium_params
+    params.require(:medium).permit(:media)
   end
 end

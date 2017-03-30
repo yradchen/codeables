@@ -60,31 +60,23 @@ class ProjectEditPage extends React.Component {
     this.props.updateProject(formData);
   }
   uploadFiles() {
-    debugger
+
     return(e) => {
       e.preventDefault();
-      const file = e.currentTarget.files;
+      const file = e.currentTarget.files[0];
+      const formData = new FormData();
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        formData.append('medium[media]', reader.result);
+        this.props.createMedium(formData);
 
-      // want to hit use create images here. Upload every single image.
+      };
+      if (file) {
+        reader.readAsDataURL(file);
+      }
+
     };
-    // return (e) => {
-      // const file = e.currentTarget.files[0];
-      // const reader = new FileReader();
-    //   let fileName = "media";
-    //   if (this.state.cover_img) {
-    //     fileName = "cover_img";
-    //   }
-    //   reader.onloadend = () => {
-    //     this.setState( {imageUrl: reader.result, [`${fileName}`]: file} );
-    //   };
-    //
-    //   if (file) {
-    //     reader.readAsDataURL(file);
-    //   } else {
-    //     // change from media to cover_img
-    //     this.setState({ imageUrl: null, [`${fileName}`]: null});
-    //   }
-    // };
+    
   }
 
 
