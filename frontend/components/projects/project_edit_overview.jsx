@@ -60,6 +60,7 @@ class ProjectEditPage extends React.Component {
     this.props.updateProject(formData);
   }
 
+
   render() {
     if (this.props.project === undefined) return null;
     let publish;
@@ -73,7 +74,6 @@ class ProjectEditPage extends React.Component {
       if (instruction.media === "") {
         img = <img src={images.rightPointer} className="edit-img opacity"/>;
       }
-
       return (
         <div className="edit-view-ind" key={`instruction-${index}`}>
           {img}
@@ -84,7 +84,9 @@ class ProjectEditPage extends React.Component {
         </div>
       );
     });
-
+    // console.log(this.props.project.medium)
+    // const other_img = <img src={this.props.project.medium.media} className="edit-img"/>;
+    // debugger
     return (
       <div>
         <Modal

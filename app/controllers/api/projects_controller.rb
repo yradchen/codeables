@@ -15,7 +15,7 @@ class Api::ProjectsController < ApplicationController
   def show
 
     @project = Project.includes(:instructions, :comments, :medium).find(params[:id])
-    
+
   end
 
   def index

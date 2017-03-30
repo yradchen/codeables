@@ -13,9 +13,9 @@ json.instructions do
 end
 
 if @project.instructions.length == 0
-  # json.instructions do
   json.instructions({})
 end
+
 
 json.comments do
   @project.comments.each do |comment|
@@ -28,4 +28,9 @@ end
 
 if @project.comments.length == 0
   json.comments({})
+end
+if @project.medium
+  json.media asset_path(@project.medium.media.url)
+else
+  json.media nil
 end

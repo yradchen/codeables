@@ -4,7 +4,8 @@ import { createInstruction, deleteInstruction } from '../../actions/instruction_
 import ProjectEditPage from './project_edit_overview';
 
 const mapStateToProps = (state, ownProps) => {
-  let project = { title:'', description:'', instructions: [] };
+  let project = { title:'', description:'', instructions: [], medium: null };
+
   let instructions = [];
   if (ownProps.params.projectId) {
     project = state.projects[parseInt(ownProps.params.projectId)];
