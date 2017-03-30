@@ -150,7 +150,7 @@ class ProjectDetail extends React.Component {
           </header>
           <section className="show-bottom">
             <div className="show-img-container">
-              <img className="show-img" src={this.props.project.cover_img}/>
+              <img className="show-img" src={this.props.project.media}/>
             </div>
             <div id="quill" className="show-description"></div>
             {instructions}

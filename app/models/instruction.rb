@@ -19,8 +19,10 @@ class Instruction < ApplicationRecord
   validates :step_detail, presence: true, on: :update
   has_attached_file :media, default_url: ""
   validates_attachment_content_type :media, content_type: /\Aimage\/.*\z/
-
+  has_one :medium, as: :mediable
   belongs_to :project
 
+  # has_attached_file :medium, styles: { thumb: "351x235" }, default_url:
+  #   "https://s3.amazonaws.com/codeables-DEV/coding-is-fun.jpg"
 
 end

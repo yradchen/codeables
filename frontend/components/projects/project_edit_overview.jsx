@@ -84,9 +84,7 @@ class ProjectEditPage extends React.Component {
         </div>
       );
     });
-    // console.log(this.props.project.medium)
-    // const other_img = <img src={this.props.project.medium.media} className="edit-img"/>;
-    // debugger
+
     return (
       <div>
         <Modal
@@ -102,13 +100,10 @@ class ProjectEditPage extends React.Component {
         <div className="edit-view-outer">
           <div className="edit-view-inner">
             <section className="edit-view-top">
-              <div className="owner-info">
-                <h1>{this.props.project.title}</h1>
-                <span className="all">
-                <p className="by">by</p>
-                <p className="show-owner">{this.props.project.owner}</p>
-                </span>
-              </div>
+              <section className="images">
+                <p className="new-file-overlay">Click To Add Image</p>
+                <input type="file" className="upload-file"/>
+              </section>
               <section>
                 <Link to={`projects/${this.props.project.id}`} id="preview">Full Preview</Link>
                 <button id="publish" onClick={this.updatePublish}>{publish}</button>
@@ -116,7 +111,7 @@ class ProjectEditPage extends React.Component {
             </section>
             <section className="edit-view-bottom">
               <div className="edit-view-ind">
-                <img src={this.props.project.cover_img} className="edit-img"/>
+                <img src={this.props.project.media} className="edit-img"/>
                   <Link to=
                     {`/editcodeable/${this.props.project.id}/edit/project`}
                     className="edit-view-clicker">Click Here to Edit</Link>

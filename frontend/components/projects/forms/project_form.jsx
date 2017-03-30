@@ -160,7 +160,6 @@ class ProjectForm extends React.Component {
     return <img src={imageToUse} className="edit-img"/>;
   }
 
-
   render () {
     if (this.props.formInfo === undefined) return null;
     if (this.state === null) return null;
@@ -173,6 +172,7 @@ class ProjectForm extends React.Component {
       }
 
     }
+
     const errors = this.boxError();
 
     return (
@@ -187,7 +187,7 @@ class ProjectForm extends React.Component {
 
           <div className="project-inner">
             <section className='update-file'>
-              {/* {imageToUse} */}
+              {imageToUse}
               <div className="file-overlay" >
               <p className="add-file-overlay">Click to Add File</p>
               <input type="file" className="add-file" onChange={this.updateFile()}/>
