@@ -7,7 +7,7 @@ import { ResponseModal, ModalStyle } from './forms/response_modal';
 class ProjectEditPage extends React.Component {
   constructor() {
     super();
-    this.state = ({modalOpen: false });
+    this.state = ({modalOpen: false,  mediaUrls: []});
     this.instructionToDelete = null;
     this.addInstruction = this.addInstruction.bind(this);
     this.handleResponse = this.handleResponse.bind(this);
@@ -59,6 +59,7 @@ class ProjectEditPage extends React.Component {
     formData.append('project[id]', this.props.project.id);
     this.props.updateProject(formData);
   }
+
   uploadFiles() {
 
     return(e) => {
@@ -72,17 +73,38 @@ class ProjectEditPage extends React.Component {
           const reader = new FileReader();
           reader.readAsDataURL(files[key]);
           reader.onloadend = () => {
-            formData.append('medium[media]', reader.result);
-            this.props.createMedium(formData);
+            const result = reader.result;
+            formData.append('medium[media]', result);
+            // this.props.createMedium(formData);
+            const mediaUrls = this.state.mediaUrls.concat(result);
+            this.setState({mediaUrls: mediaUrls});
           };
         });
-
       }
-
     };
-
+  }
+  setUrls() {
+    return this.state.mediaUrls.map(url => {
+      return <img src={url}/>;
+    });
   }
 
+  setImages() {
+    if (this.state.mediaUrls.length > 0) {
+      return (
+        <section className="images">
+          {this.setUrls()}
+        </section>
+      );
+    } else {
+      return (
+        <section className="images">
+          <p className="new-file-overlay">Click To Add Image</p>
+          <input type="file" className="upload-file" onChange={this.uploadFiles()} multiple/>
+        </section>
+    );
+    }
+  }
 
   render() {
     if (this.props.project === undefined) return null;
@@ -123,10 +145,7 @@ class ProjectEditPage extends React.Component {
         <div className="edit-view-outer">
           <div className="edit-view-inner">
             <section className="edit-view-top">
-              <section className="images">
-                <p className="new-file-overlay">Click To Add Image</p>
-                <input type="file" className="upload-file" onChange={this.uploadFiles()} multiple/>
-              </section>
+                {this.setImages()}
               <section>
                 <Link to={`projects/${this.props.project.id}`} id="preview">Full Preview</Link>
                 <button id="publish" onClick={this.updatePublish}>{publish}</button>
