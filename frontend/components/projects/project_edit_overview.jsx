@@ -59,6 +59,33 @@ class ProjectEditPage extends React.Component {
     formData.append('project[id]', this.props.project.id);
     this.props.updateProject(formData);
   }
+  uploadFiles() {
+    debugger
+    return(e) => {
+      e.preventDefault();
+      const file = e.currentTarget.files;
+
+      // want to hit use create images here. Upload every single image.
+    };
+    // return (e) => {
+      // const file = e.currentTarget.files[0];
+      // const reader = new FileReader();
+    //   let fileName = "media";
+    //   if (this.state.cover_img) {
+    //     fileName = "cover_img";
+    //   }
+    //   reader.onloadend = () => {
+    //     this.setState( {imageUrl: reader.result, [`${fileName}`]: file} );
+    //   };
+    //
+    //   if (file) {
+    //     reader.readAsDataURL(file);
+    //   } else {
+    //     // change from media to cover_img
+    //     this.setState({ imageUrl: null, [`${fileName}`]: null});
+    //   }
+    // };
+  }
 
 
   render() {
@@ -102,7 +129,7 @@ class ProjectEditPage extends React.Component {
             <section className="edit-view-top">
               <section className="images">
                 <p className="new-file-overlay">Click To Add Image</p>
-                <input type="file" className="upload-file"/>
+                <input type="file" className="upload-file" onChange={this.uploadFiles()}/>
               </section>
               <section>
                 <Link to={`projects/${this.props.project.id}`} id="preview">Full Preview</Link>
