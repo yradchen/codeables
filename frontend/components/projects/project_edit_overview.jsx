@@ -84,9 +84,38 @@ class ProjectEditPage extends React.Component {
     };
   }
   setUrls() {
-    return this.state.mediaUrls.map(url => {
-      return <img src={url} className="multiple-images"/>;
+    return this.state.mediaUrls.map( (url, index) => {
+      return <img src={url} key={`${index}-url`}className="multiple-images" onDrag={this.drag(index)}/>;
     });
+  }
+
+  drag(Urlindex) {
+    return (e) => {
+      if (!this.currentUrl) {
+        this.currentUrl = Urlindex;
+      }
+    };
+  }
+
+  drop(instruction) {
+    return (e) => {
+      let mediaUrls = this.state.mediaUrls;
+      instruction.media = mediaUrls[this.currentUrl];
+      if (mediaUrls.length === 1 & this.currentUrl === 0) {
+        this.setState({ mediaUrls: [] });
+      } else {
+        mediaUrls.splice(this.currentUrl, this.currentUrl);
+        this.setState({mediaUrls: mediaUrls});
+        // console.log(this.state.mediaUrls);
+      }
+
+    };
+  }
+
+  stopevent() {
+    return (e) => {
+      e.preventDefault();
+    };
   }
 
   setImages() {
@@ -117,7 +146,7 @@ class ProjectEditPage extends React.Component {
     const instructions = this.props.instructions.map( (instruction, index) => {
       let img = <img src={instruction.media} className="edit-img"/>;
       if (instruction.media === "") {
-        img = <img src={images.rightPointer} className="edit-img opacity"/>;
+        img = <img src={images.rightPointer} className="edit-img opacity" onDragOver={this.stopevent()} onDrop={this.drop(instruction)}/>;
       }
       return (
         <div className="edit-view-ind" key={`instruction-${index}`}>
