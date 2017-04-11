@@ -13,3 +13,9 @@ export const createMedium = (medium) => dispatch => (
     medium => dispatch(receiveMedium(medium))
   )
 );
+
+export const updateMedium = (medium) => dispatch => (
+  MediumAPIUtil.updateMedium(medium).then(
+    medium => dispatch(receiveMedium(medium))
+  )
+);

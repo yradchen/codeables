@@ -16,5 +16,14 @@ export const fetchMedium = (id) => {
     url: `api/media/${id}`,
   });
 };
+
+export const updatehMedium = (medium) => {
+  return $.ajax({
+    method: 'PATCH',
+    url: `api/media/${medium.id}`,
+    date: { medium }
+  });
+};
+
 // never use fetchInstruction.
 // need to provide mediable_type and mediable_id when using find_by

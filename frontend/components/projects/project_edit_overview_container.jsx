@@ -6,7 +6,6 @@ import ProjectEditPage from './project_edit_overview';
 
 const mapStateToProps = (state, ownProps) => {
   let project = { title:'', description:'', instructions: [], medium: null };
-
   let instructions = [];
   if (ownProps.params.projectId) {
     project = state.projects[parseInt(ownProps.params.projectId)];
@@ -24,6 +23,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     createMedium: (medium) => dispatch(createMedium(medium)),
+    updateMedium: (medium) => dispatch(updateMedium(medium)),
     updateProject: (project) => dispatch(updateProject(project)),
     fetchProject: (id) => dispatch(fetchProject(id)),
     createInstruction: (instruction) => dispatch(createInstruction(instruction)),

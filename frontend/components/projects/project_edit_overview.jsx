@@ -129,11 +129,10 @@ class ProjectEditPage extends React.Component {
     }
   }
   saveAll() {
-    debugger
-    this.state.updatedInstructions.forEach(index => {
-      let instruction = this.props.instructions[index];
-      this.props.updateInstruction(instruction);
-    });
+    // this.state.updatedInstructions.forEach(index => {
+    //   let instruction = this.props.instructions[index];
+    //   this.props.updateInstruction(instruction);
+    // });
   }
 
   render() {
