@@ -7,12 +7,13 @@ import { ResponseModal, ModalStyle } from './forms/response_modal';
 class ProjectEditPage extends React.Component {
   constructor() {
     super();
-    this.state = ({modalOpen: false,  mediaUrls: []});
+    this.state = ({modalOpen: false,  mediaUrls: [], updatedInstructions: []});
     this.instructionToDelete = null;
     this.addInstruction = this.addInstruction.bind(this);
     this.handleResponse = this.handleResponse.bind(this);
     this.handleInstructionDelete = this.handleInstructionDelete.bind(this);
     this.updatePublish = this.updatePublish.bind(this);
+    this.saveAll = this.saveAll.bind(this);
   }
 
   componentDidMount() {
@@ -61,7 +62,6 @@ class ProjectEditPage extends React.Component {
   }
 
   uploadFiles() {
-
     return(e) => {
       e.preventDefault();
       const files = e.currentTarget.files;
@@ -69,13 +69,13 @@ class ProjectEditPage extends React.Component {
 
       if (files) {
         const keys = Object.keys(files);
+        var mediaUrls = this.state.mediaUrls;
         keys.forEach(key => {
           const reader = new FileReader();
           reader.readAsDataURL(files[key]);
           reader.onloadend = () => {
             const result = reader.result;
             formData.append('medium[media]', result);
-            // this.props.createMedium(formData);
             const mediaUrls = this.state.mediaUrls.concat(result);
             this.setState({mediaUrls: mediaUrls});
           };
@@ -85,30 +85,24 @@ class ProjectEditPage extends React.Component {
   }
   setUrls() {
     return this.state.mediaUrls.map( (url, index) => {
-      return <img src={url} key={`${index}-url`}className="multiple-images" onDrag={this.drag(index)}/>;
+      return <img src={url} key={`${index}-url`} className="multiple-images" onDrag={this.drag(index)}/>;
     });
   }
 
   drag(Urlindex) {
     return (e) => {
-      if (!this.currentUrl) {
-        this.currentUrl = Urlindex;
-      }
+      this.currentUrl = Urlindex;
     };
   }
 
-  drop(instruction) {
+  drop(instruction, index) {
     return (e) => {
       let mediaUrls = this.state.mediaUrls;
       instruction.media = mediaUrls[this.currentUrl];
-      if (mediaUrls.length === 1 & this.currentUrl === 0) {
-        this.setState({ mediaUrls: [] });
-      } else {
-        mediaUrls.splice(this.currentUrl, this.currentUrl);
-        this.setState({mediaUrls: mediaUrls});
-        // console.log(this.state.mediaUrls);
-      }
-
+      mediaUrls.splice(this.currentUrl, 1);
+      const updatedInstructions = this.state.updatedInstructions;
+      updatedInstructions.push(index);
+      this.setState({mediaUrls: mediaUrls, updatedInstructions });
     };
   }
 
@@ -134,6 +128,13 @@ class ProjectEditPage extends React.Component {
     );
     }
   }
+  saveAll() {
+    debugger
+    this.state.updatedInstructions.forEach(index => {
+      let instruction = this.props.instructions[index];
+      this.props.updateInstruction(instruction);
+    });
+  }
 
   render() {
     if (this.props.project === undefined) return null;
@@ -146,7 +147,7 @@ class ProjectEditPage extends React.Component {
     const instructions = this.props.instructions.map( (instruction, index) => {
       let img = <img src={instruction.media} className="edit-img"/>;
       if (instruction.media === "") {
-        img = <img src={images.rightPointer} className="edit-img opacity" onDragOver={this.stopevent()} onDrop={this.drop(instruction)}/>;
+        img = <img src={images.rightPointer} className="edit-img opacity" onDragOver={this.stopevent()} onDrop={this.drop(instruction, index)}/>;
       }
       return (
         <div className="edit-view-ind" key={`instruction-${index}`}>
@@ -178,6 +179,7 @@ class ProjectEditPage extends React.Component {
               <section>
                 <Link to={`projects/${this.props.project.id}`} id="preview">Full Preview</Link>
                 <button id="publish" onClick={this.updatePublish}>{publish}</button>
+                <button onClick={this.saveAll}>Save</button>
               </section>
             </section>
             <section className="edit-view-bottom">

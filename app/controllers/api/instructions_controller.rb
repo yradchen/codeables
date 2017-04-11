@@ -15,6 +15,7 @@ class Api::InstructionsController < ApplicationController
 
   def update
     @instruction = Instruction.find(params[:id])
+    debugger
       if @instruction.update(instruction_params)
         render 'api/instructions/show'
       else

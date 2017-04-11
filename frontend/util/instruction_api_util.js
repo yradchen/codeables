@@ -10,14 +10,11 @@ export const createInstruction = (instruction) => {
 };
 
 export const updateInstruction = (instruction) => {
-  const id = parseInt(instruction.get("instruction[id]"));
   return $.ajax({
     method: 'PATCH',
-    url: `api/instructions/${id}`,
-    contentType: false,
-    processData: false,
+    url: `api/instructions/${instruction.id}`,
     dataType: 'json',
-    data: instruction
+    data: { instruction }
   });
 };
 
