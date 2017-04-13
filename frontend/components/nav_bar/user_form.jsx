@@ -48,7 +48,7 @@ class UserForm extends React.Component {
   }
   drafts(e) {
     e.preventDefault();
-    const url = '/mycodeables/drafts'
+    const url = '/mycodeables/drafts';
     hashHistory.push(url);
   }
 
@@ -57,10 +57,10 @@ class UserForm extends React.Component {
       return (
         <ul className="nav-drop-down">
           <li className="top-drop">
-            <futurecontent><p></p></futurecontent>
             <button className="logout"
-                    onClick={this.logOutUser}>Log Out</button>
-        </li>
+              onClick={this.logOutUser}>Log Out
+            </button>
+          </li>
         <li className='drop-divider'>
         </li>
         <li className ='drafts-li'>
@@ -76,8 +76,6 @@ class UserForm extends React.Component {
         </li>
       </ul>
     );
-    } else {
-      return <p></p>;
     }
   }
 

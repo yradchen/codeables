@@ -2,10 +2,16 @@
 // then goes into project or instruction.
 import * as MediumAPIUtil from '../util/medium_api_util';
 export const RECEIVE_MEDIUM = 'RECEIVE_MEDIUM';
+export const RECEIVE_ALL_MEDIA = 'RECEIVE_ALL_MEDIA';
 
 const receiveMedium = (medium) => ({
   type: RECEIVE_MEDIUM,
   medium
+});
+
+const receiveAllMedia = (media) => ({
+  type: RECEIVE_ALL_MEDIA,
+  media
 });
 
 export const createMedium = (medium) => dispatch => (

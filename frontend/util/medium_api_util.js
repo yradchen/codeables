@@ -1,5 +1,4 @@
 export const createMedium = (medium) => {
-
   return $.ajax({
     method: 'POST',
     url: `api/media/`,
@@ -17,11 +16,14 @@ export const fetchMedium = (id) => {
   });
 };
 
-export const updatehMedium = (medium) => {
+export const updateMedium = (medium) => {
   return $.ajax({
     method: 'PATCH',
-    url: `api/media/${medium.id}`,
-    date: { medium }
+    url: `api/media/${id}`,
+    contentType: false,
+    processData: false,
+    dataType: 'json',
+    data: medium
   });
 };
 

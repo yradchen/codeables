@@ -38,13 +38,13 @@ class NavBar extends React.Component {
             <div className="search-container">
               <label className="lets-code">let's code
                 <form onSubmit={this.search}>
-                <input type="text"
-                  value={this.state.inputVal}
-                  onChange={this.handleInput}
-                  className="searchbar"/>
+                  <input type="text"
+                    value={this.state.inputVal}
+                    onChange={this.handleInput}
+                    className="searchbar"/>
                 </form>
                 <i className="material-icons" onClick={this.search}>search</i>
-            </label>
+              </label>
             </div>
           </section>
           <section className="nav-sessions">

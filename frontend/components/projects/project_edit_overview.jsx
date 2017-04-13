@@ -65,44 +65,63 @@ class ProjectEditPage extends React.Component {
     return(e) => {
       e.preventDefault();
       const files = e.currentTarget.files;
-      const formData = new FormData();
 
       if (files) {
         const keys = Object.keys(files);
-        var mediaUrls = this.state.mediaUrls;
+        // var mediaUrls = this.state.mediaUrls;
         keys.forEach(key => {
           const reader = new FileReader();
           reader.readAsDataURL(files[key]);
           reader.onloadend = () => {
             const result = reader.result;
+            const formData = new FormData();
             formData.append('medium[media]', result);
-            const mediaUrls = this.state.mediaUrls.concat(result);
-            this.setState({mediaUrls: mediaUrls});
+            this.props.createMedium(formData);
+            // const mediaUrls = this.state.mediaUrls.concat(result);
+            // this.setState({mediaUrls: mediaUrls});
           };
         });
       }
     };
   }
+
   setUrls() {
-    return this.state.mediaUrls.map( (url, index) => {
-      return <img src={url} key={`${index}-url`} className="multiple-images" onDrag={this.drag(index)}/>;
+    return this.props.userMedia.map( (medium, index) => {
+      return (
+              <img src={medium.media}
+                key={`${medium.id}-url`}
+                className="multiple-images"
+                onDrag={this.drag(index, medium.id)}
+              />
+            );
     });
+    // return this.state.mediaUrls.map( (url, index) => {
+    //   return <img src={url} key={`${index}-url`} className="multiple-images" onDrag={this.drag(index)}/>;
+    // });
   }
 
-  drag(Urlindex) {
+  drag(Urlindex, mediumId) {
     return (e) => {
       this.currentUrl = Urlindex;
+      this.currentMediumId = mediumId;
     };
   }
 
-  drop(instruction, index) {
+  drop(mediable_id, mediable_type) {
     return (e) => {
-      let mediaUrls = this.state.mediaUrls;
-      instruction.media = mediaUrls[this.currentUrl];
-      mediaUrls.splice(this.currentUrl, 1);
-      const updatedInstructions = this.state.updatedInstructions;
-      updatedInstructions.push(index);
-      this.setState({mediaUrls: mediaUrls, updatedInstructions });
+      // formData.append('medium[media]', result);
+      console.log(mediable_id);
+      const formData = new FormData();
+      formData.append("medium[mediable_id]", mediable_id);
+      formData.append("medium[mediable_type]", mediable_type);
+      formData.append("medium[id]", this.currentMediumId);
+      this.props.updateMedium(formData);
+      // let mediaUrls = this.state.mediaUrls;
+
+      // mediaUrls.splice(this.currentUrl, 1);
+      // const updatedInstructions = this.state.updatedInstructions;
+      // updatedInstructions.push(index);
+      // this.setState({mediaUrls: mediaUrls, updatedInstructions });
     };
   }
 
@@ -113,7 +132,7 @@ class ProjectEditPage extends React.Component {
   }
 
   setImages() {
-    if (this.state.mediaUrls.length > 0) {
+    if (this.props.userMedia.length > 0) {
       return (
         <section className="images">
           {this.setUrls()}
@@ -129,6 +148,7 @@ class ProjectEditPage extends React.Component {
     }
   }
   saveAll() {
+    debugger
     // this.state.updatedInstructions.forEach(index => {
     //   let instruction = this.props.instructions[index];
     //   this.props.updateInstruction(instruction);
@@ -146,7 +166,7 @@ class ProjectEditPage extends React.Component {
     const instructions = this.props.instructions.map( (instruction, index) => {
       let img = <img src={instruction.media} className="edit-img"/>;
       if (instruction.media === "") {
-        img = <img src={images.rightPointer} className="edit-img opacity" onDragOver={this.stopevent()} onDrop={this.drop(instruction, index)}/>;
+        img = <img src={images.rightPointer} className="edit-img opacity" onDragOver={this.stopevent()} onDrop={this.drop(instruction.id, "Instruction")}/>;
       }
       return (
         <div className="edit-view-ind" key={`instruction-${index}`}>

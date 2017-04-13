@@ -1,11 +1,12 @@
 import { connect } from 'react-redux';
 import { createProject, updateProject, fetchProject } from '../../actions/project_actions';
 import { updateInstruction, createInstruction, deleteInstruction } from '../../actions/instruction_actions';
-import { createMedium } from '../../actions/medium_actions';
+import { createMedium, updateMedium } from '../../actions/medium_actions';
 import ProjectEditPage from './project_edit_overview';
 
 const mapStateToProps = (state, ownProps) => {
   let project = { title:'', description:'', instructions: [], medium: null };
+  // debugger
   let instructions = [];
   if (ownProps.params.projectId) {
     project = state.projects[parseInt(ownProps.params.projectId)];
@@ -16,7 +17,21 @@ const mapStateToProps = (state, ownProps) => {
       }
     }
   }
-  return { project, instructions };
+  const userMedia = [];
+  const projectMedia = [];
+  const media = Object.keys(state.medium).forEach(id =>  {
+    if (state.medium[id].mediable_type == "User") {
+      userMedia.push(state.medium[id]);
+    } else {
+      projectMedia.push(state.medium[id]);
+    }
+  });
+
+  return {
+        project,
+        instructions,
+        userMedia,
+        projectMedia };
 };
 
 
