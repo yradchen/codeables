@@ -41,14 +41,13 @@ class UserForm extends React.Component {
           className="you">You
           <i className="material-icons arrow-down">arrow_drop_down</i>
         </button>
-
         {this.dropDown()}
       </nav>
     );
   }
   drafts(e) {
     e.preventDefault();
-    const url = '/mycodeables/drafts'
+    const url = '/mycodeables/drafts';
     hashHistory.push(url);
   }
 
@@ -65,9 +64,13 @@ class UserForm extends React.Component {
         </li>
         <li className ='drafts-li'>
           <button onClick={this.drafts} className="drafts-link" >
-          <i id="folder" className="material-icons">
-        folder</i><p className='drafts-text'>
-          {this.props.currentUser.username}'s Current Codeables</p></button>
+            <i id="folder" className="material-icons">
+              folder
+            </i>
+            <p className='drafts-text'>
+            {this.props.currentUser.username}'s Current Codeables
+            </p>
+          </button>
         </li>
         <li className="bottom-drop">
             <Link to="/editcodeable/new" className='new-project'>
